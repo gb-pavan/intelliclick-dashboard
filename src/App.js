@@ -11,7 +11,7 @@ function App() {
     <div>
       <div className="logo">
         <div className="logo-sidebar">
-          <img src="./logo.svg" />
+          <img src="./logo.svg" alt = 'logo' />
         </div>
         <div className="incentive-box">
           <div className="logo-content">
@@ -19,7 +19,7 @@ function App() {
             <FaToggleOff color='blue' size={25}/>
           </div>
           <div>
-            <img src='./Ellipse.svg' className="profile-img" />
+            <img src='./Ellipse.svg' alt="profile-image" className="profile-img" />
           </div>
         </div>
         
