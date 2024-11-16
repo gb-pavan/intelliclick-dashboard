@@ -1,0 +1,89 @@
+.table-header{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+    padding: 10px;
+}
+
+.table-header button {
+  border: none;       /* Removes the border */
+  background: none;   /* Removes the background */
+  color: inherit;     /* Inherits text color from parent */
+  font: inherit;      /* Inherits font style and size */
+  cursor: pointer;    /* Shows pointer cursor on hover */
+}
+
+.leads{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.leads span{
+  font-size: 12px;
+  font-weight: 300;
+}
+
+
+.filters{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #d6d2d2; /* Solid border with a 2px width and black color */
+  border-radius: 8px;    /* Slightly rounded corners */
+  padding: 8px;         /* Optional: Add padding inside the div */
+  width: fit-content;
+}
+
+.search-box input{
+  width:300px;
+  padding: 3px;
+  border: none;
+}
+
+.add-color{
+  background-color: blue;
+}
+
+.leads-table {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .leads-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .leads-table th,
+  .leads-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .leads-table .status {
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+  
+  .leads-table .status.prospect {
+    color: blue;
+  }
+  
+  .leads-table .status.qualified {
+    color: green;
+  }
+  
+  .leads-table .status.not-qualified {
+    color: red;
+  }
+  
