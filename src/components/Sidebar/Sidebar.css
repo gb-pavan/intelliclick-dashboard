@@ -83,6 +83,10 @@
   margin-right: 10px; /* Adjust the value as needed */
 }
 
+.icon-left-spacing{
+  padding-left: 60px;
+}
+
 .list-item {
   display: flex;
   justify-content: flex-start; /* Align text and icon to the left */

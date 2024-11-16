@@ -128,7 +128,7 @@ function LeadsTable() {
             <IoFilterOutline />
 
           <button>Filters</button></div>
-          <div className="search-box">
+          <div className="search-box upload-order">
             <MdOutlineUpload />
             <button>Upload Orders</button>
           </div>

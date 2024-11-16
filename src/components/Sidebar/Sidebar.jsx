@@ -7,8 +7,7 @@ import { RxShuffle } from "react-icons/rx";
 import { RxDashboard } from "react-icons/rx";
 import { TbClipboardText } from "react-icons/tb";
 import { BiPieChartAlt2 } from "react-icons/bi";
-
-
+import { FaChevronDown } from "react-icons/fa";
 
 
 function Sidebar() {
@@ -57,6 +56,7 @@ function Sidebar() {
           <div className="list-item">
             <RxShuffle size={30}  className="icon-spacing"/>
             Workflows
+            <FaChevronDown className="icon-left-spacing"/>
           </div>
         </li>
       </ul>
