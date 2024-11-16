@@ -11,6 +11,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 
 
+
 const leadsData = [
   {
     studentName: "Rahul Kumar",
