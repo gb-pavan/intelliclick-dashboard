@@ -6,6 +6,12 @@ import { MdOutlineUpload } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 import { IoFilterOutline } from "react-icons/io5";
 import { IoEyeOutline } from "react-icons/io5";
+import { FaChevronDown } from "react-icons/fa";
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+
+
+
 
 
 
@@ -172,10 +178,16 @@ function LeadsTable() {
         </table>
         <div className="table-bottom">
           <div>
-            hello
+            <p>Leads per page : 10</p>
+            <FaChevronDown />
+            <p>1-10 of 200 Leads</p>
           </div>
           <div>
-            bolo
+            <p>01</p>
+            <FaChevronDown /> 
+            <p>of 15 pages</p>
+            <FaChevronLeft className="icon-with-borders"/>
+            <FaChevronRight />
           </div>
         </div>
     </div>

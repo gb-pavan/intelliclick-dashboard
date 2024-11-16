@@ -110,6 +110,48 @@
     justify-content: space-between;
     align-items: center;
     background-color: orange;
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
+
+  .table-bottom div:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+  }
+
+  .table-bottom div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+    margin-right:20px;
+  }
+
+  .table-bottom div:nth-child(2) p:nth-of-type(2){
+    font-weight: 300;
+  }
+
+  .table-bottom div:first-child p:nth-of-type(2) {
+    padding-left: 20px;
+    font-weight: 300;
+  }
+
+  .icon-with-borders {
+    border-left: 2px solid #a49d9d; /* Left border */
+    border-right: 2px solid #a49d9d; /* Right border */
+    padding-left: 10px;  /* Optional: to add spacing between the icon and the left border */
+    padding-right: 10px; /* Optional: to add spacing between the icon and the right border */
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+
+
+  
+
+
   
