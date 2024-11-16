@@ -54,8 +54,10 @@
 .leads-table {
     margin: 20px;
     padding: 10px;
+    padding-bottom: 0px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 5px;padding-left: 0px;
+    padding-right: 0px;
   }
   
   .leads-table table {
@@ -63,11 +65,15 @@
     border-collapse: collapse;
   }
   
-  .leads-table th,
+  .leads-table th{
+     padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    
+  }
   .leads-table td {
     padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
   }
   
   .leads-table .status {
@@ -85,5 +91,25 @@
   
   .leads-table .status.not-qualified {
     color: red;
+  }
+
+  .eye-button{
+    border: none;       /* Removes the border */
+  background: none;   /* Removes the background */
+  color: inherit;     /* Inherits text color from parent */
+  font: inherit;      /* Inherits font style and size */
+  cursor: pointer; 
+  }
+
+  .last{
+    background-color: red;
+  }
+
+  .table-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: orange;
+    padding: 10px;
   }
   
