@@ -1,8 +1,37 @@
+.logo{
+   display: flex;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fc;
+  border-left: 1px solid #a49d9d; 
+}
+
+.logo-sidebar{
+   width: 250px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+}
+
+.logo-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 30px;
+  font-weight: 400;
+  border-left: 1px solid #ddd;
+  padding-left: 30px;
+}
+
 .app {
   display: flex;
   font-family: Arial, sans-serif;
   background-color: #f8f9fc;
   min-height: 100vh;
+  border-top: 1px solid #a49d9d; /* Left border */
+    border-left: 1px solid #a49d9d; 
 }
 
 .main-content {
