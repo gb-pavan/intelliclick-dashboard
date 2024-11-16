@@ -12,12 +12,22 @@ function Header() {
         </p>
       </div>
       <div className="header-actions">
-        <div>
-          <p>1.2k Leads</p>
-          <p>200 Action Required</p>
-          <p>678 Active</p>
+        <p>Home</p>
+        <div className="headers-info">
+          <div>
+            <p>1.2k</p>
+            <p>Leads</p>
+          </div>
+          <div>
+            <p>200</p>
+            <p>Action Required</p>
+          </div>
+          <div>
+            <p>678</p>
+            <p>Active</p>
+          </div>
         </div>
-        <button>+ Create Lead</button>
+        
       </div>
     </div>
   );
