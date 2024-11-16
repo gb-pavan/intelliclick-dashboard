@@ -11,14 +11,6 @@ import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 
 
-
-
-
-
-
-
-
-
 const leadsData = [
   {
     studentName: "Rahul Kumar",
@@ -116,6 +108,10 @@ const leadsData = [
 function LeadsTable() {
   return (
     <>
+      <div className="btn-group">
+        <button className="leads-btn today-leads">Today Leads <span>13</span></button>
+        <button className="leads-btn yes-leads">Yesterday Leads <span>15</span></button>
+      </div>
       <div className="table-header">
         <div>
           <p className="leads">Leads<span>(All)</span></p>

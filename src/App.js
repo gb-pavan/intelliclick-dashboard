@@ -13,10 +13,16 @@ function App() {
         <div className="logo-sidebar">
           <img src="./logo.svg" />
         </div>
-        <div className="logo-content">
-          <p>Incentive</p>
-          <FaToggleOff color='blue' size={25}/>
+        <div className="incentive-box">
+          <div className="logo-content">
+            <p>Incentive</p>
+            <FaToggleOff color='blue' size={25}/>
+          </div>
+          <div>
+            <img src='./Ellipse.svg' className="profile-img" />
+          </div>
         </div>
+        
       </div>
       <div className="app">
         <Sidebar />
