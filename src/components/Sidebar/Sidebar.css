@@ -1,4 +1,4 @@
-.sidebar {
+/* .sidebar {
     width: 250px;
     color: white;
     display: flex;
@@ -29,7 +29,7 @@
   }
 
   .icon-spacing {
-    margin-right: 10px; /* Adjust the value as needed */
+    margin-right: 10px; /* Adjust the value as needed 
   }
 
   .list-item{
@@ -43,4 +43,54 @@
   .sidebar ul li:hover {
     background-color: #2a6bb8;
   }
-  
+   */
+
+
+   .sidebar {
+  width: 250px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start of the sidebar */
+  padding: 20px 10px;
+  border-top: 2px solid #ffffff;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.sidebar ul li {
+  padding: 15px 20px;
+  margin: 5px 0;
+  background-color: #3b7dd8;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  display: flex; /* Ensure items are aligned horizontally */
+  justify-content: flex-start; /* Align text to the left */
+  align-items: center; /* Vertically align icon and text */
+}
+
+.icon-spacing {
+  margin-right: 10px; /* Adjust the value as needed */
+}
+
+.list-item {
+  display: flex;
+  justify-content: flex-start; /* Align text and icon to the left */
+  align-items: center;
+  font-size: 18px;
+  width: 100%; /* Ensures the item spans the full width */
+}
+
+.sidebar ul li:hover {
+  background-color: #2a6bb8;
+}

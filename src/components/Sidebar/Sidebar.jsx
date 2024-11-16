@@ -1,6 +1,14 @@
 import React from "react";
 import "./Sidebar.css";
 import { RiSettings2Line } from "react-icons/ri";
+import { TbBriefcase } from "react-icons/tb";
+import { BsHeadset } from "react-icons/bs";
+import { RxShuffle } from "react-icons/rx";
+import { RxDashboard } from "react-icons/rx";
+import { TbClipboardText } from "react-icons/tb";
+import { BiPieChartAlt2 } from "react-icons/bi";
+
+
 
 
 function Sidebar() {
@@ -9,31 +17,32 @@ function Sidebar() {
       <ul>
         <li>
           <div className="list-item">
-            <RiSettings2Line size={30}  className="icon-spacing"/>
+            <RxDashboard size={30}  className="icon-spacing"/>
             Home
           </div>
         </li>
         <li>
           <div className="list-item">
-            <RiSettings2Line size={30}  className="icon-spacing"/>
+            {/* <img src='./Clipboard-alt.svg' /> */}
+            <TbClipboardText size={30}  className="icon-spacing"/>
             Leads Management
           </div>
         </li>
         <li>
           <div className="list-item">
-            <RiSettings2Line size={30}  className="icon-spacing"/>
+            <BiPieChartAlt2 size={30}  className="icon-spacing"/>
             Attendance
           </div>
         </li>
         <li>
           <div className="list-item">
-            <RiSettings2Line size={30}  className="icon-spacing"/>
+            <TbBriefcase size={30}  className="icon-spacing"/>
             Stores
           </div>
         </li>
         <li>
           <div className="list-item">
-            <RiSettings2Line size={30}  className="icon-spacing"/>
+            <BsHeadset size={30}  className="icon-spacing"/>
             Providers
           </div>
         </li>
@@ -46,7 +55,7 @@ function Sidebar() {
         
         <li>
           <div className="list-item">
-            <RiSettings2Line size={30}  className="icon-spacing"/>
+            <RxShuffle size={30}  className="icon-spacing"/>
             Workflows
           </div>
         </li>
