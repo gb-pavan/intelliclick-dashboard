@@ -16,7 +16,7 @@ function Sidebar() {
     <div className="sidebar">
       <ul>
         <li>
-          <div className="list-item">
+          <div className="list-item list-item-color">
             <RxDashboard size={30}  className="icon-spacing"/>
             Home
           </div>

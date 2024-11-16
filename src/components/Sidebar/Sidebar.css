@@ -91,6 +91,13 @@
   width: 100%; /* Ensures the item spans the full width */
 }
 
+.list-item-color{
+  padding: 15px;
+  background-color: #FBE8FF;
+  color:#D029D8;
+  border-radius: 5px;
+}
+
 .sidebar ul li:hover {
   background-color: #2a6bb8;
 }

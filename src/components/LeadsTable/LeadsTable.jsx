@@ -34,7 +34,7 @@ const leadsData = [
     studentName: "Priya Sharma",
     class: "7th",
     phoneNumber: "+91 876757XXXX",
-    status: "Prospect",
+    status: "Not Qualified",
     submittedBy: "Father",
     createdBy: "Offline",
     createdAt: "5 APR, 2023 10:10AM",
@@ -43,7 +43,7 @@ const leadsData = [
     studentName: "Aman Verma",
     class: "10th",
     phoneNumber: "+91 876758XXXX",
-    status: "Qualified",
+    status: "Follow-up",
     submittedBy: "Mother",
     createdBy: "Online",
     createdAt: "6 APR, 2023 2:15PM",
@@ -52,7 +52,7 @@ const leadsData = [
     studentName: "Sanya Yadav",
     class: "8th",
     phoneNumber: "+91 876759XXXX",
-    status: "Prospect",
+    status: "Trial Booked",
     submittedBy: "Father",
     createdBy: "Offline",
     createdAt: "7 APR, 2023 5:00PM",
@@ -61,7 +61,7 @@ const leadsData = [
     studentName: "Vikram Singh",
     class: "12th",
     phoneNumber: "+91 876760XXXX",
-    status: "Qualified",
+    status: "Trial Completed",
     submittedBy: "Mother",
     createdBy: "Online",
     createdAt: "8 APR, 2023 9:45AM",
@@ -70,7 +70,7 @@ const leadsData = [
     studentName: "Ria Patel",
     class: "6th",
     phoneNumber: "+91 876761XXXX",
-    status: "Prospect",
+    status: "Payment Created",
     submittedBy: "Father",
     createdBy: "Offline",
     createdAt: "9 APR, 2023 12:00PM",
@@ -79,7 +79,7 @@ const leadsData = [
     studentName: "Ishaan Kapoor",
     class: "11th",
     phoneNumber: "+91 876762XXXX",
-    status: "Qualified",
+    status: "Enrolled",
     submittedBy: "Mother",
     createdBy: "Online",
     createdAt: "10 APR, 2023 1:20PM",
@@ -88,7 +88,7 @@ const leadsData = [
     studentName: "Neha Agarwal",
     class: "10th",
     phoneNumber: "+91 876763XXXX",
-    status: "Prospect",
+    status: "Trial Follow-up",
     submittedBy: "Father",
     createdBy: "Offline",
     createdAt: "11 APR, 2023 3:40PM",
@@ -97,7 +97,7 @@ const leadsData = [
     studentName: "Tarun Mehta",
     class: "8th",
     phoneNumber: "+91 876764XXXX",
-    status: "Qualified",
+    status: "Not Enrolled",
     submittedBy: "Mother",
     createdBy: "Online",
     createdAt: "12 APR, 2023 11:30AM",
@@ -160,7 +160,7 @@ function LeadsTable() {
                 <td>{lead.class}</td>
                 <td>{lead.phoneNumber}</td>
                 <td className={`status ${lead.status.toLowerCase().replace(" ", "-")}`}>
-                  {lead.status}
+                  <span>{lead.status}</span>
                 </td>
                 <td>{lead.submittedBy}</td>
                 <td>{lead.createdBy}</td>
