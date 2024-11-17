@@ -22,7 +22,7 @@ function Sidebar() {
       onMouseLeave={handleMouseLeave}
     >
       <div className="logo-sidebar">
-        <img src={`${isHovered ? "./logo.svg" : "./icon.svg"}`} alt="logo" />
+        <img src={`${isHovered ? "./logo.svg" : "./icon2.svg"}`} alt="logo" />
       </div>
       <ul>
         <li>

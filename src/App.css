@@ -37,6 +37,16 @@
   font-weight: 400;
 }
 
+.mobile-view{
+  display: none;
+}
+
+.mobile-icons{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .app {
   display: flex;
   font-family: Arial, sans-serif;
@@ -53,4 +63,11 @@
   border-left: 1px solid #ddd;
   height:1200px;
   width: 948px;
+}
+
+/* Media query for mobile view */
+@media (max-width: 768px) {
+  .mobile-view{
+  display: flex;
+  }
 }

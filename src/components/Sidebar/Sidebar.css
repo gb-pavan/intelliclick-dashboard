@@ -80,3 +80,10 @@
   color:#D029D8;
   background-color: #FBE8FF;
 }
+
+/* Media query for mobile view */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
