@@ -5,11 +5,17 @@ import LeadsTable from "./components/LeadsTable/LeadsTable";
 import "./App.css";
 import { FaToggleOff } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
+import useFetchData from './hooks/useFetchData';
 
 
 function App() {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  // const { data, loading, error } = useFetchData('/api/lead-app/lead/lead-dashboard/get');
+
+  // if (loading) return ;
+  // if (error) return <div>Error: {error}</div>;
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -17,21 +23,6 @@ function App() {
 
   return (
     <div>
-      {/* <div className="logo">
-        <div className="logo-sidebar">
-          <img src="./logo.svg" alt = 'logo' />
-        </div>
-        <div className="incentive-box">
-          <div className="logo-content">
-            <p>Incentive</p>
-            <FaToggleOff color='blue' size={25}/>
-          </div>
-          <div>
-            <img src='./Ellipse.svg' alt="profile-image" className="profile-img" />
-          </div>
-        </div>
-        
-      </div> */}
       <div className="app">
         <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         <div className="main-content">
@@ -51,6 +42,7 @@ function App() {
             </div>
           </div>
           <Header />
+          {/* <LeadsTable tableData={data} /> */}
           <LeadsTable />
         </div>
       </div>

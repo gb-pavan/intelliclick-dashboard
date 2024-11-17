@@ -106,7 +106,10 @@ const leadsData = [
 ];
 
 
+// function LeadsTable({tableData}) {
 function LeadsTable() {
+
+  // console.log("table data",tableData);
   return (
     <>
       <div className="btn-group">

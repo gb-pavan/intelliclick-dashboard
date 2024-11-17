@@ -17,7 +17,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
 
   return (
     <div
-      className={`sidebar ${isHovered ? "expanded" : "compressed"} ${isOpen ? 'open' : ''}`}
+      className={`sidebar ${isHovered ? "expanded" : "compressed"} ${isOpen ? "open" : ""}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -28,43 +28,43 @@ function Sidebar({ isOpen, toggleSidebar }) {
         <li>
           <div className="list-item list-item-color">
             <RxDashboard size={30} className="icon-spacing" />
-            {isHovered && <span>Home</span>}
+            {(isHovered || isOpen) && <span>Home</span>}
           </div>
         </li>
         <li>
           <div className="list-item">
             <TbClipboardText size={30} className="icon-spacing" />
-            {isHovered && <span>Leads Management</span>}
+            {(isHovered || isOpen) && <span>Leads Management</span>}
           </div>
         </li>
         <li>
           <div className="list-item">
             <BiPieChartAlt2 size={30} className="icon-spacing" />
-            {isHovered && <span>Attendance</span>}
+            {(isHovered || isOpen) && <span>Attendance</span>}
           </div>
         </li>
         <li>
           <div className="list-item">
             <TbBriefcase size={30} className="icon-spacing" />
-            {isHovered && <span>Stores</span>}
+            {(isHovered || isOpen) && <span>Stores</span>}
           </div>
         </li>
         <li>
           <div className="list-item">
             <BsHeadset size={30} className="icon-spacing" />
-            {isHovered && <span>Providers</span>}
+            {(isHovered || isOpen) && <span>Providers</span>}
           </div>
         </li>
         <li>
           <div className="list-item">
             <RiSettings2Line size={30} className="icon-spacing" />
-            {isHovered && <span>Developers</span>}
+            {(isHovered || isOpen) && <span>Developers</span>}
           </div>
         </li>
         <li>
           <div className="list-item">
             <RxShuffle size={30} className="icon-spacing" />
-            {isHovered && <span>Workflows</span>}
+            {(isHovered || isOpen) && <span>Workflows</span>}
             <FaChevronDown className="icon-left-spacing" />
           </div>
         </li>

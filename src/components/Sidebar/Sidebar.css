@@ -92,6 +92,7 @@
   }
   .sidebar.open {
     transform: translateX(0); /* Slide in */
-    background-color: white;
+    background-color:orange;
+    width: 250px;
   }
 }
