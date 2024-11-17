@@ -13,6 +13,9 @@ import { FaChevronDown } from "react-icons/fa";
 function Sidebar() {
   return (
     <div className="sidebar">
+      <div className="logo-sidebar">
+          <img src="./logo.svg" alt = 'logo' />
+      </div>
       <ul>
         <li>
           <div className="list-item list-item-color">

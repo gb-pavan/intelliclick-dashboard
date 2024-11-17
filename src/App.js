@@ -9,7 +9,7 @@ import { FaToggleOff } from "react-icons/fa6";
 function App() {
   return (
     <div>
-      <div className="logo">
+      {/* <div className="logo">
         <div className="logo-sidebar">
           <img src="./logo.svg" alt = 'logo' />
         </div>
@@ -23,10 +23,19 @@ function App() {
           </div>
         </div>
         
-      </div>
+      </div> */}
       <div className="app">
         <Sidebar />
         <div className="main-content">
+          <div className="incentive-box">
+            <div className="logo-content">
+              <p>Incentive</p>
+              <FaToggleOff color='blue' size={25}/>
+            </div>
+            <div>
+              <img src='./Ellipse.svg' alt="profile-image" className="profile-img" />
+            </div>
+          </div>
           <Header />
           <LeadsTable />
         </div>
