@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Sidebar.css";
 import { RiSettings2Line } from "react-icons/ri";
 import { TbBriefcase } from "react-icons/tb";
@@ -9,57 +9,63 @@ import { TbClipboardText } from "react-icons/tb";
 import { BiPieChartAlt2 } from "react-icons/bi";
 import { FaChevronDown } from "react-icons/fa";
 
-
 function Sidebar() {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
+
   return (
-    <div className="sidebar">
+    <div
+      className={`sidebar ${isHovered ? "expanded" : "compressed"}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="logo-sidebar">
-          <img src="./logo.svg" alt = 'logo' />
+        <img src={`${isHovered ? "./logo.svg" : "./icon.svg"}`} alt="logo" />
       </div>
       <ul>
         <li>
           <div className="list-item list-item-color">
-            <RxDashboard size={30}  className="icon-spacing"/>
-            Home
+            <RxDashboard size={30} className="icon-spacing" />
+            {isHovered && <span>Home</span>}
           </div>
         </li>
         <li>
           <div className="list-item">
-            {/* <img src='./Clipboard-alt.svg' /> */}
-            <TbClipboardText size={30}  className="icon-spacing"/>
-            Leads Management
+            <TbClipboardText size={30} className="icon-spacing" />
+            {isHovered && <span>Leads Management</span>}
           </div>
         </li>
         <li>
           <div className="list-item">
-            <BiPieChartAlt2 size={30}  className="icon-spacing"/>
-            Attendance
+            <BiPieChartAlt2 size={30} className="icon-spacing" />
+            {isHovered && <span>Attendance</span>}
           </div>
         </li>
         <li>
           <div className="list-item">
-            <TbBriefcase size={30}  className="icon-spacing"/>
-            Stores
+            <TbBriefcase size={30} className="icon-spacing" />
+            {isHovered && <span>Stores</span>}
           </div>
         </li>
         <li>
           <div className="list-item">
-            <BsHeadset size={30}  className="icon-spacing"/>
-            Providers
+            <BsHeadset size={30} className="icon-spacing" />
+            {isHovered && <span>Providers</span>}
           </div>
         </li>
         <li>
           <div className="list-item">
-            <RiSettings2Line size={30}  className="icon-spacing"/>
-            Developers
+            <RiSettings2Line size={30} className="icon-spacing" />
+            {isHovered && <span>Developers</span>}
           </div>
         </li>
-        
         <li>
           <div className="list-item">
-            <RxShuffle size={30}  className="icon-spacing"/>
-            Workflows
-            <FaChevronDown className="icon-left-spacing"/>
+            <RxShuffle size={30} className="icon-spacing" />
+            {isHovered && <span>Workflows</span>}
+            <FaChevronDown className="icon-left-spacing" />
           </div>
         </li>
       </ul>
@@ -68,3 +74,4 @@ function Sidebar() {
 }
 
 export default Sidebar;
+
