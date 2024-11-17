@@ -95,4 +95,8 @@
     background-color:orange;
     width: 250px;
   }
+  .logo-sidebar {
+    display: flex;
+    justify-content: space-around;
+  }
 }

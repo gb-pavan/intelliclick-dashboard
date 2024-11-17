@@ -8,6 +8,8 @@ import { RxDashboard } from "react-icons/rx";
 import { TbClipboardText } from "react-icons/tb";
 import { BiPieChartAlt2 } from "react-icons/bi";
 import { FaChevronDown } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
+
 
 function Sidebar({ isOpen, toggleSidebar }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -23,6 +25,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
     >
       <div className="logo-sidebar">
         <img src={`${isHovered ? "./logo.svg" : "./icon2.svg"}`} alt="logo" />
+        {isOpen && <IoClose size={30} onClick={toggleSidebar}/>}
       </div>
       <ul>
         <li>
