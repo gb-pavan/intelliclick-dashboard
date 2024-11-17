@@ -9,7 +9,7 @@ import { TbClipboardText } from "react-icons/tb";
 import { BiPieChartAlt2 } from "react-icons/bi";
 import { FaChevronDown } from "react-icons/fa";
 
-function Sidebar() {
+function Sidebar({ isOpen, toggleSidebar }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => setIsHovered(true);
@@ -17,7 +17,7 @@ function Sidebar() {
 
   return (
     <div
-      className={`sidebar ${isHovered ? "expanded" : "compressed"}`}
+      className={`sidebar ${isHovered ? "expanded" : "compressed"} ${isOpen ? 'open' : ''}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
