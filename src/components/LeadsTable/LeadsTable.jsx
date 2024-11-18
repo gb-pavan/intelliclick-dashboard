@@ -7,6 +7,7 @@ import { FaPlus } from "react-icons/fa6";
 import { IoFilterOutline } from "react-icons/io5";
 import { IoEyeOutline } from "react-icons/io5";
 import ClipLoader from 'react-spinners/ClipLoader';
+import Modal from "../Modal/Modal";
 
 
 import Pagination from "../Pagination/Pagination";
@@ -112,7 +113,10 @@ function LeadsTable({tableData,loading,error}) {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  console.log("data in l",tableData);
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
 
   const rows = (tableData || []);
 
@@ -196,7 +200,11 @@ function LeadsTable({tableData,loading,error}) {
                 <td>{(lead.submittedBy  || '')}</td>
                 <td>{(lead.createdBy  || '')}</td>
                 <td>
-                  <button className="eye-button"><IoEyeOutline size={25} /></button>
+                  <Modal isOpen={isModalOpen} closeModal={closeModal}>
+                    <h1>Modal Title</h1>
+                    <p>This is a simple modal. You can put any content here.</p>
+                  </Modal>
+                  <button className="eye-button" onClick={openModal}><IoEyeOutline size={25} /></button>
                 </td>
                 <td className="last">{(lead.createdAt  || '')}</td>
               </tr>

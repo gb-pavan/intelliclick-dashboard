@@ -37,7 +37,7 @@
 
 
 import React from "react";
-import { FaChevronDown, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import "./Pagination.css";
 
 function Pagination({ currentPage, totalPages, onPageChange, rowsPerPage, onRowsPerPageChange }) {
