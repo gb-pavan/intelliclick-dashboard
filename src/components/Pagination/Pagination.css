@@ -57,7 +57,9 @@
     border-right: 2px solid #a49d9d; /* Right border */
     padding-left: 10px;  /* Optional: to add spacing between the icon and the left border */
     padding-right: 10px; /* Optional: to add spacing between the icon and the right border */
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
+
+  
   

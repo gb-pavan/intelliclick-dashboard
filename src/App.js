@@ -45,7 +45,7 @@ function App() {
           </div>
           <Header />
           {/* <LeadsTable tableData={data} /> */}
-          <LeadsTable tableData={data} />
+          <LeadsTable tableData={data} loading={loading} error={error} />
         </div>
       </div>
     </div>

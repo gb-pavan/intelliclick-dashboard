@@ -6,6 +6,8 @@ import { MdOutlineUpload } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 import { IoFilterOutline } from "react-icons/io5";
 import { IoEyeOutline } from "react-icons/io5";
+import ClipLoader from 'react-spinners/ClipLoader';
+
 
 import Pagination from "../Pagination/Pagination";
 
@@ -106,17 +108,25 @@ const leadsData = [
 
 
 // function LeadsTable({tableData}) {
-function LeadsTable({tableData}) {
+function LeadsTable({tableData,loading,error}) {
 
   const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   console.log("data in l",tableData);
 
-    const productsPerPage = 5;
-    const indexOfLastProduct = currentPage * productsPerPage;
-    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentRows =(tableData || []).slice(indexOfFirstProduct, indexOfLastProduct);
+  const rows = (tableData || []);
+
     
-    const totalPages = Math.ceil(tableData.length / productsPerPage);
+    const indexOfLastProduct = currentPage * rowsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - rowsPerPage;
+    const currentRows =rows.slice(indexOfFirstProduct, indexOfLastProduct);
+    
+    const totalPages = Math.ceil(rows.length / rowsPerPage);
+
+    const handleRowsPerPageChange = (newRowsPerPage) => {
+    setRowsPerPage(newRowsPerPage);
+    setCurrentPage(1); // Reset to the first page
+  };
 
     const handlePageChange = (page) => {
       setCurrentPage(page);
@@ -154,7 +164,7 @@ function LeadsTable({tableData}) {
           
         </div>
       </div> 
-      <div className="leads-table">      
+      <div className="leads-table">            
         <table>
           <thead>
             <tr>
@@ -169,25 +179,31 @@ function LeadsTable({tableData}) {
             </tr>
           </thead>
           <tbody>
-            {currentRows.map((lead, index) => (
+            {loading ? (
+      <tr>
+        <td colSpan="8" style={{ textAlign: 'center' }}>
+          <ClipLoader color="#36d7b7" loading={true} size={30} />
+        </td>
+      </tr>
+    ):currentRows.map((lead, index) => (
               <tr key={index}>
-                <td>{lead.studentName}</td>
-                <td>{lead.standard}</td>
-                <td>{lead.mobile}</td>
+                <td>{(lead.studentName || '')}</td>
+                <td>{(lead.standard || '')}</td>
+                <td>{(lead.mobile  || '')}</td>
                 <td className={`status ${lead.status.toLowerCase().replace(" ", "-")}`}>
-                  <span>{lead.status}</span>
+                  <span>{(lead.status  || '')}</span>
                 </td>
-                <td>{lead.submittedBy}</td>
-                <td>{lead.createdBy}</td>
+                <td>{(lead.submittedBy  || '')}</td>
+                <td>{(lead.createdBy  || '')}</td>
                 <td>
                   <button className="eye-button"><IoEyeOutline size={25} /></button>
                 </td>
-                <td className="last">{lead.createdAt}</td>
+                <td className="last">{(lead.createdAt  || '')}</td>
               </tr>
             ))}
           </tbody>
         </table>
-        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} rowsPerPage={rowsPerPage} onRowsPerPageChange={handleRowsPerPageChange}/>
     </div>
     </>
    
