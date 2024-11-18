@@ -114,9 +114,19 @@ function LeadsTable({tableData,loading,error}) {
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedLead, setSelectedLead] = useState(null);
 
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
+
+
+  const openModal = (lead) => {
+  setSelectedLead(lead); // Store the selected lead
+  setModalOpen(true);
+};
+
+const closeModal = () => {
+  setSelectedLead(null); // Clear the selected lead
+  setModalOpen(false);
+};
 
   const rows = (tableData || []);
 
@@ -179,7 +189,7 @@ function LeadsTable({tableData,loading,error}) {
               <th>Submitted By</th>
               <th>Created By</th>
               <th>Details</th>
-              <th>Created</th>
+              <th>Created At</th>
             </tr>
           </thead>
           <tbody>
@@ -200,11 +210,19 @@ function LeadsTable({tableData,loading,error}) {
                 <td>{(lead.submittedBy  || '')}</td>
                 <td>{(lead.createdBy  || '')}</td>
                 <td>
-                  <Modal isOpen={isModalOpen} closeModal={closeModal}>
-                    <h1>Modal Title</h1>
-                    <p>This is a simple modal. You can put any content here.</p>
-                  </Modal>
-                  <button className="eye-button" onClick={openModal}><IoEyeOutline size={25} /></button>
+                  <button className="eye-button" onClick={() => openModal(lead)}><IoEyeOutline size={25} /></button>
+                  {isModalOpen && selectedLead && (
+                <Modal isOpen={isModalOpen} closeModal={closeModal}>
+                  <h1>Lead Details</h1>
+                  <p>Student Name: {selectedLead.studentName || 'N/A'}</p>
+                  <p>Class: {selectedLead.standard || 'N/A'}</p>
+                  <p>Phone Number: {selectedLead.mobile || 'N/A'}</p>
+                  <p>Status: {selectedLead.status || 'N/A'}</p>
+                  <p>Submitted By: {selectedLead.submittedBy || 'N/A'}</p>
+                  <p>Created By: {selectedLead.createdBy || 'N/A'}</p>
+                  <p>Created At: {selectedLead.createdAt || 'N/A'}</p>
+                </Modal>
+              )}                 
                 </td>
                 <td className="last">{(lead.createdAt  || '')}</td>
               </tr>
