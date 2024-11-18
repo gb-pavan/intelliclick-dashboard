@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "./LeadsTable.css";
 import { IoIosSearch } from "react-icons/io";
 import { CiCalendarDate } from "react-icons/ci";
@@ -6,9 +6,8 @@ import { MdOutlineUpload } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 import { IoFilterOutline } from "react-icons/io5";
 import { IoEyeOutline } from "react-icons/io5";
-import { FaChevronDown } from "react-icons/fa";
-import { FaChevronLeft } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
+
+import Pagination from "../Pagination/Pagination";
 
 
 
@@ -109,6 +108,18 @@ const leadsData = [
 // function LeadsTable({tableData}) {
 function LeadsTable() {
 
+  const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 5;
+
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentRows =leadsData.slice(indexOfFirstProduct, indexOfLastProduct);
+    
+    const totalPages = Math.ceil(leadsData.length / productsPerPage);
+
+    const handlePageChange = (page) => {
+      setCurrentPage(page);
+    };
   // console.log("table data",tableData);
   return (
     <>
@@ -158,7 +169,7 @@ function LeadsTable() {
             </tr>
           </thead>
           <tbody>
-            {leadsData.map((lead, index) => (
+            {currentRows.map((lead, index) => (
               <tr key={index}>
                 <td>{lead.studentName}</td>
                 <td>{lead.class}</td>
@@ -176,20 +187,7 @@ function LeadsTable() {
             ))}
           </tbody>
         </table>
-        <div className="table-bottom">
-          <div>
-            <p>Leads per page : 10</p>
-            <FaChevronDown />
-            <p>1-10 of 200 Leads</p>
-          </div>
-          <div>
-            <p>01</p>
-            <FaChevronDown /> 
-            <p>of 15 pages</p>
-            <FaChevronLeft className="icon-with-borders"/>
-            <FaChevronRight />
-          </div>
-        </div>
+        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
     </div>
     </>
    

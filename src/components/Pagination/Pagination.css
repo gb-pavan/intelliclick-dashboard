@@ -41,4 +41,23 @@
     color: #666666;
     margin-left: 10px;
   }
+
+  .table-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F1F5F9;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+  .icon-with-borders {
+    border-left: 2px solid #a49d9d; /* Left border */
+    border-right: 2px solid #a49d9d; /* Right border */
+    padding-left: 10px;  /* Optional: to add spacing between the icon and the left border */
+    padding-right: 10px; /* Optional: to add spacing between the icon and the right border */
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
   
