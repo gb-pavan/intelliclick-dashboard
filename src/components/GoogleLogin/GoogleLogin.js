@@ -1,47 +1,65 @@
-import React, { useEffect } from 'react';
+import { initializeApp } from 'firebase/app';
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
+import { useState, useEffect } from 'react';
+
+// // Firebase config
+// const firebaseConfig = {
+//   apiKey: "",
+//   authDomain: "",
+//   projectId: "",
+//   storageBucket: "",
+//   messagingSenderId: "",
+//   appId: ""
+// };
+
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const auth = getAuth(app);
 
 const GoogleLogin = () => {
-  const clientId = 'YOUR_GOOGLE_CLIENT_ID'; // Replace with your Client ID
+  // const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    // Load the Google Identity Services SDK
-    const initializeGoogleSignIn = () => {
-      window.google.accounts.id.initialize({
-        client_id: clientId,
-        callback: handleCredentialResponse,
-      });
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (person) => {
+  //     if (person) {
+  //       setUser(person);
+  //     } else {
+  //       setUser(null);
+  //     }
+  //   });
+  //   return () => unsubscribe();
+  // }, []);
 
-      window.google.accounts.id.renderButton(
-        document.getElementById('google-login-button'),
-        { theme: 'outline', size: 'large' } // Customization options
-      );
-    };
-
-    // Load the Google script
-    const script = document.createElement('script');
-    script.src = 'https://accounts.google.com/gsi/client';
-    script.async = true;
-    script.onload = initializeGoogleSignIn;
-    document.body.appendChild(script);
-
-    return () => {
-      // Cleanup script
-      document.body.removeChild(script);
-    };
-  }, [clientId]);
-
-  const handleCredentialResponse = (response) => {
-    console.log('Encoded JWT ID token:', response.credential);
-
-    // Decode the token and process the login
-    // You can send this token to your backend for verification
-    const userObject = JSON.parse(atob(response.credential.split('.')[1]));
-    console.log('User Information:', userObject);
-  };
+  // const signInWithGoogle = async () => {
+  //   try {
+  //     await signInWithPopup(auth, new GoogleAuthProvider());
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return (
     <div>
-      <div id="google-login-button"></div>
+      {/* <center>
+        {user ? (
+          <div>
+            <h1>Welcome to home page</h1>
+            <button>Sign Out</button>
+          </div>
+        ) : (
+          <button>Sign In With Google</button>
+        )}
+      </center> */}
+
+      <div>
+        <div>
+          image
+        </div>
+        <div>
+          <img src="./logo.svg"/>
+          <button>Login with Intelliclick</button>
+        </div>
+      </div>
     </div>
   );
 };

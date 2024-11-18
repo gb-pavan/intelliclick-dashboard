@@ -1,12 +1,17 @@
 import React from 'react';
-import GoogleLogin from '../../components/GoogleLogin/GoogleLogin';
+import "./LoginPage.css";
 
 const LoginPage = () => {
   return (
-    <div>
-      <h1>Login</h1>
-      <GoogleLogin />
+  <div className='login-container'>
+    <div className='logo-image'>
+      <img src="./login-logo.png" />
     </div>
+    <div className='login-page'>
+      <img src="./logo.svg"/>
+      <button>Sign in with Google</button>
+    </div>
+  </div>
   );
 };
 
