@@ -12,7 +12,9 @@ function App() {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // const { data, loading, error } = useFetchData('/api/lead-app/lead/lead-dashboard/get');
+  const { data, loading, error } = useFetchData('/api/lead-app/lead/read/get-all');
+
+  console.log("data",data);
 
   // if (loading) return ;
   // if (error) return <div>Error: {error}</div>;
@@ -43,7 +45,7 @@ function App() {
           </div>
           <Header />
           {/* <LeadsTable tableData={data} /> */}
-          <LeadsTable />
+          <LeadsTable tableData={data} />
         </div>
       </div>
     </div>

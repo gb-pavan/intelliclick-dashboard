@@ -106,21 +106,21 @@ const leadsData = [
 
 
 // function LeadsTable({tableData}) {
-function LeadsTable() {
+function LeadsTable({tableData}) {
 
   const [currentPage, setCurrentPage] = useState(1);
-    const productsPerPage = 5;
+  console.log("data in l",tableData);
 
+    const productsPerPage = 5;
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentRows =leadsData.slice(indexOfFirstProduct, indexOfLastProduct);
+    const currentRows =(tableData || []).slice(indexOfFirstProduct, indexOfLastProduct);
     
-    const totalPages = Math.ceil(leadsData.length / productsPerPage);
+    const totalPages = Math.ceil(tableData.length / productsPerPage);
 
     const handlePageChange = (page) => {
       setCurrentPage(page);
     };
-  // console.log("table data",tableData);
   return (
     <>
       <div className="btn-group">
@@ -172,8 +172,8 @@ function LeadsTable() {
             {currentRows.map((lead, index) => (
               <tr key={index}>
                 <td>{lead.studentName}</td>
-                <td>{lead.class}</td>
-                <td>{lead.phoneNumber}</td>
+                <td>{lead.standard}</td>
+                <td>{lead.mobile}</td>
                 <td className={`status ${lead.status.toLowerCase().replace(" ", "-")}`}>
                   <span>{lead.status}</span>
                 </td>
