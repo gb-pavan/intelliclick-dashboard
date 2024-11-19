@@ -69,15 +69,11 @@ export function formatToLocalTime(isoDate) {
 
   // Format the date to local time
   const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
-  console.log("date-time",formattedDate);
 
   // Parse formatted date into the desired format
   const [datePart,Year, timePart] = formattedDate.split(', '); // e.g., "Nov 19, 2024" and "4:35 PM"
-  console.log("datePart",datePart);
   const [month, day] = datePart.split(" ");
-  console.log("month",month,"day",day,"year",Year);
 
-  console.log("timePart",timePart);
 
   // Custom format: day month year time
   return `${day} ${month.charAt(0).toUpperCase() + month.slice(1).toLowerCase()} ${Year} ${timePart.toUpperCase()}`;
