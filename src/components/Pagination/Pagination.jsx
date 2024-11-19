@@ -42,7 +42,7 @@ import "./Pagination.css";
 
 function Pagination({ currentPage, totalPages, onPageChange, rowsPerPage, onRowsPerPageChange }) {
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
-  const rowsOptions = [10, 20, 50, 100]; // Available rows per page options
+  const rowsOptions = [1, 2, 5, 10]; // Available rows per page options
 
   return (
     <div className="table-bottom">

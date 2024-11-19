@@ -12,6 +12,8 @@ import {formatToLocalTime} from "../../utils/dateUtils"
 
 
 import Pagination from "../Pagination/Pagination";
+import useFetchData from '../../hooks/useFetchData';
+
 
 
 
@@ -110,16 +112,27 @@ const leadsData = [
 
 
 // function LeadsTable({tableData}) {
-function LeadsTable({tableData,loading,error}) {
+function LeadsTable() {
 
 
-  console.log("table data",tableData);
-
+  const [tableRows,setTableRows] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedLead, setSelectedLead] = useState(null);
 
+  const endpoint = `api/lead-app/lead/read/get-all?pageNum=${currentPage}&pageSize=${rowsPerPage}`;
+  const { data, loading, error } = useFetchData(endpoint);
+  console.log("endPoint",endpoint);
+
+  useEffect(() => {
+    if (error) {
+      console.error("Error fetching data:", error);
+    } else {
+      setTableRows(data?.data);
+    }
+  }, [data, error]); // Only react when `data` or `error` changes
+  
 
 
   const openModal = (lead) => {
@@ -132,12 +145,9 @@ const closeModal = () => {
   setModalOpen(false);
 };
 
-  const rows = (tableData?.data || []);
-
-  console.log("selected lead format",selectedLead?.createdAt);
+  const rows = (tableRows || []);
 
 
-  
 
     
     const indexOfLastProduct = currentPage * rowsPerPage;

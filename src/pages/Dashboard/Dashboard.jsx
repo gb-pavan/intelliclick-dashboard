@@ -5,19 +5,11 @@ import LeadsTable from "../../components/LeadsTable/LeadsTable";
 import "./Dashboard.css";
 import { FaToggleOff } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
-import useFetchData from '../../hooks/useFetchData';
 
 
 function Dashboard() {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const { data, loading, error } = useFetchData('/api/lead-app/lead/read/get-all');
-
-  console.log("data",data);
-
-  // if (loading) return ;
-  // if (error) return <div>Error: {error}</div>;
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -44,8 +36,7 @@ function Dashboard() {
             </div>
           </div>
           <Header />
-          {/* <LeadsTable tableData={data} /> */}
-          <LeadsTable tableData={data} loading={loading} error={error} />
+          <LeadsTable />
         </div>
       </div>
     </div>
