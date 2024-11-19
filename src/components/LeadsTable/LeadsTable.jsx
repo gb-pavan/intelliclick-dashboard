@@ -34,7 +34,6 @@ function LeadsTable() {
     if (error) {
       console.error("Error fetching data:", error);
     } else {
-      console.log("jjjjjjjjjjjjj",data?.data);
       setTimeout(()=>{
         setIsLoading(false);
       },3000);
@@ -57,14 +56,12 @@ function LeadsTable() {
     
 
   const handleRowsPerPageChange = (newRowsPerPage) => {
-    console.log("kkkkkkkkkkkkk");
     setIsLoading(true);
     setRowsPerPage(newRowsPerPage);
     setCurrentPage(1); // Reset to the first page
   };
 
   const handlePageChange = (page) => {
-    console.log("iiiiiii",currentPage);
     setIsLoading(true);
     setCurrentPage(page);
   };
