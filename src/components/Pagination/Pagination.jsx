@@ -44,15 +44,8 @@ function Pagination({ currentPage, totalPages, onPageChange, rowsPerPage, onRows
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
   const rowsOptions = [1, 2, 5, 10]; // Available rows per page options
 
-  return (
-    <div className="table-bottom">
-      {/* Top Section */}
-      {/* <div className="leads-info">
-        <p>Leads per page: 10</p>
-        <FaChevronDown />
-        <p>1-10 of 200 Leads</p>
-      </div> */}
-
+  const renderRowsPerPage = () => {
+    return (
       <div className="leads-info">
         <label htmlFor="rows-per-page">
           Leads per page:
@@ -70,21 +63,11 @@ function Pagination({ currentPage, totalPages, onPageChange, rowsPerPage, onRows
         </label>
         <p>1-{Math.min(rowsPerPage, totalPages * rowsPerPage)} of {totalPages * rowsPerPage} Leads</p>
       </div>
+    );
+  };
 
-      {/* Pagination Section */}
-      {/* <div className="pagination-controls">
-        <p>{currentPage.toString().padStart(2, "0")}</p>
-        <FaChevronDown />
-        <p>of {totalPages} pages</p>
-        <FaChevronLeft
-          className="icon-with-borders"
-          onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
-        />
-        <FaChevronRight
-          onClick={() => currentPage < totalPages && onPageChange(currentPage + 1)}
-        />
-      </div> */}
-
+  const renderSelectedPage = () => {
+    return (
       <div className="pagination-controls">
         <label htmlFor="current-page">
           Page:
@@ -101,6 +84,14 @@ function Pagination({ currentPage, totalPages, onPageChange, rowsPerPage, onRows
           </select>
         </label>
         <p>of {totalPages} pages</p>
+        {renderPageNavButtons()}
+      </div>
+    );
+  };
+
+  const renderPageNavButtons = () => {
+    return (
+      <>
         <FaChevronLeft
           className="icon-with-borders"
           onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
@@ -108,7 +99,14 @@ function Pagination({ currentPage, totalPages, onPageChange, rowsPerPage, onRows
         <FaChevronRight
           onClick={() => currentPage < totalPages && onPageChange(currentPage + 1)}
         />
-      </div>
+      </>
+    );
+  };
+
+  return (
+    <div className="table-bottom">
+      {renderRowsPerPage()}
+      {renderSelectedPage()}
     </div>
   );
 }
