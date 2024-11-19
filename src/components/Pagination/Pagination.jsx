@@ -1,46 +1,8 @@
-// import React from "react";
-// import { FaChevronDown } from "react-icons/fa";
-// import { FaChevronLeft } from "react-icons/fa";
-// import { FaChevronRight } from "react-icons/fa";
-// import "./Pagination.css";
-
-// function Pagination({ currentPage, totalPages, onPageChange }) { 
-
-//   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
-
-//   {pages.map((page)=>{
-//     return (
-    
-//     <div className="table-bottom">
-//       <div>
-//         <p>Leads per page : 10</p>
-//         <FaChevronDown />
-//         <p>1-10 of 200 Leads</p>
-//       </div>
-//       <div>
-//         <p>01</p>
-//         <FaChevronDown /> 
-//         <p>of 15 pages</p>
-//         <FaChevronLeft className="icon-with-borders" />
-//         <FaChevronRight />
-//       </div>          
-//     </div>  
-//   )
-//   })}
-
-  
-
-    
-// }
-
-// export default Pagination;
-
-
 import React from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import "./Pagination.css";
 
-function Pagination({ currentPage, totalPages, onPageChange, rowsPerPage, onRowsPerPageChange }) {
+function Pagination({ currentPage,totalPages, onPageChange, rowsPerPage, onRowsPerPageChange }) {
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
   const rowsOptions = [1, 2, 5, 10]; // Available rows per page options
 

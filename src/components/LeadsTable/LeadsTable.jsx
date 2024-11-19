@@ -21,22 +21,27 @@ function LeadsTable() {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedLead, setSelectedLead] = useState(null);
+  const [isLoading,setIsLoading] = useState(false);
 
   const endpoint = `api/lead-app/lead/read/get-all?pageNum=${currentPage}&pageSize=${rowsPerPage}`;
   const { data, loading, error } = useFetchData(endpoint);
 
-  const indexOfLastProduct = currentPage * rowsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - rowsPerPage;
-  const currentRows =(tableRows || []).slice(indexOfFirstProduct, indexOfLastProduct);
+  // const indexOfLastProduct = currentPage * rowsPerPage;
+  // const indexOfFirstProduct = indexOfLastProduct - rowsPerPage;
   const totalPages = Math.ceil((tableRows || []).length / rowsPerPage);
 
   useEffect(() => {
     if (error) {
       console.error("Error fetching data:", error);
     } else {
+      console.log("jjjjjjjjjjjjj",data?.data);
+      setTimeout(()=>{
+        setIsLoading(false);
+      },3000);
+      
       setTableRows(data?.data);
     }
-  }, [data, error]); 
+  }, [data, error,currentPage,rowsPerPage]); 
   
 
 
@@ -52,17 +57,21 @@ function LeadsTable() {
     
 
   const handleRowsPerPageChange = (newRowsPerPage) => {
+    console.log("kkkkkkkkkkkkk");
+    setIsLoading(true);
     setRowsPerPage(newRowsPerPage);
     setCurrentPage(1); // Reset to the first page
   };
 
   const handlePageChange = (page) => {
+    console.log("iiiiiii",currentPage);
+    setIsLoading(true);
     setCurrentPage(page);
   };
 
 
   const renderTableRows = () => {
-    if (loading) {
+    if (loading || isLoading) {
       return (
         <tr>
           <td colSpan="8" style={{ textAlign: 'center' }}>
@@ -72,7 +81,7 @@ function LeadsTable() {
       );
     }
     
-    return currentRows.map((lead, index) => (
+    return (tableRows || []).map((lead, index) => (
       <tr key={index}>
         <td>{lead.studentName || ''}</td>
         <td>{lead?.class[0]?.name.split(" ")[1] || ''}</td>
@@ -176,7 +185,7 @@ function LeadsTable() {
           </tbody>
         </table>
         <Pagination 
-          currentPage={currentPage} 
+          currentPage={currentPage}
           totalPages={totalPages} 
           onPageChange={handlePageChange} 
           rowsPerPage={rowsPerPage} 
