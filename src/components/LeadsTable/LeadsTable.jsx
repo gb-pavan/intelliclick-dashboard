@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import "./LeadsTable.css";
 import { IoIosSearch } from "react-icons/io";
 import { CiCalendarDate } from "react-icons/ci";
@@ -8,6 +8,7 @@ import { IoFilterOutline } from "react-icons/io5";
 import { IoEyeOutline } from "react-icons/io5";
 import ClipLoader from 'react-spinners/ClipLoader';
 import Modal from "../Modal/Modal";
+import {formatToLocalTime} from "../../utils/dateUtils"
 
 
 import Pagination from "../Pagination/Pagination";
@@ -111,6 +112,9 @@ const leadsData = [
 // function LeadsTable({tableData}) {
 function LeadsTable({tableData,loading,error}) {
 
+
+  console.log("table data",tableData);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -128,7 +132,12 @@ const closeModal = () => {
   setModalOpen(false);
 };
 
-  const rows = (tableData || []);
+  const rows = (tableData?.data || []);
+
+  console.log("selected lead format",selectedLead?.createdAt);
+
+
+  
 
     
     const indexOfLastProduct = currentPage * rowsPerPage;
@@ -200,14 +209,15 @@ const closeModal = () => {
         </td>
       </tr>
     ):currentRows.map((lead, index) => (
+      
               <tr key={index}>
                 <td>{(lead.studentName || '')}</td>
-                <td>{(lead.standard || '')}</td>
+                <td>{lead?.class[0]?.name.split(" ")[1] || ''}</td>
                 <td>{(lead.mobile  || '')}</td>
                 <td className={`status ${lead.status.toLowerCase().replace(" ", "-")}`}>
                   <span>{(lead.status  || '')}</span>
                 </td>
-                <td>{(lead.submittedBy  || '')}</td>
+                <td>{(lead.interactedWith  || '')}</td>
                 <td>{(lead.createdBy  || '')}</td>
                 <td>
                   <button className="eye-button" onClick={() => openModal(lead)}><IoEyeOutline size={25} /></button>
@@ -215,16 +225,16 @@ const closeModal = () => {
                 <Modal isOpen={isModalOpen} closeModal={closeModal}>
                   <h1>Lead Details</h1>
                   <p>Student Name: {selectedLead.studentName || 'N/A'}</p>
-                  <p>Class: {selectedLead.standard || 'N/A'}</p>
+                  <p>Class: {selectedLead?.class[0]?.name.split(" ")[1] || 'N/A'}</p>
                   <p>Phone Number: {selectedLead.mobile || 'N/A'}</p>
                   <p>Status: {selectedLead.status || 'N/A'}</p>
-                  <p>Submitted By: {selectedLead.submittedBy || 'N/A'}</p>
+                  <p>Submitted By: {selectedLead.interactedWith || 'N/A'}</p>
                   <p>Created By: {selectedLead.createdBy || 'N/A'}</p>
-                  <p>Created At: {selectedLead.createdAt || 'N/A'}</p>
+                  <p>Created At: {selectedLead.createdAt && formatToLocalTime(selectedLead?.createdAt) || 'N/A'}</p>
                 </Modal>
               )}                 
                 </td>
-                <td className="last">{(lead.createdAt  || '')}</td>
+                <td className="last">{(lead.createdAt && formatToLocalTime(lead?.createdAt)  || '')}</td>
               </tr>
             ))}
           </tbody>
