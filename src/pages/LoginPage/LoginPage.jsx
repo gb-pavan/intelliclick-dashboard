@@ -8,8 +8,8 @@ const LoginPage = () => {
       <img src="./login-logo.png" />
     </div>
     <div className='login-page'>
-      <img src="./logo.svg"/>
-      <button>Sign in with Google</button>
+      <img src="./logo.svg"/>     
+      <button><img src='./google-icon.svg' />Sign in with Google</button>     
     </div>
   </div>
   );
