@@ -9,7 +9,7 @@ function Pagination({ currentPage,totalPages, onPageChange, rowsPerPage, onRowsP
   const renderRowsPerPage = () => {
     return (
       <div className="leads-info">
-        <label htmlFor="rows-per-page">
+        <label htmlFor="rows-per-page" style={{ color: "#0F172A",fontSize:"14px",fontWeight:100 }}>
           Leads per page:
           <select
             id="rows-per-page"
@@ -23,7 +23,7 @@ function Pagination({ currentPage,totalPages, onPageChange, rowsPerPage, onRowsP
             ))}
           </select>
         </label>
-        <p>1-{Math.min(rowsPerPage, totalPages * rowsPerPage)} of {totalPages * rowsPerPage} Leads</p>
+        <p style={{ color: "#64748B",fontSize:"14px",fontWeight:100 }}>1-{Math.min(rowsPerPage, totalPages * rowsPerPage)} of {totalPages * rowsPerPage} Leads</p>
       </div>
     );
   };
@@ -32,7 +32,7 @@ function Pagination({ currentPage,totalPages, onPageChange, rowsPerPage, onRowsP
     return (
       <div className="pagination-controls">
         <label htmlFor="current-page">
-          Page:
+          
           <select
             id="current-page"
             value={currentPage}
@@ -45,7 +45,9 @@ function Pagination({ currentPage,totalPages, onPageChange, rowsPerPage, onRowsP
             ))}
           </select>
         </label>
-        <p>of {totalPages} pages</p>
+        {/* <p style={{color:#64748B;}}>of {totalPages} pages</p> */}
+        <p style={{ color: "#64748B",fontSize:"14px",fontWeight:100 }}>of {totalPages} pages</p>
+
         {renderPageNavButtons()}
       </div>
     );

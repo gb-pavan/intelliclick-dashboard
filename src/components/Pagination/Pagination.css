@@ -53,23 +53,39 @@
 
   .page-controls{
     cursor: pointer;
+    color: #64748B;
+     width: 10px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+  font-size: 24px;
   }
 
   .page-controls.disabled {
-  color: #ccc; /* Color when disabled (arrows at the boundaries) */
-  pointer-events: none; /* Disables click events on the arrow */
-}
+    color: #ccc; /* Color when disabled (arrows at the boundaries) */
+    pointer-events: none; /* Disables click events on the arrow */
+  }
 
 
   .icon-with-borders {
-    border-left: 2px solid #a49d9d; /* Left border */
-    border-right: 2px solid #a49d9d; /* Right border */
+    border-left: 1px solid #CBD5E1; /* Left border */
+    border-right: 1px solid #CBD5E1; /* Right border */
     padding-left: 10px;  /* Optional: to add spacing between the icon and the left border */
     padding-right: 10px; /* Optional: to add spacing between the icon and the right border */
     padding-top: 10px;
     padding-bottom: 10px;
     cursor: pointer;
   }
+
+  select {
+  color: #0F172A;
+  border: none;
+  padding-right: 8px;
+  background: transparent; /* Makes background transparent (optional) */
+}
+
+#rows-per-page {
+  padding-right: 0px;
+  margin-right: 0px;
+}
 
   
   
