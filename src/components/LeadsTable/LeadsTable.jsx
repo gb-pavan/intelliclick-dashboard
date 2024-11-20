@@ -69,6 +69,7 @@ function LeadsTable() {
   };
 
   const handlePageChange = (page) => {
+    console.log("clicked");
     setIsLoading(true);
     setTableData({});
     setCurrentPage(page);

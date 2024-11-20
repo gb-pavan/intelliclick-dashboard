@@ -55,10 +55,11 @@ function Pagination({ currentPage,totalPages, onPageChange, rowsPerPage, onRowsP
     return (
       <>
         <FaChevronLeft
-          className="icon-with-borders"
+          className={`page-controls icon-with-borders ${currentPage === 1 ? 'disabled' : ''}`}
           onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
         />
         <FaChevronRight
+          className={`page-controls ${currentPage === totalPages ? 'disabled' : ''}`}
           onClick={() => currentPage < totalPages && onPageChange(currentPage + 1)}
         />
       </>

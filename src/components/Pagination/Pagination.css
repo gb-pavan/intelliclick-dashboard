@@ -51,6 +51,15 @@
     padding-right: 10px;
   }
 
+  .page-controls{
+    cursor: pointer;
+  }
+
+  .page-controls.disabled {
+  color: #ccc; /* Color when disabled (arrows at the boundaries) */
+  pointer-events: none; /* Disables click events on the arrow */
+}
+
 
   .icon-with-borders {
     border-left: 2px solid #a49d9d; /* Left border */
@@ -59,6 +68,7 @@
     padding-right: 10px; /* Optional: to add spacing between the icon and the right border */
     padding-top: 10px;
     padding-bottom: 10px;
+    cursor: pointer;
   }
 
   
