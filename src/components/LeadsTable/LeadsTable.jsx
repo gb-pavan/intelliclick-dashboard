@@ -125,31 +125,53 @@ function LeadsTable() {
   const renderFilters = () => {
     return (
       <div className="filters">
-        <div className="search-box">
-          <IoIosSearch />
+        <div className="input-box">
+          <IoIosSearch size={20} />
           <input type="text" placeholder="Search" />
         </div>
-        <div className="search-box">
-          <CiCalendarDate />
+        {/* <div className="search-box">
+          <CiCalendarDate size={20} />
           <button>Date Range</button>
         </div>
         <div className="search-box">
-          <IoFilterOutline />
+          <IoFilterOutline size={20} />
           <button>Filters</button>
         </div>
         <div className="search-box upload-order">
-          <MdOutlineUpload />
+          <MdOutlineUpload size={20} />
           <button>Upload Orders</button>
         </div>
         <div className="search-box add-color">
-          <FaPlus />
+          <FaPlus size={20} />
           <button onClick={()=>setModalOpen(true)}>Create Lead</button>
           {isModalOpen && (
             <Modal isOpen={isModalOpen} closeModal={closeModal}>
               <StudentForm />
             </Modal>
           )}
-        </div>
+        </div> */}
+        <button className="search-box">
+          <CiCalendarDate size={20} />
+          Date Range
+        </button>
+        <button className="search-box">
+          <IoFilterOutline size={20} />
+          Filters
+        </button>
+        <button className="search-box upload-order">
+          <MdOutlineUpload size={20} />
+          Upload Orders
+        </button>
+        <button className="search-box add-color" onClick={() => setModalOpen(true)}>
+          <FaPlus size={20} />
+          Create Lead
+          {isModalOpen && (
+            <Modal isOpen={isModalOpen} closeModal={closeModal}>
+              <StudentForm />
+            </Modal>
+          )}
+        </button>
+
       </div>
     );
   };

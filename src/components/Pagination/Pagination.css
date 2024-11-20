@@ -78,6 +78,7 @@
   select {
   color: #0F172A;
   border: none;
+  outline: none;
   padding-right: 8px;
   background: transparent; /* Makes background transparent (optional) */
 }
