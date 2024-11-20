@@ -23,10 +23,9 @@ function Sidebar({ isOpen, toggleSidebar }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="logo-sidebar">
-        <img src={`${isHovered ? "./logo.svg" : "./icon2.svg"}`} alt="logo" />
+      {/* <div className="logo-sidebar">
         {isOpen && <IoClose size={30} onClick={toggleSidebar}/>}
-      </div>
+      </div> */}
       <ul>
         <li>
           <div className="list-item list-item-color">

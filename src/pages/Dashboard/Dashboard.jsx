@@ -5,6 +5,7 @@ import LeadsTable from "../../components/LeadsTable/LeadsTable";
 import "./Dashboard.css";
 import { FaToggleOff } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
+import ProfileHeader from "../../components/ProfileHeader/ProfileHeader";
 
 
 function Dashboard() {
@@ -17,10 +18,11 @@ function Dashboard() {
 
   return (
     <div>
+      <ProfileHeader isOpen={isSidebarOpen} toggleSidebar={toggleSidebar}/>
       <div className="app">
         <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         <div className="main-content">
-          <div className="incentive-box">
+          {/* <div className="incentive-box">
             <div className="logo-content">
               <div className="mobile-view">
                 <div className="mobile-icons">
@@ -34,7 +36,7 @@ function Dashboard() {
             <div>
               <img src='./Ellipse.svg' alt="profile-image" className="profile-img" />
             </div>
-          </div>
+          </div> */}
           <Header />
           <LeadsTable />
         </div>
