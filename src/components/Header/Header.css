@@ -33,12 +33,26 @@
 .header-actions p{
     display: flex;
     justify-content: flex-end;
+    color: #64748B;
 }
 
 .headers-info{
     display: flex;
     gap: 30px;
 }
+
+.headers-info > div p:first-of-type {
+  font-weight: 600; /* Font weight for the first paragraph */
+  font-size: 20px;  /* Font size for the first paragraph */
+  color: #1E293B;
+}
+
+.headers-info > div p:last-of-type {
+  font-weight: 400; /* Font weight for the second paragraph */
+  font-size: 14px;  /* Font size for the second paragraph */
+  color: #475569;
+}
+
 
 .headers-info div:nth-child(2){
     border-left: 2px solid #a49d9d; /* Left border */
