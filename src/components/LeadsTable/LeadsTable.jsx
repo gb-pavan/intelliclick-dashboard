@@ -11,6 +11,7 @@ import Modal from "../Modal/Modal";
 import {formatToLocalTime} from "../../utils/dateUtils"
 import Pagination from "../Pagination/Pagination";
 import useFetchData from '../../hooks/useFetchData';
+import StudentForm from "../StudentForm/StudentForm"
 
 
 function LeadsTable() {
@@ -142,7 +143,12 @@ function LeadsTable() {
         </div>
         <div className="search-box add-color">
           <FaPlus />
-          <button>Create Lead</button>
+          <button onClick={()=>setModalOpen(true)}>Create Lead</button>
+          {isModalOpen && (
+            <Modal isOpen={isModalOpen} closeModal={closeModal}>
+              <StudentForm />
+            </Modal>
+          )}
         </div>
       </div>
     );
