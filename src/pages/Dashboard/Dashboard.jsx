@@ -20,7 +20,10 @@ function Dashboard() {
     <div>
       <ProfileHeader isOpen={isSidebarOpen} toggleSidebar={toggleSidebar}/>
       <div className="app">
-        <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+        <div className="side-bar-component">
+          <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+        </div>
+        
         <div className="main-content">
           {/* <div className="incentive-box">
             <div className="logo-content">

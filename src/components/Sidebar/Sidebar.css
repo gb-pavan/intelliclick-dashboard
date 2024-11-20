@@ -86,13 +86,20 @@
   .sidebar {
     transform: translateX(-100%); /* Hide off-screen */
     position: fixed;
-    top: 0;
+    top: 90px;
     left: 0;
     height: 100%;
   }
+
+  .close-icon{
+    background-color: red;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+  }
   .sidebar.open {
     transform: translateX(0); /* Slide in */
-    background-color:orange;
+    background-color:pink;
     width: 250px;
   }
   .logo-sidebar {

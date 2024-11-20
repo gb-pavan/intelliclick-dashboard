@@ -48,6 +48,7 @@
   }
   
   .app {
+    position: relative;
     display: flex;
     font-family: Arial, sans-serif;
     background-color: #f8f9fc;
@@ -69,6 +70,11 @@
   @media (max-width: 768px) {
     .mobile-view{
     display: flex;
+    }
+    .side-bar-component{
+      position:absolute;
+      top:60px;
+      left: 0px;
     }
   }
   

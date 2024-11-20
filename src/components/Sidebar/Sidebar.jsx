@@ -26,6 +26,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
       {/* <div className="logo-sidebar">
         {isOpen && <IoClose size={30} onClick={toggleSidebar}/>}
       </div> */}
+      {isOpen && <IoClose size={30} onClick={toggleSidebar}className="close-icon" />}
       <ul>
         <li>
           <div className="list-item list-item-color">
