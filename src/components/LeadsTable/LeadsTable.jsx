@@ -16,7 +16,7 @@ import useFetchData from '../../hooks/useFetchData';
 function LeadsTable() {
 
 
-  const [tableRows,setTableRows] = useState([]);
+  const [tableData,setTableData] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -28,7 +28,7 @@ function LeadsTable() {
 
   // const indexOfLastProduct = currentPage * rowsPerPage;
   // const indexOfFirstProduct = indexOfLastProduct - rowsPerPage;
-  const totalPages = Math.ceil((tableRows || []).length / rowsPerPage);
+  // const totalPages = Math.ceil((tableRows || []).length / rowsPerPage);
 
   useEffect(() => {
     if (error) {
@@ -37,10 +37,16 @@ function LeadsTable() {
       setTimeout(()=>{
         setIsLoading(false);
       },3000);
+      console.log(" raw data ",data);
       
-      setTableRows(data?.data);
+      setTableData(data);
     }
   }, [data, error,currentPage,rowsPerPage]); 
+
+  const tableRows = tableData?.data;
+  const totalLeads = tableData?.totalCount;
+  const totalPages = Math.ceil(totalLeads / rowsPerPage);
+
   
 
 
@@ -57,12 +63,14 @@ function LeadsTable() {
 
   const handleRowsPerPageChange = (newRowsPerPage) => {
     setIsLoading(true);
+    setTableData({});
     setRowsPerPage(newRowsPerPage);
     setCurrentPage(1); // Reset to the first page
   };
 
   const handlePageChange = (page) => {
     setIsLoading(true);
+    setTableData({});
     setCurrentPage(page);
   };
 
