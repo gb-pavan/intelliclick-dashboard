@@ -64,7 +64,7 @@ const StudentForm = () => {
         </select>
         <select className="form-input" required>
           <option value="" disabled selected>
-            Attracted
+            Interacted With
           </option>
           <option value="state-1">Father</option>
           <option value="state-2">Mother</option>
@@ -72,7 +72,7 @@ const StudentForm = () => {
           <option value="state-3">Guardian</option>
         </select>
         <button type="submit" className="submit-button">
-          Continue Booking Live Class
+          Submit
         </button>
       </form>
     </div>

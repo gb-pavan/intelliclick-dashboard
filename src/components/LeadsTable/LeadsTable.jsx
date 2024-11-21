@@ -136,7 +136,7 @@ function LeadsTable() {
         <p>Class: {selectedLead?.class[0]?.name.split(" ")[1] || ''}</p>
         <p>Phone Number: {selectedLead?.mobile || ''}</p>
         <p>Status: {selectedLead?.status || ''}</p>
-        <p>Submitted By: {selectedLead?.interactedWith || ''}</p>
+        <p>Interacted With: {selectedLead?.interactedWith || ''}</p>
         <p>Created By: {selectedLead?.createdBy || ''}</p>
         <p>Created At: {(selectedLead?.createdAt && formatToLocalTime(selectedLead.createdAt)) || ''}</p>
       </>
@@ -192,7 +192,7 @@ function LeadsTable() {
           Upload Orders
         </button>
         <button className="search-box add-color" onClick={handleCreateLead}>
-          <FaPlus size={20} />
+          <FaPlus size={14} />
           Create Lead
           {isModalOpen && isCreateLead && (
             <Modal isOpen={isModalOpen && isCreateLead} closeModal={closeModal}>
@@ -237,7 +237,7 @@ function LeadsTable() {
               <th>Class</th>
               <th>Phone Number</th>
               <th>Status</th>
-              <th>Submitted By</th>
+              <th>Interacted With</th>
               <th>Created By</th>
               <th>Details</th>
               <th>Created At</th>
