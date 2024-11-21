@@ -95,7 +95,7 @@
   color:#D029D8;
    color:white;
   /* background-color: #FBE8FF; */
-  background: linear-gradient(to left,#AB1CAF, #519CDF);
+  background: linear-gradient(to right,#AB1CAF, #519CDF);
 }
 
 ul li:hover .list-item .icon-spacing {
