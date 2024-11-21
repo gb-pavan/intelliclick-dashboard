@@ -1,7 +1,15 @@
 import React from "react";
 import "./StudentForm.css";
+import PhoneInputComponent from "../PhoneInputComponent/PhoneInputComponent";
 
 const StudentForm = () => {
+
+  const handlePhoneChange = (phone) => {
+    // setFormData((prevData) => ({ ...prevData, phone }));
+    console.log("hello");
+  };
+
+
   return (
     <div className="form-container">
       <h2>Book a Live Class Today, for <span className="highlight">FREE</span></h2>
@@ -19,7 +27,7 @@ const StudentForm = () => {
           className="form-input"
           required
         />
-        <div className="phone-input-container">
+        {/* <div className="phone-input-container">
           <div className="country-code">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/7/75/India_flag_300.png"
@@ -29,15 +37,13 @@ const StudentForm = () => {
             <span>+91</span>
           </div>
           <button type="button" className="otp-button">Send OTP</button>
-        </div>
-        {/* <select className="form-input" required>
-          <option value="" disabled selected>
-            Select Class
-          </option>
-          <option value="class-1">Class 1</option>
-          <option value="class-2">Class 2</option>
-          <option value="class-3">Class 3</option>
-        </select> */}
+        </div> */}
+        
+          <div className="phone-number-container">
+            <PhoneInputComponent onPhoneChange={handlePhoneChange} />
+          </div>
+          
+        
         <select className="form-input" required>
           <option value="" disabled selected>
             Select Class
@@ -50,11 +56,20 @@ const StudentForm = () => {
         </select>
         <select className="form-input" required>
           <option value="" disabled selected>
-            Select State
+            Select Board
           </option>
-          <option value="state-1">State 1</option>
-          <option value="state-2">State 2</option>
-          <option value="state-3">State 3</option>
+          <option value="state-1">CBSC</option>
+          <option value="state-2">ICSC</option>
+          <option value="state-3">State</option>
+        </select>
+        <select className="form-input" required>
+          <option value="" disabled selected>
+            Attracted
+          </option>
+          <option value="state-1">Father</option>
+          <option value="state-2">Mother</option>
+          <option value="state-3">Student</option>
+          <option value="state-3">Guardian</option>
         </select>
         <button type="submit" className="submit-button">
           Continue Booking Live Class

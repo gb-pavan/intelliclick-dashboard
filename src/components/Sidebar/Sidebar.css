@@ -71,6 +71,7 @@
 
 .icon-spacing {
   margin-right: 10px; /* Adjust the value as needed */
+  color:#8E198F;
 }
 
 .icon-left-spacing{
@@ -85,9 +86,20 @@
   width: 100%; /* Ensures the item spans the full width */
 }
 
+/* .list-item svg{
+   background: linear-gradient(#AB1CAF, #519CDF);
+
+} */
+
 .sidebar ul li:hover {
   color:#D029D8;
-  background-color: #FBE8FF;
+   color:white;
+  /* background-color: #FBE8FF; */
+  background: linear-gradient(to left,#AB1CAF, #519CDF);
+}
+
+ul li:hover .list-item .icon-spacing {
+  color: white;
 }
 
 /* Media query for mobile view */

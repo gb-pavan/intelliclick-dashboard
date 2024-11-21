@@ -32,11 +32,19 @@
 .live-class-form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 15px;
 }
 
+.phone-number-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
 .form-input {
-  padding: 10px;
+  padding: 10px 0px;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
