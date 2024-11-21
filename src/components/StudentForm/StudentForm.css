@@ -1,54 +1,116 @@
-.student-form {
+/* Container styles */
+.form-container {
   max-width: 400px;
-  margin: 20px auto;
+  margin: 50px auto;
   padding: 20px;
-  border: 1px solid #ccc;
+  background: white;
   border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: Arial, sans-serif;
 }
 
-.student-form div {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.student-form label {
-  flex: 0 0 40%; /* Take 40% of the width */
-  font-weight: bold;
+/* Heading and subheading styles */
+.form-container h2 {
+  font-size: 1.5rem;
   color: #333;
+  margin-bottom: 10px;
 }
 
-.student-form input {
-  flex: 1; /* Input takes the remaining space */
-  padding: 8px;
+.highlight {
+  color: orange;
+  font-weight: bold;
+}
+
+.form-container p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Form styles */
+.live-class-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-input {
+  padding: 10px;
+  font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 14px;
+  width: 100%;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
 }
 
-.student-form input:focus {
+.form-input:focus {
   border-color: #007bff;
   outline: none;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.student-form button {
-  width: 100%;
+
+/* Phone input container */
+.phone-input-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.country-code {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #f9f9f9;
   padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 16px;
+  flex-grow: 1;
+}
+
+.flag-icon {
+  width: 20px;
+  height: 15px;
+}
+
+.otp-button {
+  background: #6200ea;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-.student-form button:hover {
-  background-color: #0056b3;
+.otp-button:hover {
+  background: #4500b0;
 }
 
-.student-form button:active {
-  background-color: #004080;
+/* Submit button styles */
+.submit-button {
+  padding: 10px;
+  font-size: 1rem;
+  color: white;
+  background: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .form-container {
+    padding: 15px;
+  }
+
+  .form-input, .otp-button, .submit-button {
+    font-size: 0.9rem;
+  }
 }

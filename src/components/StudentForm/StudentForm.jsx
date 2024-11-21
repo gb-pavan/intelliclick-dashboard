@@ -1,84 +1,66 @@
-import React, { useState } from 'react';
-import './StudentForm.css';
+import React from "react";
+import "./StudentForm.css";
 
 const StudentForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    mobileNumber: '',
-    class: '',
-    board: '',
-    interactedWith: '',
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form is submitted', formData);
-  };
-
   return (
-    <form onSubmit={handleSubmit} className="student-form">
-      <div>
-        <label htmlFor="name">Student Name:</label>
+    <div className="form-container">
+      <h2>Book a Live Class Today, for <span className="highlight">FREE</span></h2>
+      <p>Start Learning Today</p>
+      <form className="live-class-form">
         <input
           type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
+          placeholder="Student Name*"
+          className="form-input"
           required
         />
-      </div>
-      <div>
-        <label htmlFor="mobileNumber">Mobile Number:</label>
         <input
-          type="tel"
-          id="mobileNumber"
-          name="mobileNumber"
-          value={formData.mobileNumber}
-          onChange={handleChange}
+          type="email"
+          placeholder="Email"
+          className="form-input"
           required
         />
-      </div>
-      <div>
-        <label htmlFor="class">Class:</label>
-        <input
-          type="text"
-          id="class"
-          name="class"
-          value={formData.class}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="board">Board:</label>
-        <input
-          type="text"
-          id="board"
-          name="board"
-          value={formData.board}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="interactedWith">Interacted With:</label>
-        <input
-          type="text"
-          id="interactedWith"
-          name="interactedWith"
-          value={formData.interactedWith}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+        <div className="phone-input-container">
+          <div className="country-code">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/7/75/India_flag_300.png"
+              alt="India Flag"
+              className="flag-icon"
+            />
+            <span>+91</span>
+          </div>
+          <button type="button" className="otp-button">Send OTP</button>
+        </div>
+        {/* <select className="form-input" required>
+          <option value="" disabled selected>
+            Select Class
+          </option>
+          <option value="class-1">Class 1</option>
+          <option value="class-2">Class 2</option>
+          <option value="class-3">Class 3</option>
+        </select> */}
+        <select className="form-input" required>
+          <option value="" disabled selected>
+            Select Class
+          </option>
+          {Array.from({ length: 8 }, (_, i) => (
+            <option key={i + 3} value={`class-${i + 3}`}>
+              {`${i + 3}th class`}
+            </option>
+          ))}
+        </select>
+        <select className="form-input" required>
+          <option value="" disabled selected>
+            Select State
+          </option>
+          <option value="state-1">State 1</option>
+          <option value="state-2">State 2</option>
+          <option value="state-3">State 3</option>
+        </select>
+        <button type="submit" className="submit-button">
+          Continue Booking Live Class
+        </button>
+      </form>
+    </div>
   );
 };
 

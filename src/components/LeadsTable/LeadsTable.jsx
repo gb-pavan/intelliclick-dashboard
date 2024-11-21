@@ -23,6 +23,7 @@ function LeadsTable() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedLead, setSelectedLead] = useState(null);
   const [isLoading,setIsLoading] = useState(false);
+  const [isCreateLead,setCreateLead] = useState(false);
 
   const endpoint = `api/lead-app/lead/read/get-all?pageNum=${currentPage}&pageSize=${rowsPerPage}`;
   const { data, loading, error } = useFetchData(endpoint);
@@ -48,6 +49,11 @@ function LeadsTable() {
   const totalLeads = tableData?.totalCount;
   const totalPages = Math.ceil(totalLeads / rowsPerPage);
 
+  const handleCreateLead = () => {
+    setModalOpen(true);
+    setCreateLead(true);
+  }
+
   
 
 
@@ -56,11 +62,16 @@ function LeadsTable() {
     setModalOpen(true);
   };
 
+  // const closeModal = () => {
+  //   setSelectedLead(null); // Clear the selected lead
+  //   setModalOpen(false);
+  // }; 
+  
   const closeModal = () => {
-    setSelectedLead(null); // Clear the selected lead
+    setSelectedLead(null); 
     setModalOpen(false);
+    setCreateLead(false);
   };    
-    
 
   const handleRowsPerPageChange = (newRowsPerPage) => {
     setIsLoading(true);
@@ -102,7 +113,7 @@ function LeadsTable() {
           <button className="eye-button" onClick={() => openModal(lead)}>
             <IoEyeOutline size={25} />
           </button>
-          {isModalOpen && selectedLead && (
+          {/* {isModalOpen && selectedLead && (
             <Modal isOpen={isModalOpen} closeModal={closeModal}>
               <h1>Lead Details</h1>
               <p>Student Name: {selectedLead.studentName || ''}</p>
@@ -113,7 +124,25 @@ function LeadsTable() {
               <p>Created By: {selectedLead.createdBy || ''}</p>
               <p>Created At: {(selectedLead.createdAt && formatToLocalTime(selectedLead.createdAt)) || ''}</p>
             </Modal>
-          )}
+          )} */}
+          {isModalOpen && (
+  <Modal isOpen={isModalOpen} closeModal={closeModal}>
+    {isCreateLead ? (
+      <StudentForm />
+    ) : (
+      <>
+        <h1>Lead Details</h1>
+        <p>Student Name: {selectedLead?.studentName || ''}</p>
+        <p>Class: {selectedLead?.class[0]?.name.split(" ")[1] || ''}</p>
+        <p>Phone Number: {selectedLead?.mobile || ''}</p>
+        <p>Status: {selectedLead?.status || ''}</p>
+        <p>Submitted By: {selectedLead?.interactedWith || ''}</p>
+        <p>Created By: {selectedLead?.createdBy || ''}</p>
+        <p>Created At: {(selectedLead?.createdAt && formatToLocalTime(selectedLead.createdAt)) || ''}</p>
+      </>
+    )}
+  </Modal>
+)}
         </td>
         <td className="last">
           {(lead.createdAt && formatToLocalTime(lead.createdAt)) || ''}
@@ -162,11 +191,11 @@ function LeadsTable() {
           <MdOutlineUpload size={20} />
           Upload Orders
         </button>
-        <button className="search-box add-color" onClick={() => setModalOpen(true)}>
+        <button className="search-box add-color" onClick={handleCreateLead}>
           <FaPlus size={20} />
           Create Lead
-          {isModalOpen && (
-            <Modal isOpen={isModalOpen} closeModal={closeModal}>
+          {isModalOpen && isCreateLead && (
+            <Modal isOpen={isModalOpen && isCreateLead} closeModal={closeModal}>
               <StudentForm />
             </Modal>
           )}
