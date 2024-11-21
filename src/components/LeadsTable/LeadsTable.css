@@ -9,13 +9,16 @@
   justify-content: center; /* Centers items horizontally */
   background-color: #E2F3FF;
   border-radius: 10px;
-  border: 2px solid #18508C;
+  border: 1px solid #18508C;
   padding: 10px;
-  gap: 10px;
+  gap: 8px;
 }
 
 .today-leads{
   margin-right: 20px;
+  color: #18508C;
+  font-weight: 600;
+  font-size: 16px;
 }
 
 .today-leads span{
@@ -28,8 +31,11 @@
   color:white;
 }
 .yes-leads{
-  border: 2px solid #E2E8F0;
+  border: 1px solid #E2E8F0;
   background-color: white;
+  color: #18508C;
+  font-weight: 600;
+  font-size: 16px;
 }
 
 .yes-leads span{
