@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./GetLocation.css";
 import useFetchData from "../../hooks/useFetchData";
 import ClipLoader from 'react-spinners/ClipLoader';
@@ -41,24 +41,42 @@ import ClipLoader from 'react-spinners/ClipLoader';
 //   ],
 // };
 
-function GetLocation() {
+function GetLocation({setLocation}) {
 
   
   const [selectedState, setSelectedState] = useState("");
+  const [selectedDistrict, setSelectedDistrict] = useState("");
   const [districts, setDistricts] = useState([]);
   
   const endpoint = "api/user/read/get-state-data?country=IN";
   const { data, loading, error } = useFetchData(endpoint);
 
+  useEffect(() => {
+    // Only update location when selectedState or selectedDistrict changes
+    setLocation({ selectedState, selectedDistrict });
+  }, [selectedState, selectedDistrict, setLocation]);
+
   if (loading) return <ClipLoader color="#36d7b7" loading={true} size={30} />;
   if (error) return <p>Error: {error.message}</p>;
   const stateDistrictData = data || {};
+
+  
 
   const handleStateChange = (event) => {
     const state = event.target.value;
     setSelectedState(state);
     setDistricts(stateDistrictData[state] || []);
+    
   };
+
+  const handleDistrictChange = (event) => {
+    const district = event.target.value;
+    console.log("selected district in handle change",district);
+    setSelectedDistrict(district);
+  }
+
+  console.log("selected state",selectedState);
+  console.log("selected district",selectedDistrict);
 
   return (
     <div className="get-location">
@@ -76,7 +94,7 @@ function GetLocation() {
    
       
 
-      <select id="district" className="form-input"  style={{ width: "312px" }} required>
+      <select id="district" value={selectedDistrict} onChange={handleDistrictChange} className="form-input"  style={{ width: "312px" }} required>
           <option value="" disabled selected>
             Select District
           </option>

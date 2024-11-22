@@ -103,7 +103,7 @@
   padding: 10px;
   font-size: 1rem;
   color: white;
-  background: #007bff;
+  background: linear-gradient(to right,#AB1CAF, #519CDF);
   border: none;
   border-radius: 4px;
   cursor: pointer;

@@ -16,6 +16,19 @@ import StudentForm from "../StudentForm/StudentForm"
 
 function LeadsTable() {
 
+  const statuses = [
+  { label: "Prospect", color: "bg-blue-200 text-blue-800" },
+  { label: "Qualified", color: "bg-green-200 text-green-800" },
+  { label: "Not Qualified", color: "bg-red-200 text-red-800" },
+  { label: "Follow-up", color: "bg-yellow-200 text-yellow-800" },
+  { label: "Trial Booked", color: "bg-teal-200 text-teal-800" },
+  { label: "Trial Completed", color: "bg-green-200 text-green-800" },
+  { label: "Payment Created", color: "bg-indigo-200 text-indigo-800" },
+  { label: "Enrolled", color: "bg-purple-200 text-purple-800" },
+  { label: "Trial Follow-up", color: "bg-orange-200 text-orange-800" },
+  { label: "Not Enrolled", color: "bg-red-200 text-red-800" },
+];
+
 
   const [tableData,setTableData] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,6 +37,7 @@ function LeadsTable() {
   const [selectedLead, setSelectedLead] = useState(null);
   const [isLoading,setIsLoading] = useState(false);
   const [isCreateLead,setCreateLead] = useState(false);
+  const [selectedStatus, setSelectedStatus] = useState("");
 
   const endpoint = `api/lead-app/lead/read/get-all?pageNum=${currentPage}&pageSize=${rowsPerPage}`;
   const { data, loading, error } = useFetchData(endpoint);
@@ -71,7 +85,20 @@ function LeadsTable() {
     setSelectedLead(null); 
     setModalOpen(false);
     setCreateLead(false);
-  };    
+  }; 
+  
+  const handleStatusChange = (event) => {
+    setSelectedStatus(event.target.value);
+  };
+
+  const statusFiltered = tableRows?.filter(each => {
+  if (!selectedStatus) {
+    return true; // Include all rows if selectedStatus is empty
+  }
+  return each.status === selectedStatus;
+});
+
+
 
   const handleRowsPerPageChange = (newRowsPerPage) => {
     setIsLoading(true);
@@ -99,7 +126,7 @@ function LeadsTable() {
       );
     }
     
-    return (tableRows || []).map((lead, index) => (
+    return (statusFiltered || []).map((lead, index) => (
       <tr key={index}>
         <td>{lead.studentName || ''}</td>
         <td>{lead?.class[0]?.name.split(" ")[1] || ''}</td>
@@ -183,10 +210,29 @@ function LeadsTable() {
           <CiCalendarDate size={20} />
           Date Range
         </button>
-        <button className="search-box">
+        {/* <button className="search-box">
           <IoFilterOutline size={20} />
           Filters
-        </button>
+      </button> */}
+      <select
+          name="selectedClass"
+          className="search-box"
+          value={selectedStatus}
+          onChange={handleStatusChange}
+        >
+          <option value="" disabled>
+            Status
+          </option>
+          {statuses.map((status, index) => (
+          <option
+            key={index}
+            value={status.label}
+            className={`${status.color} font-medium`}
+          >
+            {status.label}
+          </option>
+        ))}
+        </select>
         <button className="search-box upload-order">
           <MdOutlineUpload size={20} />
           Upload Orders
