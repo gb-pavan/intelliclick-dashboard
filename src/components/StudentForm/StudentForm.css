@@ -35,20 +35,21 @@
   justify-content: center;
   align-items: center;
   gap: 15px;
+  padding: 0px;
 }
 
 .phone-number-container{
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: flex-start;  
 }
 
 .form-input {
-  padding: 10px 0px;
+  padding: 10px 10px;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 100%;
+  width: 80%;
   background-color: white;
   color: #333;
   cursor: pointer;

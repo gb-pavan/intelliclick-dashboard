@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./StudentForm.css";
 import PhoneInputComponent from "../PhoneInputComponent/PhoneInputComponent";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const StudentForm = () => {
+
+  const [isOtpSent, setOtpSent] = useState(false);
 
   const handlePhoneChange = (phone) => {
     // setFormData((prevData) => ({ ...prevData, phone }));
@@ -27,34 +30,27 @@ const StudentForm = () => {
           className="form-input"
           required
         />
-        {/* <div className="phone-input-container">
-          <div className="country-code">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/7/75/India_flag_300.png"
-              alt="India Flag"
-              className="flag-icon"
-            />
-            <span>+91</span>
-          </div>
-          <button type="button" className="otp-button">Send OTP</button>
-        </div> */}
-        
-          <div className="phone-number-container">
-            <PhoneInputComponent onPhoneChange={handlePhoneChange} />
-          </div>
-          
-        
-        <select className="form-input" required>
+        <div className="phone-number-container">
+            <PhoneInputComponent onPhoneChange={handlePhoneChange} setOtpSent={setOtpSent} />            
+        </div>
+        {isOtpSent && <input
+          type="email"
+          placeholder="Enter OTP"
+          className="form-input"
+          required
+        />}
+        <select className="form-input"  style={{ width: "312px" }} required>
           <option value="" disabled selected>
             Select Class
           </option>
           {Array.from({ length: 8 }, (_, i) => (
             <option key={i + 3} value={`class-${i + 3}`}>
-              {`${i + 3}th class`}
+              {/* {`${i + 3}th class`} */}
+              {`${i + 3}${i === 0 ? "rd" : "th"} class`}
             </option>
           ))}
         </select>
-        <select className="form-input" required>
+        <select className="form-input custom-dropdown"  style={{ width: "312px" }} required>
           <option value="" disabled selected>
             Select Board
           </option>
@@ -62,7 +58,7 @@ const StudentForm = () => {
           <option value="state-2">ICSC</option>
           <option value="state-3">State</option>
         </select>
-        <select className="form-input" required>
+        <select className="form-input"  style={{ width: "312px" }} required>
           <option value="" disabled selected>
             Interacted With
           </option>
