@@ -3,7 +3,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import "./PhoneInputComponent.css";
 
-const PhoneInputComponent = ({ onPhoneChange,setOtpSent }) => {
+const PhoneInputComponent = ({ onPhoneChange,setOtpSent,setCountry }) => {
   const [phone, setPhone] = useState("");
   const [resendOtp,setResendOtp] = useState(false);
   const [timer, setTimer] = useState(0);
@@ -21,7 +21,9 @@ const PhoneInputComponent = ({ onPhoneChange,setOtpSent }) => {
     return () => clearInterval(interval);
   }, [timer]);
 
-  const handlePhoneChange = (value) => {
+  const handlePhoneChange = (value,countryData) => {
+    console.log("country data",countryData.name);
+    setCountry(countryData.name);
     setPhone(value); // Update local state
     onPhoneChange(value); // Pass the value to the parent
   };

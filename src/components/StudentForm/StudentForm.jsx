@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "./StudentForm.css";
 import PhoneInputComponent from "../PhoneInputComponent/PhoneInputComponent";
 import { faL } from "@fortawesome/free-solid-svg-icons";
+import GetLocation from "../GetLocation/GetLocation";
 
 const StudentForm = () => {
 
   const [isOtpSent, setOtpSent] = useState(false);
+  const [country, setCountry] = useState("India");
 
   const handlePhoneChange = (phone) => {
     // setFormData((prevData) => ({ ...prevData, phone }));
@@ -26,12 +28,12 @@ const StudentForm = () => {
         />
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Email(Optional)"
           className="form-input"
           required
         />
         <div className="phone-number-container">
-            <PhoneInputComponent onPhoneChange={handlePhoneChange} setOtpSent={setOtpSent} />            
+            <PhoneInputComponent onPhoneChange={handlePhoneChange} setOtpSent={setOtpSent} setCountry={setCountry} />            
         </div>
         {isOtpSent && <input
           type="email"
@@ -39,6 +41,7 @@ const StudentForm = () => {
           className="form-input"
           required
         />}
+        {country==="India"?<GetLocation />:null}
         <select className="form-input"  style={{ width: "312px" }} required>
           <option value="" disabled selected>
             Select Class
