@@ -13,6 +13,7 @@ import Pagination from "../Pagination/Pagination";
 import useFetchData from '../../hooks/useFetchData';
 import StudentForm from "../StudentForm/StudentForm"
 import StatusFilter from "../StatusFilter/StatusFilter";
+import DateFilter from "../DateFilter/DateFilter";
 
 
 function LeadsTable() {
@@ -129,6 +130,81 @@ function LeadsTable() {
     
   };
 
+  const timeRanges = [
+    "All",
+    "Today",
+    "This Week",
+    "This Month",
+    "Last Week",
+    "Last Month",
+  ];
+
+  // const handleTimeRangeChange = (selectedOption) => {
+  //   console.log("Selected Time Range:", selectedOption);
+  // };
+
+    const handleTimeRangeChange = (selectedOption) => {
+    const today = new Date();
+    let filteredData = [];
+
+    switch (selectedOption) {
+      case "Today":
+        console.log("today",selectedOption);
+        filteredData = tableRows.filter(
+          (row) =>
+            new Date(row.createdAt).toDateString() === today.toDateString()
+        );
+        break;
+      case "This Week":
+        const startOfWeek = new Date(today);
+        startOfWeek.setDate(today.getDate() - today.getDay()); // Start of the week (Sunday)
+        filteredData = tableRows.filter(
+          (row) =>
+            new Date(row.createdAt) >= startOfWeek && new Date(row.createdAt) <= today
+        );
+        break;
+      case "This Month":
+        const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+        filteredData = tableRows.filter(
+          (row) =>
+            new Date(row.createdAt) >= startOfMonth && new Date(row.createdAt) <= today
+        );
+        break;
+      case "Last Week":
+        const endOfLastWeek = new Date(today);
+        endOfLastWeek.setDate(today.getDate() - today.getDay() - 1); // Last Saturday
+        const startOfLastWeek = new Date(endOfLastWeek);
+        startOfLastWeek.setDate(endOfLastWeek.getDate() - 6); // Last Sunday
+        filteredData = tableRows.filter(
+          (row) =>
+            new Date(row.createdAt) >= startOfLastWeek &&
+            new Date(row.createdAt) <= endOfLastWeek
+        );
+        break;
+      case "Last Month":
+        const startOfLastMonth = new Date(
+          today.getFullYear(),
+          today.getMonth() - 1,
+          1
+        );
+        const endOfLastMonth = new Date(
+          today.getFullYear(),
+          today.getMonth(),
+          0
+        );
+        filteredData = tableRows.filter(
+          (row) =>
+            new Date(row.createdAt) >= startOfLastMonth &&
+            new Date(row.createdAt) <= endOfLastMonth
+        );
+        break;
+      default:
+        filteredData = tableRows;
+    }
+
+    setFilteredRows(filteredData);
+  };
+
   const renderTableRows = () => {
     if (loading || isLoading) {
       return (
@@ -191,10 +267,13 @@ function LeadsTable() {
           <input type="text" placeholder="Search" />
         </div>
         
-        <button className="search-box">
+        {/* <button className="search-box">
           <CiCalendarDate size={20} />
           Date Range
-        </button>
+        </button> */}
+        <div>
+          <DateFilter options={timeRanges} onSelectionChange={handleTimeRangeChange} />
+        </div>
         
         <div className="status-dropdown-container">
         <StatusFilter statuses={statuses} onSelectionChange={handleStatusChange}/></div>

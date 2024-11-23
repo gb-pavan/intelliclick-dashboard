@@ -1,0 +1,13 @@
+.date-filter-show{
+    list-style-type: none;
+    width: 180px;
+    padding: 10px;
+    margin: 0px;
+}
+
+.each-option{
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
