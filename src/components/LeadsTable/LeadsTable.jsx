@@ -12,21 +12,22 @@ import {formatToLocalTime} from "../../utils/dateUtils"
 import Pagination from "../Pagination/Pagination";
 import useFetchData from '../../hooks/useFetchData';
 import StudentForm from "../StudentForm/StudentForm"
+import StatusFilter from "../StatusFilter/StatusFilter";
 
 
 function LeadsTable() {
 
   const statuses = [
-  { label: "Prospect", color: "bg-blue-200 text-blue-800" },
-  { label: "Qualified", color: "bg-green-200 text-green-800" },
-  { label: "Not Qualified", color: "bg-red-200 text-red-800" },
-  { label: "Follow-up", color: "bg-yellow-200 text-yellow-800" },
-  { label: "Trial Booked", color: "bg-teal-200 text-teal-800" },
-  { label: "Trial Completed", color: "bg-green-200 text-green-800" },
-  { label: "Payment Created", color: "bg-indigo-200 text-indigo-800" },
-  { label: "Enrolled", color: "bg-purple-200 text-purple-800" },
-  { label: "Trial Follow-up", color: "bg-orange-200 text-orange-800" },
-  { label: "Not Enrolled", color: "bg-red-200 text-red-800" },
+  { label: "Prospect", color: "blue" },
+  { label: "Qualified", color: "orange" },
+  { label: "Not Qualified", color: "green" },
+  { label: "Follow-up", color: "red" },
+  { label: "Trial Booked", color: "blue" },
+  { label: "Trial Completed", color: "orange" },
+  { label: "Payment Created", color: "green" },
+  { label: "Enrolled", color: "red" },
+  { label: "Trial Follow-up", color: "blue" },
+  { label: "Not Enrolled", color: "orange" },
 ];
 
 
@@ -214,7 +215,7 @@ function LeadsTable() {
           <IoFilterOutline size={20} />
           Filters
       </button> */}
-      <select
+      {/* <select
           name="selectedClass"
           className="search-box"
           value={selectedStatus}
@@ -232,7 +233,9 @@ function LeadsTable() {
             {status.label}
           </option>
         ))}
-        </select>
+        </select> */}
+        <div className="status-dropdown-container">
+        <StatusFilter statuses={statuses} /></div>
         <button className="search-box upload-order">
           <MdOutlineUpload size={20} />
           Upload Orders

@@ -1,0 +1,21 @@
+.status-filter-show{
+    list-style-type: none;
+}
+
+/* .status-color-box{
+    background-color: red;
+    height: 20px;
+    width: 2px;
+} */
+
+.status-color-box {
+  display: inline-block; /* Makes it behave like a box */
+  width: 16px; /* Set width for the box */
+  height: 16px; /* Set height for the box */
+  border-radius: 4px; /* Optional: Rounds the corners slightly */
+  margin-right: 8px; /* Adds space between the box and text */
+}
+
+.style-list{
+    position:absolute;
+}

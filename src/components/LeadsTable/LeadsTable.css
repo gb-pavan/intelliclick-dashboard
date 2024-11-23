@@ -81,6 +81,10 @@
   gap: 10px;
 }
 
+.status-dropdown-container{
+  position: relative;
+}
+
 .input-box{
   display: flex;
   justify-content: center;
