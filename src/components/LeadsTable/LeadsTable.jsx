@@ -55,7 +55,6 @@ function LeadsTable() {
       setTimeout(()=>{
         setIsLoading(false);
       },3000);
-      console.log(" raw data ",data);      
       setTableData(data);
       setFilteredRows(data?.data);
     }
@@ -116,12 +115,13 @@ function LeadsTable() {
   };
 
   const handleStatusChange = (selected) => {
-    console.log("Selected statuses:", selected);
     // setSelectedStatus(selected);
-    
+      console.log("selected data check",tableRows);
       const filtered = tableRows?.filter((row) =>
         selected.includes(row.status)
       );
+
+      console.log("filtered-data-check",filtered);
       if (filtered.length === 0){
         setFilteredRows(tableRows)
       }
@@ -149,7 +149,6 @@ function LeadsTable() {
 
     switch (selectedOption) {
       case "Today":
-        console.log("today",selectedOption);
         filteredData = tableRows.filter(
           (row) =>
             new Date(row.createdAt).toDateString() === today.toDateString()
@@ -216,7 +215,6 @@ function LeadsTable() {
       );
     }
 
-    console.log("filtered rows",filteredRows);
     
     return filteredRows?.map((lead, index) => (
       <tr key={index}>

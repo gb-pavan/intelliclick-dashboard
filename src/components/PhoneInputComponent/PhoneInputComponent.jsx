@@ -22,14 +22,12 @@ const PhoneInputComponent = ({ onPhoneChange,setOtpSent,setCountry }) => {
   }, [timer]);
 
   const handlePhoneChange = (value,countryData) => {
-    console.log("country data",countryData.name);
     setCountry(countryData.name);
     setPhone(value); // Update local state
     onPhoneChange(value); // Pass the value to the parent
   };
 
   const handleSendOtp = () => {
-    console.log("Sending OTP to:", phone);
     if(true) setResendOtp(true);
     setTimer(60);
     setOtpSent(true);

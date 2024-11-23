@@ -71,7 +71,6 @@ function GetLocation({setLocation,errors}) {
 
   const handleDistrictChange = (event) => {
     const district = event.target.value;
-    console.log("selected district in handle change",district);
     setSelectedDistrict(district);
   }
 
