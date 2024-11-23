@@ -270,7 +270,239 @@
 
 // export default StudentForm;
 
-import React, { useState, useCallback } from "react";
+// import React, { useState, useCallback } from "react";
+// import "./StudentForm.css";
+// import PhoneInputComponent from "../PhoneInputComponent/PhoneInputComponent";
+// import GetLocation from "../GetLocation/GetLocation";
+// import { fetchData } from "../../api/fetchData";
+
+// const StudentForm = () => {
+//   const [isOtpSent, setOtpSent] = useState(false);
+//   const [country, setCountry] = useState("India");
+//   const [location, setLocation] = useState({selectedState:"",selectedDistrict:""});
+  
+//   // Create state for form data
+//   const [formData, setFormData] = useState({
+//     studentName: "",
+//     email: "",
+//     phone: "",
+//     otp: "",
+//     selectedClass: "",
+//     selectedBoard: "",
+//     interactedWith: ""
+//   });
+
+//   const [errors, setErrors] = useState({
+//     studentName: "",
+//     phone: "",
+//     selectedClass: "",
+//     selectedBoard: "",
+//     interactedWith: "",
+//     selectedState: "",
+//     selectedDistrict: ""
+//   });
+
+//   // Handle form input changes dynamically
+//   const handleInputChange = useCallback((e) => {
+//     const { name, value } = e.target;
+//     setFormData((prevData) => ({ ...prevData, [name]: value }));
+//   }, []);
+
+//   // Handle phone number change
+//   const handlePhoneChange = (phone) => {
+//     setFormData((prevData) => ({ ...prevData, phone }));
+//   };
+
+//   console.log("errors",errors);
+
+//   // Handle form submission
+//   const handleSubmit = async (e) => {
+//     e.preventDefault(); // Prevent the default form submission
+
+//     let formIsValid = true;
+//     let newErrors = {
+//       studentName: '',
+//       phone: '',
+//       selectedClass: '',
+//       selectedBoard: '',
+//       interactedWith: '',
+//       selectedState: '',
+//       selectedDistrict: ''
+//     }; // Reset errors
+//     console.log("form clicked");
+//     // Validate required fields
+//     if (!formData.studentName.trim()) {
+//       console.log("inside student name");
+//       newErrors.studentName = 'Student Name is required';
+//       formIsValid = false;
+//     }
+//     if (!formData.phone.trim()) {
+//       newErrors.phone = 'Phone number is required';
+//       formIsValid = false;
+//     }
+//     if (!formData.selectedClass.trim()) {
+//       newErrors.selectedClass = 'Class selection is required';
+//       formIsValid = false;
+//     }
+//     if (!formData.selectedBoard.trim()) {
+//       newErrors.selectedBoard = 'Board selection is required';
+//       formIsValid = false;
+//     }
+//     if (!formData.interactedWith.trim()) {
+//       newErrors.interactedWith = 'Interaction field is required';
+//       formIsValid = false;
+//     }
+
+//     if (!location.selectedState.trim()) {
+//       console.log("trimmed state");
+//       newErrors.selectedState = 'State field is required';
+//       formIsValid = false;
+//     }
+
+//     if (!location.selectedDistrict.trim()) {
+//       console.log("trimmed district");
+//       newErrors.selectedDistrict = 'District field is required';
+//       formIsValid = false;
+//     }
+
+//     // Update error state
+//     setErrors(newErrors);
+
+
+//     const payload = {
+//       studentName: formData.studentName,
+//       mobile: formData.phone,
+//       standard: formData.selectedClass,
+//       createdBy: formData.interactedWith,
+//       state: location?.selectedState,
+//       city: location?.selectedDistrict,
+//       interactedWith: "hello",
+//       status:"prospect"
+//     };
+
+//     try {
+//       const endpoint = "api/lead-app/lead/write/create-or-update";
+//       const data = await fetchData(endpoint, payload);
+//       console.log("Form submitted successfully:", data);
+//     } catch (error) {
+//       console.error("Error submitting form:", error);
+//     }
+//   };
+
+//   return (
+//     <div className="form-container">
+//       <h2>Book a Live Class Today, for <span className="highlight">FREE</span></h2>
+//       <p>Start Learning Today</p>
+//       <form className="live-class-form" onSubmit={handleSubmit}>
+//         <div className="name-container">
+//           <input
+//             type="text"
+//             name="studentName"
+//             placeholder="Student Name*"
+//             className="form-input name-style"
+//             value={formData.studentName}
+//             onChange={handleInputChange}
+//           />
+//           {errors.studentName && (
+//             <p className="name-error" style={{color:"red"}}>*{errors.studentName}</p>
+//           )}
+//         </div>
+//         <input
+//           type="email"
+//           name="email"
+//           placeholder="Email (Optional)"
+//           className="form-input"
+//           value={formData.email}
+//           onChange={handleInputChange}
+//         />
+//         <div className="name-container">
+//         <div className="phone-number-container">
+//           <PhoneInputComponent onPhoneChange={handlePhoneChange} setOtpSent={setOtpSent} setCountry={setCountry} />
+//         </div>        
+//         {isOtpSent && (
+//           <input
+//             type="text"
+//             name="otp"
+//             placeholder="Enter OTP"
+//             className="form-input"
+//             value={formData.otp}
+//             onChange={handleInputChange}
+//             required
+//           />
+//         )}
+//         {errors.phone && (
+//             <p className="name-error" style={{color:"red"}}>*{errors.phone}</p>
+//           )}</div>
+
+//         <div className="name-container">
+//         <select
+//           name="selectedClass"
+//           className="form-input"
+//           style={{ width: "312px" }}
+//           value={formData.selectedClass}
+//           onChange={handleInputChange}
+//         >
+//           <option value="" disabled>Select Class</option>
+//           {Array.from({ length: 8 }, (_, i) => (
+//             <option key={i + 3} value={`class-${i + 3}`}>
+//               {`${i + 3}${i === 0 ? "rd" : "th"} class`}
+//             </option>
+//           ))}
+//         </select>
+//         {errors.selectedClass && (
+//             <p className="name-error" style={{color:"red"}}>*{errors.selectedClass}</p>
+//           )}</div>
+
+//         <div className="name-container">
+//         <select
+//           name="selectedBoard"
+//           className="form-input custom-dropdown"
+//           style={{ width: "312px" }}
+//           value={formData.selectedBoard}
+//           onChange={handleInputChange}
+//         >
+//           <option value="" disabled>Select Board</option>
+//           <option value="cbsc">CBSC</option>
+//           <option value="icsc">ICSC</option>
+//           <option value="state">State</option>
+//         </select>
+//         {errors.selectedBoard && (
+//             <p className="name-error" style={{color:"red"}}>*{errors.selectedBoard}</p>
+//           )}</div>
+
+//         <div className="name-container">
+//         <select
+//           name="interactedWith"
+//           className="form-input"
+//           style={{ width: "312px" }}
+//           value={formData.interactedWith}
+//           onChange={handleInputChange}
+//         >
+//           <option value="" disabled>Interacted With</option>
+//           <option value="father">Father</option>
+//           <option value="mother">Mother</option>
+//           <option value="student">Student</option>
+//           <option value="guardian">Guardian</option>
+//         </select>
+//         {errors.interactedWith && (
+//             <p className="name-error" style={{color:"red"}}>*{errors.interactedWith}</p>
+//           )}</div>
+
+//         {country === "India" && <GetLocation setLocation={setLocation} errors={errors} />}
+//         <div className="submit-btn-container">
+//           <button type="submit" className="submit-button">
+//           Submit
+//         </button>
+//         </div>
+        
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default StudentForm;
+
+import React, { useState, useEffect, useCallback } from "react";
 import "./StudentForm.css";
 import PhoneInputComponent from "../PhoneInputComponent/PhoneInputComponent";
 import GetLocation from "../GetLocation/GetLocation";
@@ -279,9 +511,8 @@ import { fetchData } from "../../api/fetchData";
 const StudentForm = () => {
   const [isOtpSent, setOtpSent] = useState(false);
   const [country, setCountry] = useState("India");
-  const [location, setLocation] = useState({selectedState:"",selectedDistrict:""});
+  const [location, setLocation] = useState({ selectedState: "", selectedDistrict: "" });
   
-  // Create state for form data
   const [formData, setFormData] = useState({
     studentName: "",
     email: "",
@@ -302,72 +533,94 @@ const StudentForm = () => {
     selectedDistrict: ""
   });
 
-  // Handle form input changes dynamically
-  const handleInputChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  const [classOptions, setClassOptions] = useState([]);
+  const [classDetails,setClassDetails] = useState([]);
+  const [isClassLoading, setClassLoading] = useState(true);
+
+  // Fetch class options from API
+  useEffect(() => {
+    const fetchClassOptions = async () => {
+      try {
+        setClassLoading(true);
+        const response = await fetchData("api/standard/read/get-all");
+        console.log("response checking",response);
+        setClassDetails(response);
+        const classList = response.map(each=>each.name);
+        console.log("response classes",classList);
+        setClassOptions(classList); // Assuming API returns a `classes` array
+      } catch (error) {
+        console.error("Error fetching class options:", error);
+        setClassOptions([]); // Fallback to empty array in case of error
+      } finally {
+        setClassLoading(false);
+      }
+    };
+
+    fetchClassOptions();
   }, []);
 
-  // Handle phone number change
+  const handleInputChange = useCallback((e) => {
+    console.log("checking testing",e.target);
+    const { name, value } = e.target;
+    console.log("name checking",name);
+    if (name === "selectedClass"){
+      const selectedId = classDetails?.filter(each=>each.name===value)[0]._id;
+      setFormData((prevData) => ({ ...prevData, [name]: selectedId }));
+    }
+    else{
+    setFormData((prevData) => ({ ...prevData, [name]: value }));}
+  }, []);
+
   const handlePhoneChange = (phone) => {
     setFormData((prevData) => ({ ...prevData, phone }));
   };
 
-  console.log("errors",errors);
-
-  // Handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent the default form submission
+    e.preventDefault();
 
     let formIsValid = true;
     let newErrors = {
-      studentName: '',
-      phone: '',
-      selectedClass: '',
-      selectedBoard: '',
-      interactedWith: '',
-      selectedState: '',
-      selectedDistrict: ''
-    }; // Reset errors
-    console.log("form clicked");
-    // Validate required fields
+      studentName: "",
+      phone: "",
+      selectedClass: "",
+      selectedBoard: "",
+      interactedWith: "",
+      selectedState: "",
+      selectedDistrict: ""
+    };
+
     if (!formData.studentName.trim()) {
-      console.log("inside student name");
-      newErrors.studentName = 'Student Name is required';
+      newErrors.studentName = "Student Name is required";
       formIsValid = false;
     }
     if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
+      newErrors.phone = "Phone number is required";
       formIsValid = false;
     }
     if (!formData.selectedClass.trim()) {
-      newErrors.selectedClass = 'Class selection is required';
+      newErrors.selectedClass = "Class selection is required";
       formIsValid = false;
     }
     if (!formData.selectedBoard.trim()) {
-      newErrors.selectedBoard = 'Board selection is required';
+      newErrors.selectedBoard = "Board selection is required";
       formIsValid = false;
     }
     if (!formData.interactedWith.trim()) {
-      newErrors.interactedWith = 'Interaction field is required';
+      newErrors.interactedWith = "Interaction field is required";
       formIsValid = false;
     }
-
     if (!location.selectedState.trim()) {
-      console.log("trimmed state");
-      newErrors.selectedState = 'State field is required';
+      newErrors.selectedState = "State field is required";
       formIsValid = false;
     }
-
     if (!location.selectedDistrict.trim()) {
-      console.log("trimmed district");
-      newErrors.selectedDistrict = 'District field is required';
+      newErrors.selectedDistrict = "District field is required";
       formIsValid = false;
     }
 
-    // Update error state
     setErrors(newErrors);
 
+    if (!formIsValid) return;
 
     const payload = {
       studentName: formData.studentName,
@@ -377,7 +630,7 @@ const StudentForm = () => {
       state: location?.selectedState,
       city: location?.selectedDistrict,
       interactedWith: "hello",
-      status:"prospect"
+      status: "prospect"
     };
 
     try {
@@ -403,9 +656,7 @@ const StudentForm = () => {
             value={formData.studentName}
             onChange={handleInputChange}
           />
-          {errors.studentName && (
-            <p className="name-error" style={{color:"red"}}>*{errors.studentName}</p>
-          )}
+          {errors.studentName && <p className="name-error" style={{ color: "red" }}>*{errors.studentName}</p>}
         </div>
         <input
           type="email"
@@ -416,90 +667,84 @@ const StudentForm = () => {
           onChange={handleInputChange}
         />
         <div className="name-container">
-        <div className="phone-number-container">
           <PhoneInputComponent onPhoneChange={handlePhoneChange} setOtpSent={setOtpSent} setCountry={setCountry} />
-        </div>        
-        {isOtpSent && (
-          <input
-            type="text"
-            name="otp"
-            placeholder="Enter OTP"
-            className="form-input"
-            value={formData.otp}
+          {isOtpSent && (
+            <input
+              type="text"
+              name="otp"
+              placeholder="Enter OTP"
+              className="form-input"
+              value={formData.otp}
+              onChange={handleInputChange}
+              required
+            />
+          )}
+          {errors.phone && <p className="name-error" style={{ color: "red" }}>*{errors.phone}</p>}
+        </div>
+
+        <div className="name-container">
+          {isClassLoading ? (
+            <p>Loading classes...</p>
+          ) : (
+            <select
+              name="selectedClass"
+              className="form-input"
+              style={{ width: "312px" }}
+              value={formData.selectedClass}
+              onChange={handleInputChange}
+            >
+              <option value="" disabled>Select Class</option>
+              {classOptions.map((cls,index) => (
+                <option key={index} value={cls}>{cls}</option>
+              ))}
+            </select>
+          )}
+          {errors.selectedClass && <p className="name-error" style={{ color: "red" }}>*{errors.selectedClass}</p>}
+        </div>
+
+        <div className="name-container">
+          <select
+            name="selectedBoard"
+            className="form-input custom-dropdown"
+            style={{ width: "312px" }}
+            value={formData.selectedBoard}
             onChange={handleInputChange}
-            required
-          />
-        )}
-        {errors.phone && (
-            <p className="name-error" style={{color:"red"}}>*{errors.phone}</p>
-          )}</div>
+          >
+            <option value="" disabled>Select Board</option>
+            <option value="cbsc">CBSC</option>
+            <option value="icsc">ICSC</option>
+            <option value="state">State</option>
+          </select>
+          {errors.selectedBoard && <p className="name-error" style={{ color: "red" }}>*{errors.selectedBoard}</p>}
+        </div>
 
         <div className="name-container">
-        <select
-          name="selectedClass"
-          className="form-input"
-          style={{ width: "312px" }}
-          value={formData.selectedClass}
-          onChange={handleInputChange}
-        >
-          <option value="" disabled>Select Class</option>
-          {Array.from({ length: 8 }, (_, i) => (
-            <option key={i + 3} value={`class-${i + 3}`}>
-              {`${i + 3}${i === 0 ? "rd" : "th"} class`}
-            </option>
-          ))}
-        </select>
-        {errors.selectedClass && (
-            <p className="name-error" style={{color:"red"}}>*{errors.selectedClass}</p>
-          )}</div>
-
-        <div className="name-container">
-        <select
-          name="selectedBoard"
-          className="form-input custom-dropdown"
-          style={{ width: "312px" }}
-          value={formData.selectedBoard}
-          onChange={handleInputChange}
-        >
-          <option value="" disabled>Select Board</option>
-          <option value="cbsc">CBSC</option>
-          <option value="icsc">ICSC</option>
-          <option value="state">State</option>
-        </select>
-        {errors.selectedBoard && (
-            <p className="name-error" style={{color:"red"}}>*{errors.selectedBoard}</p>
-          )}</div>
-
-        <div className="name-container">
-        <select
-          name="interactedWith"
-          className="form-input"
-          style={{ width: "312px" }}
-          value={formData.interactedWith}
-          onChange={handleInputChange}
-        >
-          <option value="" disabled>Interacted With</option>
-          <option value="father">Father</option>
-          <option value="mother">Mother</option>
-          <option value="student">Student</option>
-          <option value="guardian">Guardian</option>
-        </select>
-        {errors.interactedWith && (
-            <p className="name-error" style={{color:"red"}}>*{errors.interactedWith}</p>
-          )}</div>
+          <select
+            name="interactedWith"
+            className="form-input"
+            style={{ width: "312px" }}
+            value={formData.interactedWith}
+            onChange={handleInputChange}
+          >
+            <option value="" disabled>Interacted With</option>
+            <option value="father">Father</option>
+            <option value="mother">Mother</option>
+            <option value="student">Student</option>
+            <option value="guardian">Guardian</option>
+          </select>
+          {errors.interactedWith && <p className="name-error" style={{ color: "red" }}>*{errors.interactedWith}</p>}
+        </div>
 
         {country === "India" && <GetLocation setLocation={setLocation} errors={errors} />}
         <div className="submit-btn-container">
-          <button type="submit" className="submit-button">
-          Submit
-        </button>
+          <button type="submit" className="submit-button">Submit</button>
         </div>
-        
       </form>
     </div>
   );
 };
 
 export default StudentForm;
+
 
 

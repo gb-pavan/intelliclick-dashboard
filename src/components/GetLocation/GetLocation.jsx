@@ -75,9 +75,6 @@ function GetLocation({setLocation,errors}) {
     setSelectedDistrict(district);
   }
 
-  console.log("selected state",selectedState);
-  console.log("selected district",selectedDistrict);
-
   return (
     <div className="get-location">
       <div  className="location-container">
