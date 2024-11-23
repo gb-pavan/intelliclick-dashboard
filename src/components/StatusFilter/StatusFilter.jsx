@@ -32,7 +32,7 @@ const StatusFilter = ({ statuses, onSelectionChange }) => {
         <div className="style-list">
           <ul className="status-filter-show">
             {statuses.map((status, index) => (
-              <li key={index} >
+              <li key={index} className="each-status" >
                 <input
                   type="checkbox"
                   checked={selectedStatuses.includes(status.label)}

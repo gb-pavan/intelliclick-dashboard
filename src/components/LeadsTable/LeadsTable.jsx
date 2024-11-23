@@ -38,7 +38,7 @@ function LeadsTable() {
   const [selectedLead, setSelectedLead] = useState(null);
   const [isLoading,setIsLoading] = useState(false);
   const [isCreateLead,setCreateLead] = useState(false);
-  const [selectedStatus, setSelectedStatus] = useState("");
+  const [filteredRows, setFilteredRows] = useState([]);
 
   const endpoint = `api/lead-app/lead/read/get-all?pageNum=${currentPage}&pageSize=${rowsPerPage}`;
   const { data, loading, error } = useFetchData(endpoint);
@@ -88,16 +88,16 @@ function LeadsTable() {
     setCreateLead(false);
   }; 
   
-  const handleStatusChange = (event) => {
-    setSelectedStatus(event.target.value);
-  };
+  // const handleStatusChange = (event) => {
+  //   setSelectedStatus(event.target.value);
+  // };
 
-  const statusFiltered = tableRows?.filter(each => {
-  if (!selectedStatus) {
-    return true; // Include all rows if selectedStatus is empty
-  }
-  return each.status === selectedStatus;
-});
+//   const statusFiltered = tableRows?.filter(each => {
+//   if (!selectedStatus) {
+//     return true; // Include all rows if selectedStatus is empty
+//   }
+//   return each.status === selectedStatus;
+// });
 
 
 
@@ -115,6 +115,18 @@ function LeadsTable() {
     setCurrentPage(page);
   };
 
+  const handleStatusChange = (selected) => {
+    // console.log("Selected statuses:", selected);
+    // setSelectedStatus(selected);
+    if (selected.length === 0) {
+      setFilteredRows(tableRows); // Show all rows if nothing is selected
+    } else {
+      const filtered = tableRows.filter((row) =>
+        selected.includes(row.status)
+      );
+      setFilteredRows(filtered);
+    }
+  };
 
   const renderTableRows = () => {
     if (loading || isLoading) {
@@ -127,7 +139,7 @@ function LeadsTable() {
       );
     }
     
-    return (statusFiltered || []).map((lead, index) => (
+    return (filteredRows || []).map((lead, index) => (
       <tr key={index}>
         <td>{lead.studentName || ''}</td>
         <td>{lead?.class[0]?.name.split(" ")[1] || ''}</td>
@@ -235,7 +247,7 @@ function LeadsTable() {
         ))}
         </select> */}
         <div className="status-dropdown-container">
-        <StatusFilter statuses={statuses} /></div>
+        <StatusFilter statuses={statuses} onSelectionChange={handleStatusChange}/></div>
         <button className="search-box upload-order">
           <MdOutlineUpload size={20} />
           Upload Orders

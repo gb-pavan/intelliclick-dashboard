@@ -1,5 +1,8 @@
 .status-filter-show{
     list-style-type: none;
+    width: 180px;
+    padding: 10px;
+    margin: 0px;
 }
 
 /* .status-color-box{
@@ -18,4 +21,14 @@
 
 .style-list{
     position:absolute;
+    background-color: white;
+    padding: 0px;
+    margin: 0px;
+}
+
+.each-status{
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
