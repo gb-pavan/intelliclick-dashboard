@@ -54,9 +54,9 @@ function LeadsTable() {
       setTimeout(()=>{
         setIsLoading(false);
       },3000);
-      console.log(" raw data ",data);
-      
+      console.log(" raw data ",data);      
       setTableData(data);
+      setFilteredRows(data?.data);
     }
   }, [data, error,currentPage,rowsPerPage]); 
 
@@ -109,23 +109,24 @@ function LeadsTable() {
   };
 
   const handlePageChange = (page) => {
-    console.log("clicked");
     setIsLoading(true);
     setTableData({});
     setCurrentPage(page);
   };
 
   const handleStatusChange = (selected) => {
-    // console.log("Selected statuses:", selected);
+    console.log("Selected statuses:", selected);
     // setSelectedStatus(selected);
-    if (selected.length === 0) {
-      setFilteredRows(tableRows); // Show all rows if nothing is selected
-    } else {
-      const filtered = tableRows.filter((row) =>
+    
+      const filtered = tableRows?.filter((row) =>
         selected.includes(row.status)
       );
-      setFilteredRows(filtered);
-    }
+      if (filtered.length === 0){
+        setFilteredRows(tableRows)
+      }
+      else{
+      setFilteredRows(filtered);}
+    
   };
 
   const renderTableRows = () => {
@@ -138,8 +139,10 @@ function LeadsTable() {
         </tr>
       );
     }
+
+    console.log("filtered rows",filteredRows);
     
-    return (filteredRows || []).map((lead, index) => (
+    return filteredRows?.map((lead, index) => (
       <tr key={index}>
         <td>{lead.studentName || ''}</td>
         <td>{lead?.class[0]?.name.split(" ")[1] || ''}</td>
@@ -153,18 +156,7 @@ function LeadsTable() {
           <button className="eye-button" onClick={() => openModal(lead)}>
             <IoEyeOutline size={25} />
           </button>
-          {/* {isModalOpen && selectedLead && (
-            <Modal isOpen={isModalOpen} closeModal={closeModal}>
-              <h1>Lead Details</h1>
-              <p>Student Name: {selectedLead.studentName || ''}</p>
-              <p>Class: {selectedLead?.class[0]?.name.split(" ")[1] || ''}</p>
-              <p>Phone Number: {selectedLead.mobile || ''}</p>
-              <p>Status: {selectedLead.status || ''}</p>
-              <p>Submitted By: {selectedLead.interactedWith || ''}</p>
-              <p>Created By: {selectedLead.createdBy || ''}</p>
-              <p>Created At: {(selectedLead.createdAt && formatToLocalTime(selectedLead.createdAt)) || ''}</p>
-            </Modal>
-          )} */}
+          
           {isModalOpen && (
   <Modal isOpen={isModalOpen} closeModal={closeModal}>
     {isCreateLead ? (
@@ -198,54 +190,12 @@ function LeadsTable() {
           <IoIosSearch size={20} />
           <input type="text" placeholder="Search" />
         </div>
-        {/* <div className="search-box">
-          <CiCalendarDate size={20} />
-          <button>Date Range</button>
-        </div>
-        <div className="search-box">
-          <IoFilterOutline size={20} />
-          <button>Filters</button>
-        </div>
-        <div className="search-box upload-order">
-          <MdOutlineUpload size={20} />
-          <button>Upload Orders</button>
-        </div>
-        <div className="search-box add-color">
-          <FaPlus size={20} />
-          <button onClick={()=>setModalOpen(true)}>Create Lead</button>
-          {isModalOpen && (
-            <Modal isOpen={isModalOpen} closeModal={closeModal}>
-              <StudentForm />
-            </Modal>
-          )}
-        </div> */}
+        
         <button className="search-box">
           <CiCalendarDate size={20} />
           Date Range
         </button>
-        {/* <button className="search-box">
-          <IoFilterOutline size={20} />
-          Filters
-      </button> */}
-      {/* <select
-          name="selectedClass"
-          className="search-box"
-          value={selectedStatus}
-          onChange={handleStatusChange}
-        >
-          <option value="" disabled>
-            Status
-          </option>
-          {statuses.map((status, index) => (
-          <option
-            key={index}
-            value={status.label}
-            className={`${status.color} font-medium`}
-          >
-            {status.label}
-          </option>
-        ))}
-        </select> */}
+        
         <div className="status-dropdown-container">
         <StatusFilter statuses={statuses} onSelectionChange={handleStatusChange}/></div>
         <button className="search-box upload-order">
