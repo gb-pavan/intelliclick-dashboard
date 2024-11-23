@@ -1,13 +1,14 @@
 /* Container styles */
 .form-container {
-  max-width: 400px;
+  /* max-width: 500px; */
   margin: 50px auto;
-  padding: 20px;
+  padding: 30px;
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
+  /* text-align: center; */
   font-family: Arial, sans-serif;
+  /* background-color: brown; */
 }
 
 /* Heading and subheading styles */
@@ -32,10 +33,25 @@
 .live-class-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   gap: 15px;
   padding: 0px;
+  /* background-color: #666; */
+}
+
+.name-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  gap: 4px;
+}
+
+.name-error{
+  color: red;
+  text-align: left;
+  /* width: 80%; */
 }
 
 .phone-number-container{
@@ -59,6 +75,10 @@
   border-color: #007bff;
   outline: none;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.name-style{
+  width: 60%;
 }
 
 
@@ -95,7 +115,11 @@
 }
 
 .otp-button:hover {
-  background: #4500b0;
+  background: linear-gradient(to right,#BB1CAB, #619CDF);
+}
+
+.submit-btn-container{
+  width: 100%;
 }
 
 /* Submit button styles */
@@ -110,7 +134,7 @@
 }
 
 .submit-button:hover {
-  background: #0056b3;
+    background: linear-gradient(to right,#BB1CAB, #619CDF);
 }
 
 /* Responsive design */

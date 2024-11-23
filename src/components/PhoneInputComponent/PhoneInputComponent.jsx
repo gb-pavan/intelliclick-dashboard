@@ -37,7 +37,7 @@ const PhoneInputComponent = ({ onPhoneChange,setOtpSent,setCountry }) => {
 
   return (
     <div>
-      <div style={{ display: "flex", alignItems: "center", position: "relative", width: "360px" }}>
+      <div style={{ display: "flex",alignItems: "center", position: "relative", width: "360px" }}>
         <PhoneInput
           country={"in"}
           value={phone}
@@ -54,7 +54,7 @@ const PhoneInputComponent = ({ onPhoneChange,setOtpSent,setCountry }) => {
           }}
           containerStyle={{
             width: "360px",
-            margin:"0px 22px"
+            // margin:"0px 22px"
           }}
           inputStyle={{
             width: "calc(100% - 60px)", // Adjust width to accommodate button          

@@ -1,8 +1,20 @@
+.location-container{
+  width: 100%;
+  /* background-color: green; */
+}
+
 .get-location{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 15px;
   padding: 0px;
+  margin: 0px;
+  /* background-color: blue; */
+}
+
+.location-error{
+  margin-top: 0px;
+  text-align: left;
 }

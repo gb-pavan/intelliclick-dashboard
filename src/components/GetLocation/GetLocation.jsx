@@ -41,7 +41,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 //   ],
 // };
 
-function GetLocation({setLocation}) {
+function GetLocation({setLocation,errors}) {
 
   
   const [selectedState, setSelectedState] = useState("");
@@ -57,7 +57,7 @@ function GetLocation({setLocation}) {
   }, [selectedState, selectedDistrict, setLocation]);
 
   if (loading) return <ClipLoader color="#36d7b7" loading={true} size={30} />;
-  if (error) return <p>Error: {error.message}</p>;
+  // if (error) return <p>Error: {error.message}</p>;
   const stateDistrictData = data || {};
 
   
@@ -80,7 +80,8 @@ function GetLocation({setLocation}) {
 
   return (
     <div className="get-location">
-      <select id="state" value={selectedState} onChange={handleStateChange} className="form-input"  style={{ width: "312px" }} required>
+      <div  className="location-container">
+      <select id="state" value={selectedState} onChange={handleStateChange} className="form-input"  style={{ width: "312px" }} >
           <option value="" disabled selected>
             Select State
           </option>
@@ -90,11 +91,14 @@ function GetLocation({setLocation}) {
           </option>
         ))}
         </select>
+        {errors.selectedState && (
+            <p className="location-error" style={{color:"red"}}>*{errors.selectedState}</p>
+          )}</div>
 
    
       
-
-      <select id="district" value={selectedDistrict} onChange={handleDistrictChange} className="form-input"  style={{ width: "312px" }} required>
+      <div  className="location-container">
+      <select id="district" value={selectedDistrict} onChange={handleDistrictChange} className="form-input"  style={{ width: "312px" }} >
           <option value="" disabled selected>
             Select District
           </option>
@@ -106,6 +110,9 @@ function GetLocation({setLocation}) {
         ))}
          
         </select>
+        {errors.selectedDistrict && (
+            <p className="location-error" style={{color:"red"}}>*{errors.selectedDistrict}</p>
+          )}</div>
     </div>
   );
 }
