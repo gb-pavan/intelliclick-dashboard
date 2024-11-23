@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./StatusFilter.css";
+import { FaChevronDown } from "react-icons/fa6";
 
 const StatusFilter = ({ statuses, onSelectionChange }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,16 +16,19 @@ const StatusFilter = ({ statuses, onSelectionChange }) => {
   };
 
   return (
-    <div className="relative inline-block text-left">
+    <div>
       {/* Dropdown Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-gray-100 border border-gray-300 rounded-md px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-200"
+        className="dropdown-btn"
+        style={{color: "#64748B"}}
       >
         {selectedStatuses.length > 0
           ? `Selected (${selectedStatuses.length})`
-          : "Select Status"}
-        <span className="ml-2">&#9662;</span>
+          : "Status"}
+        <span className="ml-2"><FaChevronDown
+          className="down-arrow"
+        /></span>
       </button>
 
       {/* Dropdown Menu */}
