@@ -34,7 +34,7 @@ function LeadsTable() {
 
   const [tableData,setTableData] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedLead, setSelectedLead] = useState(null);
   const [isLoading,setIsLoading] = useState(false);
@@ -43,10 +43,6 @@ function LeadsTable() {
 
   const endpoint = `api/lead-app/lead/read/get-all?pageNum=${currentPage}&pageSize=${rowsPerPage}`;
   const { data, loading, error } = useFetchData(endpoint);
-
-  // const indexOfLastProduct = currentPage * rowsPerPage;
-  // const indexOfFirstProduct = indexOfLastProduct - rowsPerPage;
-  // const totalPages = Math.ceil((tableRows || []).length / rowsPerPage);
 
   useEffect(() => {
     if (error) {
@@ -67,37 +63,19 @@ function LeadsTable() {
   const handleCreateLead = () => {
     setModalOpen(true);
     setCreateLead(true);
-  }
-
-  
+  }  
 
 
   const openModal = (lead) => {
     setSelectedLead(lead); // Store the selected lead
     setModalOpen(true);
   };
-
-  // const closeModal = () => {
-  //   setSelectedLead(null); // Clear the selected lead
-  //   setModalOpen(false);
-  // }; 
   
   const closeModal = () => {
     setSelectedLead(null); 
     setModalOpen(false);
     setCreateLead(false);
-  }; 
-  
-  // const handleStatusChange = (event) => {
-  //   setSelectedStatus(event.target.value);
-  // };
-
-//   const statusFiltered = tableRows?.filter(each => {
-//   if (!selectedStatus) {
-//     return true; // Include all rows if selectedStatus is empty
-//   }
-//   return each.status === selectedStatus;
-// });
+  };
 
 
 
@@ -116,12 +94,17 @@ function LeadsTable() {
 
   const handleStatusChange = (selected) => {
     // setSelectedStatus(selected);
-      console.log("selected data check",tableRows);
+      console.log("initial-rows",tableRows);
+      console.log("status-check",tableRows?.map(each=>each.status));
+      // const filtered = tableRows?.filter((row) =>
+      //   selected.includes(row.status)
+      // );
       const filtered = tableRows?.filter((row) =>
-        selected.includes(row.status)
-      );
+  selected.some((status) => status.toLowerCase() === row.status.toLowerCase())
+);
 
-      console.log("filtered-data-check",filtered);
+
+      console.log("filtered-rows",filtered);
       if (filtered.length === 0){
         setFilteredRows(tableRows)
       }
@@ -138,10 +121,6 @@ function LeadsTable() {
     "Last Week",
     "Last Month",
   ];
-
-  // const handleTimeRangeChange = (selectedOption) => {
-  //   console.log("Selected Time Range:", selectedOption);
-  // };
 
     const handleTimeRangeChange = (selectedOption) => {
     const today = new Date();
@@ -264,21 +243,16 @@ function LeadsTable() {
           <IoIosSearch size={20} />
           <input type="text" placeholder="Search" />
         </div>
-        
-        {/* <button className="search-box">
-          <CiCalendarDate size={20} />
-          Date Range
-        </button> */}
         <div>
           <DateFilter options={timeRanges} onSelectionChange={handleTimeRangeChange} />
         </div>
         
         <div className="status-dropdown-container">
         <StatusFilter statuses={statuses} onSelectionChange={handleStatusChange}/></div>
-        <button className="search-box upload-order">
+        {/* <button className="search-box upload-order">
           <MdOutlineUpload size={20} />
           Upload Orders
-        </button>
+        </button> */}
         <button className="search-box add-color" onClick={handleCreateLead}>
           <FaPlus size={14} />
           Create Lead

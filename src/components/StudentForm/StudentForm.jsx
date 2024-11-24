@@ -3,6 +3,9 @@ import "./StudentForm.css";
 import PhoneInputComponent from "../PhoneInputComponent/PhoneInputComponent";
 import GetLocation from "../GetLocation/GetLocation";
 import { fetchData } from "../../api/fetchData";
+import ClipLoader from 'react-spinners/ClipLoader';
+import useFetchData from "../../hooks/useFetchData";
+
 
 const StudentForm = () => {
   const [isOtpSent, setOtpSent] = useState(false);
@@ -32,26 +35,40 @@ const StudentForm = () => {
   const [classOptions, setClassOptions] = useState([]);
   const [classDetails,setClassDetails] = useState([]);
   const [isClassLoading, setClassLoading] = useState(true);
+  const endpoint = "api/standard/read/get-all";
+const { data, loading, error } = useFetchData(endpoint);
+console.log("error in get class",error);
 
+useEffect(() => {
+    if (error) {
+      console.error("Error fetching data:", error);
+    } else {
+      setClassDetails(data);
+    }
+  }, [data, error]); 
+
+  console.log("class-details-new",classDetails);
+
+  const classList = classDetails?.map(eachClass => eachClass.name);
   // Fetch class options from API
-  useEffect(() => {
-    const fetchClassOptions = async () => {
-      try {
-        setClassLoading(true);
-        const response = await fetchData("api/standard/read/get-all");
-        setClassDetails(response);
-        const classList = response.map(each=>each.name);
-        setClassOptions(classList); // Assuming API returns a `classes` array
-      } catch (error) {
-        console.error("Error fetching class options:", error);
-        setClassOptions([]); // Fallback to empty array in case of error
-      } finally {
-        setClassLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchClassOptions = async () => {
+  //     try {
+  //       setClassLoading(true);
+        
+  //       setClassDetails(response);
+  //       const classList = response?.map(each=>each.name);
+  //       setClassOptions(classList); // Assuming API returns a `classes` array
+  //     } catch (error) {
+  //       console.error("Error fetching class options:", error);
+  //       setClassOptions([]); // Fallback to empty array in case of error
+  //     } finally {
+  //       setClassLoading(false);
+  //     }
+  //   };
 
-    fetchClassOptions();
-  }, []);
+  //   fetchClassOptions();
+  // }, []);
 
   const handleInputChange = useCallback((e) => {
     const { name, value } = e.target;    
@@ -176,8 +193,8 @@ const StudentForm = () => {
         </div>
 
         <div className="name-container">
-          {isClassLoading ? (
-            <p>Loading classes...</p>
+          {loading ? (
+            <ClipLoader color="#36d7b7" loading={true} size={30} />
           ) : (
             <select
               name="selectedClass"
@@ -187,7 +204,7 @@ const StudentForm = () => {
               onChange={handleInputChange}
             >
               <option value="" disabled>Select Class</option>
-              {classOptions.map((cls,index) => (
+              {classList?.map((cls,index) => (
                 <option key={index} value={cls}>{cls}</option>
               ))}
             </select>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchData } from '../api/fetchData';
 
-const useFetchData = (endpoint) => {
+const useFetchData = (endpoint,body=null) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -9,7 +9,7 @@ const useFetchData = (endpoint) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const result = await fetchData(endpoint);
+        const result = await fetchData(endpoint,body=null);
         setData(result);
       } catch (err) {
         setError(err.message);
@@ -19,6 +19,8 @@ const useFetchData = (endpoint) => {
     };
     getData();
   }, [endpoint]);
+
+  console.log("inside-use-fetch");
 
   return { data, loading, error };
 };
