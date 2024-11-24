@@ -194,28 +194,35 @@ function LeadsTable() {
         <td>{lead.interactedWith || ''}</td>
         <td>{lead.createdBy || ''}</td>
         <td>
-          <button className="eye-button" onClick={() => openModal(lead)}>
+          {/* <button className="eye-button" onClick={() => openModal(lead)}>
             <IoEyeOutline size={25} />
-          </button>
-          
+          </button> */}
+          <div
+            className="eye-button"
+            role="button"
+            tabIndex={0}
+            onClick={() => openModal(lead)}
+          >
+            <IoEyeOutline size={25} />
+          </div>          
           {isModalOpen && (
-  <Modal isOpen={isModalOpen} closeModal={closeModal}>
-    {isCreateLead ? (
-      <StudentForm />
-    ) : (
-      <>
-        <h1>Lead Details</h1>
-        <p>Student Name: {selectedLead?.studentName || ''}</p>
-        <p>Class: {selectedLead?.class[0]?.name.split(" ")[1] || ''}</p>
-        <p>Phone Number: {selectedLead?.mobile || ''}</p>
-        <p>Status: {selectedLead?.status || ''}</p>
-        <p>Interacted With: {selectedLead?.interactedWith || ''}</p>
-        <p>Created By: {selectedLead?.createdBy || ''}</p>
-        <p>Created At: {(selectedLead?.createdAt && formatToLocalTime(selectedLead.createdAt)) || ''}</p>
-      </>
-    )}
-  </Modal>
-)}
+            <Modal isOpen={isModalOpen} closeModal={closeModal}>
+              {isCreateLead ? (
+                <StudentForm />
+              ) : (
+                <>
+                  <h1>Lead Details</h1>
+                  <p>Student Name: {selectedLead?.studentName || ''}</p>
+                  <p>Class: {selectedLead?.class[0]?.name.split(" ")[1] || ''}</p>
+                  <p>Phone Number: {selectedLead?.mobile || ''}</p>
+                  <p>Status: {selectedLead?.status || ''}</p>
+                  <p>Interacted With: {selectedLead?.interactedWith || ''}</p>
+                  <p>Created By: {selectedLead?.createdBy || ''}</p>
+                  <p>Created At: {(selectedLead?.createdAt && formatToLocalTime(selectedLead.createdAt)) || ''}</p>
+                </>
+              )}
+            </Modal>
+          )}
         </td>
         <td className="last">
           {(lead.createdAt && formatToLocalTime(lead.createdAt)) || ''}

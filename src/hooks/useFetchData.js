@@ -20,8 +20,6 @@ const useFetchData = (endpoint,body=null) => {
     getData();
   }, [endpoint]);
 
-  console.log("inside-use-fetch");
-
   return { data, loading, error };
 };
 
