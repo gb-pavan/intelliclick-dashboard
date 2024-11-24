@@ -126,13 +126,6 @@
 }
 
 .search-box:nth-child(4) {
-  width: 133px; /* Width for Upload Orders button */
-  background-color:#F1F5F9;
-  color:#64748B;
-  font-size: 14px;
-}
-
-.search-box:nth-child(5) {
   width: 120px; /* Width for Create Lead button */
   background-color:#18508C;
   color: white;

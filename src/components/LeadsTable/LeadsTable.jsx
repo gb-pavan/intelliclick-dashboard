@@ -19,17 +19,26 @@ import DateFilter from "../DateFilter/DateFilter";
 function LeadsTable() {
 
   const statuses = [
-  { label: "Prospect", color: "blue" },
-  { label: "Qualified", color: "orange" },
-  { label: "Not Qualified", color: "green" },
-  { label: "Follow-up", color: "red" },
-  { label: "Trial Booked", color: "blue" },
-  { label: "Trial Completed", color: "orange" },
-  { label: "Payment Created", color: "green" },
-  { label: "Enrolled", color: "red" },
-  { label: "Trial Follow-up", color: "blue" },
-  { label: "Not Enrolled", color: "orange" },
-];
+    { label: "Prospect", color: "blue" },
+    { label: "Qualified", color: "orange" },
+    { label: "Not Qualified", color: "green" },
+    { label: "Follow-up", color: "red" },
+    { label: "Trial Booked", color: "blue" },
+    { label: "Trial Completed", color: "orange" },
+    { label: "Payment Created", color: "green" },
+    { label: "Enrolled", color: "red" },
+    { label: "Trial Follow-up", color: "blue" },
+    { label: "Not Enrolled", color: "orange" },
+  ];
+
+  const timeRanges = [
+    "All",
+    "Today",
+    "This Week",
+    "This Month",
+    "Last Week",
+    "Last Month",
+  ];
 
 
   const [tableData,setTableData] = useState({});
@@ -63,8 +72,7 @@ function LeadsTable() {
   const handleCreateLead = () => {
     setModalOpen(true);
     setCreateLead(true);
-  }  
-
+  }
 
   const openModal = (lead) => {
     setSelectedLead(lead); // Store the selected lead
@@ -76,8 +84,6 @@ function LeadsTable() {
     setModalOpen(false);
     setCreateLead(false);
   };
-
-
 
   const handleRowsPerPageChange = (newRowsPerPage) => {
     setIsLoading(true);
@@ -93,36 +99,18 @@ function LeadsTable() {
   };
 
   const handleStatusChange = (selected) => {
-    // setSelectedStatus(selected);
-      console.log("initial-rows",tableRows);
-      console.log("status-check",tableRows?.map(each=>each.status));
-      // const filtered = tableRows?.filter((row) =>
-      //   selected.includes(row.status)
-      // );
-      const filtered = tableRows?.filter((row) =>
-  selected.some((status) => status.toLowerCase() === row.status.toLowerCase())
-);
+      const filtered = tableRows?.filter((row) => selected.some((status) => status.toLowerCase() === row.status.toLowerCase()));
 
-
-      console.log("filtered-rows",filtered);
       if (filtered.length === 0){
         setFilteredRows(tableRows)
       }
       else{
-      setFilteredRows(filtered);}
+        setFilteredRows(filtered);
+      }
     
   };
 
-  const timeRanges = [
-    "All",
-    "Today",
-    "This Week",
-    "This Month",
-    "Last Week",
-    "Last Month",
-  ];
-
-    const handleTimeRangeChange = (selectedOption) => {
+  const handleTimeRangeChange = (selectedOption) => {
     const today = new Date();
     let filteredData = [];
 
@@ -245,14 +233,10 @@ function LeadsTable() {
         </div>
         <div>
           <DateFilter options={timeRanges} onSelectionChange={handleTimeRangeChange} />
-        </div>
-        
+        </div>        
         <div className="status-dropdown-container">
-        <StatusFilter statuses={statuses} onSelectionChange={handleStatusChange}/></div>
-        {/* <button className="search-box upload-order">
-          <MdOutlineUpload size={20} />
-          Upload Orders
-        </button> */}
+          <StatusFilter statuses={statuses} onSelectionChange={handleStatusChange}/>
+        </div>
         <button className="search-box add-color" onClick={handleCreateLead}>
           <FaPlus size={14} />
           Create Lead
@@ -262,7 +246,6 @@ function LeadsTable() {
             </Modal>
           )}
         </button>
-
       </div>
     );
   };
