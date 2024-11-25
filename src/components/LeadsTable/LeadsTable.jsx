@@ -30,6 +30,7 @@ function LeadsTable() {
     { label: "Enrolled", color: "red" },
     { label: "Trial Follow-up", color: "blue" },
     { label: "Not Enrolled", color: "orange" },
+    { label: "Interested", color:"green"}
   ];
 
   const timeRanges = [
@@ -39,6 +40,7 @@ function LeadsTable() {
     "This Month",
     "Last Week",
     "Last Month",
+    "Custom Date"
   ];
 
 
@@ -111,7 +113,7 @@ function LeadsTable() {
     
   };
 
-  const handleTimeRangeChange = (selectedOption) => {
+  const handleTimeRangeChange = (selectedOption,customStartDate=null,customEndDate=null) => {
     const today = new Date();
     let filteredData = [];
 
@@ -165,6 +167,20 @@ function LeadsTable() {
             new Date(row.createdAt) <= endOfLastMonth
         );
         break;
+      case "Custom Date":
+        if (customStartDate && customEndDate) {
+          const startDate = new Date(customStartDate);
+          const endDate = new Date(customEndDate);
+          filteredData = tableRows.filter(
+            (row) =>
+              new Date(row.createdAt) >= startDate &&
+              new Date(row.createdAt) <= endDate
+          );
+        } else {
+          console.error("Custom date range not provided");
+        }
+        break;
+          
       default:
         filteredData = tableRows;
     }

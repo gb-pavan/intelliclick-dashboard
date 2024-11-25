@@ -136,10 +136,10 @@ useEffect(() => {
       studentName: formData.studentName,
       mobile: formData.phone,
       standard: selectedId,
-      createdBy: formData.interactedWith,
+      createdBy: "offline",
       state: location?.selectedState,
       city: location?.selectedDistrict,
-      interactedWith: "hello",
+      interactedWith: formData.interactedWith,
       status: "prospect"
     };
 
