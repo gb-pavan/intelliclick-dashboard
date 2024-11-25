@@ -85,9 +85,6 @@ useEffect(() => {
     console.log("form-data",formData);
     console.log("classDetails",classDetails);
 
-    const selectedId = classDetails.filter(eachClass => eachClass.name === formData.selectedClass)[0]._id;
-    console.log("see selectedId",selectedId);
-
     let formIsValid = true;
     let newErrors = {
       studentName: "",
@@ -119,16 +116,19 @@ useEffect(() => {
       newErrors.interactedWith = "Interaction field is required";
       formIsValid = false;
     }
-    if (!location.selectedState.trim()) {
-      newErrors.selectedState = "State field is required";
-      formIsValid = false;
-    }
-    if (!location.selectedDistrict.trim()) {
-      newErrors.selectedDistrict = "District field is required";
-      formIsValid = false;
-    }
+    // if (!location.selectedState.trim()) {
+    //   newErrors.selectedState = "State field is required";
+    //   formIsValid = false;
+    // }
+    // if (!location.selectedDistrict.trim()) {
+    //   newErrors.selectedDistrict = "District field is required";
+    //   formIsValid = false;
+    // }
 
     setErrors(newErrors);
+
+    const selectedId = classDetails?.filter(eachClass => eachClass.name === formData.selectedClass)[0]._id;
+    console.log("see selectedId",selectedId);
 
     if (!formIsValid) return;
 
@@ -137,8 +137,8 @@ useEffect(() => {
       mobile: formData.phone,
       standard: selectedId,
       createdBy: "offline",
-      state: location?.selectedState,
-      city: location?.selectedDistrict,
+      // state: location?.selectedState,
+      // city: location?.selectedDistrict,
       interactedWith: formData.interactedWith,
       status: "prospect"
     };
@@ -245,7 +245,7 @@ useEffect(() => {
           {errors.interactedWith && <p className="name-error" style={{ color: "red" }}>*{errors.interactedWith}</p>}
         </div>
 
-        {country === "India" && <GetLocation setLocation={setLocation} errors={errors} />}
+        {/* {country === "India" && <GetLocation setLocation={setLocation} errors={errors} />} */}
         <div className="submit-btn-container">
           <button type="submit" className="submit-button">Submit</button>
         </div>
