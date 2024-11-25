@@ -71,6 +71,7 @@ function LeadsTable() {
   const tableRows = tableData?.data;
   const totalLeads = tableData?.totalCount;
   const totalPages = Math.ceil(totalLeads / rowsPerPage);
+  const qualified = tableRows?.map(row => row.status.toLowerCase()==="qualified").length;
 
   const handleCreateLead = () => {
     setModalOpen(true);
@@ -296,7 +297,7 @@ function LeadsTable() {
 
   return (
     <>
-      <LeadStats />
+      <LeadStats totalLeads={totalLeads} tableRows={tableRows}/>
       {renderButtons()}
       {renderHeader()}
       <div className="leads-table">

@@ -1,13 +1,19 @@
 import React from "react";
 import "./LeadStats.css"
 
-const LeadStats = () => {
+const LeadStats = ({totalLeads,tableRows}) => {
+
+  const qualified = tableRows?.filter(row => row.status.toLowerCase()==="qualified").length;
+  const followUp = tableRows?.filter(row => row.status.toLowerCase().replace(" ","-")==="follow-up").length;
+  const enrolled = tableRows?.filter(row => row.status.toLowerCase()==="enrolled").length;
+  const notQualified = tableRows?.filter(row => row.status.toLowerCase().replace(" ","-")==="not-qualified").length;
+
   const stats = [
-    { title: "Total Leads", value: 0, color: "#F2F7FD", textColor: "#212529" },
-    { title: "Qualified", value: 69, color: "#F0FDF4", textColor: "#15803D" },
-    { title: "Follow up", value: 55, color: "#FFFBEB", textColor: "#92400E" },
-    { title: "Enrolled", value: 13, color: "#FEF4FF", textColor: "#AB1CAF" },
-    { title: "Not Qualified", value: 3, color: "#FEF2F2", textColor: "#B91C1C" },
+    { title: "Total Leads", value: totalLeads, color: "#F2F7FD", textColor: "#212529" },
+    { title: "Qualified", value: qualified, color: "#F0FDF4", textColor: "#15803D" },
+    { title: "Follow up", value: followUp, color: "#FFFBEB", textColor: "#92400E" },
+    { title: "Enrolled", value: enrolled, color: "#FEF4FF", textColor: "#AB1CAF" },
+    { title: "Not Qualified", value: notQualified, color: "#FEF2F2", textColor: "#B91C1C" },
   ];
 
   return (
