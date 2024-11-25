@@ -221,9 +221,9 @@ useEffect(() => {
             onChange={handleInputChange}
           >
             <option value="" disabled>Select Board</option>
-            <option value="cbsc">CBSC</option>
-            <option value="icsc">ICSC</option>
-            <option value="state">State</option>
+            <option value="CBSC">CBSC</option>
+            <option value="ICSC">ICSC</option>
+            <option value="State">State</option>
           </select>
           {errors.selectedBoard && <p className="name-error" style={{ color: "red" }}>*{errors.selectedBoard}</p>}
         </div>
@@ -237,10 +237,10 @@ useEffect(() => {
             onChange={handleInputChange}
           >
             <option value="" disabled>Interacted With</option>
-            <option value="father">Father</option>
-            <option value="mother">Mother</option>
-            <option value="student">Student</option>
-            <option value="guardian">Guardian</option>
+            <option value="Father">Father</option>
+            <option value="Mother">Mother</option>
+            <option value="Student">Student</option>
+            <option value="Guardian">Guardian</option>
           </select>
           {errors.interactedWith && <p className="name-error" style={{ color: "red" }}>*{errors.interactedWith}</p>}
         </div>

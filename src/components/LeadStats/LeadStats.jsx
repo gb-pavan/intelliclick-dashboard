@@ -25,7 +25,7 @@ const LeadStats = ({totalLeads,tableRows}) => {
           className="lead-stats"
           style={{ minWidth: "100px",backgroundColor: stat.color, color:stat.textColor }}
         >
-          <h3>{stat.title}</h3>
+          <h3 style={{fontSize:stat.title.length > 10? "21px":""}}>{stat.title}</h3>
           <p>{stat.value}</p>
         </div>
       ))}
