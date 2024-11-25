@@ -14,6 +14,7 @@ import useFetchData from '../../hooks/useFetchData';
 import StudentForm from "../StudentForm/StudentForm"
 import StatusFilter from "../StatusFilter/StatusFilter";
 import DateFilter from "../DateFilter/DateFilter";
+import LeadStats from "../LeadStats/LeadStats";
 
 
 function LeadsTable() {
@@ -279,6 +280,7 @@ function LeadsTable() {
 
   return (
     <>
+      <LeadStats />
       {renderButtons()}
       {renderHeader()}
       <div className="leads-table">
