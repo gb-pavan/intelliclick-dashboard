@@ -52,6 +52,8 @@ function LeadsTable() {
   const [isLoading,setIsLoading] = useState(false);
   const [isCreateLead,setCreateLead] = useState(false);
   const [filteredRows, setFilteredRows] = useState([]);
+  const [selectStartDate,setSelectStartDate] = useState(null);
+  const [selectEndDate,setSelectEndDate] = useState(null);
 
   const endpoint = `api/lead-app/lead/read/get-all?pageNum=${currentPage}&pageSize=${rowsPerPage}`;
   const { data, loading, error } = useFetchData(endpoint);
@@ -71,7 +73,6 @@ function LeadsTable() {
   const tableRows = tableData?.data;
   const totalLeads = tableData?.totalCount;
   const totalPages = Math.ceil(totalLeads / rowsPerPage);
-  const qualified = tableRows?.map(row => row.status.toLowerCase()==="qualified").length;
 
   const handleCreateLead = () => {
     setModalOpen(true);
@@ -115,6 +116,7 @@ function LeadsTable() {
   };
 
   const handleTimeRangeChange = (selectedOption,customStartDate=null,customEndDate=null) => {
+    console.log("customStartDate",customStartDate);
     const today = new Date();
     let filteredData = [];
 
@@ -169,18 +171,27 @@ function LeadsTable() {
         );
         break;
       case "Custom Date":
+        if (customStartDate && !customEndDate) {
+          const startDate = new Date(customStartDate);
+          filteredData = tableRows.filter(
+            (row) => new Date(row.createdAt) >= startDate
+          );
+        }
         if (customStartDate && customEndDate) {
           const startDate = new Date(customStartDate);
           const endDate = new Date(customEndDate);
+          // Set endDate to the end of the day
+          endDate.setHours(23, 59, 59, 999);
           filteredData = tableRows.filter(
             (row) =>
               new Date(row.createdAt) >= startDate &&
               new Date(row.createdAt) <= endDate
           );
-        } else {
+        } else if (!customStartDate && !customEndDate) {
           console.error("Custom date range not provided");
         }
         break;
+
           
       default:
         filteredData = tableRows;
@@ -257,7 +268,7 @@ function LeadsTable() {
           <input type="text" placeholder="Search" />
         </div>
         <div>
-          <DateFilter options={timeRanges} onSelectionChange={handleTimeRangeChange} />
+          <DateFilter options={timeRanges} onSelectionChange={handleTimeRangeChange} setSelectStartDate={setSelectStartDate} setSelectEndDate={setSelectEndDate} />
         </div>        
         <div className="status-dropdown-container">
           <StatusFilter statuses={statuses} onSelectionChange={handleStatusChange}/>
