@@ -62,7 +62,8 @@ const PhoneInputComponent = ({ onPhoneChange,setOtpSent,setCountry }) => {
             borderRadius: "5px",
             borderTopLeftRadius:"0px",
             borderBottomLeftRadius:"0px",
-            border:"none"
+            border:"none",
+            color:"black"
           }}
         />
         {resendOtp ?<button className="send-otp-button" style={{

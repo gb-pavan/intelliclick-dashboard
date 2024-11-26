@@ -83,7 +83,6 @@ useEffect(() => {
     e.preventDefault();
 
     console.log("form-data",formData);
-    console.log("classDetails",classDetails);
 
     let formIsValid = true;
     let newErrors = {
@@ -137,10 +136,11 @@ useEffect(() => {
       mobile: formData.phone,
       standard: selectedId,
       createdBy: "offline",
+      board: formData.selectedBoard,
       // state: location?.selectedState,
       // city: location?.selectedDistrict,
       interactedWith: formData.interactedWith,
-      status: "prospect"
+      // status: "prospect"
     };
 
     try {
