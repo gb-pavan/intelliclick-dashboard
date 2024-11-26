@@ -1,6 +1,5 @@
 import React from "react";
 import dateFormat, { masks } from "dateformat";
-// import icon from "../images/icon.png";
 import DropdownButton from "../DropdownButton/DropdownButton";
 import ProfilePage from "../ProfilePage/ProfilePage";
 import BackPage from "../BackPage/BackPage";
@@ -10,7 +9,7 @@ const YourProfile = ({ userData, frontRef, downloadHandler, backRef }) => {
   };
   return (
     <div
-      className="w-[1152px] h-[856px]  gap-0 rounded-[10px]  bg-[#FFFFFF] border border-[#FCFCFCCC]"
+      className=" relative h-[856px]  gap-0 rounded-[10px]  bg-[#FFFFFF] border border-[#FCFCFCCC]"
       style={{
         boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15)", // Bottom shadow
       }}
@@ -99,9 +98,7 @@ const YourProfile = ({ userData, frontRef, downloadHandler, backRef }) => {
                 Mobile Number
               </p>
               <div className="w-[322px] mt-[16px] h-[52px] bg-[#F9F9F9] text-[16px] pl-[14px] py-[14px] font-[400px] text-[ #000000] rounded-[8px] font-poppins">
-                <div className="opacity-40 font-poppins">
-                  {userData?.phone}
-                </div>
+                <div className="opacity-40 font-poppins">{userData?.phone}</div>
               </div>
             </div>
             <div>
@@ -119,19 +116,16 @@ const YourProfile = ({ userData, frontRef, downloadHandler, backRef }) => {
                 HRBP
               </p>
               <div className="w-[322px] mt-[16px] h-[52px] bg-[#F9F9F9] text-[16px] pl-[14px] py-[14px] font-[400px] text-[ #000000] rounded-[8px] font-poppins">
-                <div className="opacity-40 font-poppins">
-                  {userData?.HRBP}
-                </div>
+                <div className="opacity-40 font-poppins">{userData?.HRBP}</div>
               </div>
             </div>
           </div>
-          <div></div>
         </div>
-        <ProfilePage userData={userData} pageRef={frontRef} />
-        {/* <div >
-          <BackPage pageRef={backRef} />
-        </div> */}
       </div>
+      <div className=" absolute  top-[84px] right-[17px]">
+        <ProfilePage userData={userData} pageRef={frontRef} />
+      </div>
+
       <DropdownButton onSelect={(format) => downloadHandler(format)} />
     </div>
   );

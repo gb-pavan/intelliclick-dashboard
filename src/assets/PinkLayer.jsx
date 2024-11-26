@@ -2,8 +2,7 @@ import React from "react";
 
 const CombinedLayerSvg = () => (
   <svg
-    width="186.83"
-    height="84"
+    width="385"
     viewBox="0 -3 188 84"
     fill="none"
     preserveAspectRatio="xMidYMid slice"
@@ -27,3 +26,4 @@ const CombinedLayerSvg = () => (
 );
 
 export default CombinedLayerSvg;
+

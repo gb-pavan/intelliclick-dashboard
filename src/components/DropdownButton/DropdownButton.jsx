@@ -32,7 +32,7 @@ const DropdownButton = ({ onSelect }) => {
         style={{
           background: 'linear-gradient(109.01deg, #E446EF 15.4%, #2D84D3 99.81%)'
         }}
-        className=" w-[218px] h-[44px] flex items-center justify-center rounded-[8px]  ml-[851px]"
+        className=" w-[218px] h-[44px] flex items-center justify-center mt-[24px] rounded-[8px]  ml-[851px]"
       >
         <Download className="mr-2 text-[#FFFFFF] " />
        <div className=" text-[#FFFFFF] text-[18px] font-[roboto] font-bold">Download</div> 

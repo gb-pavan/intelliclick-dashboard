@@ -54,6 +54,31 @@ function LeadsTable() {
   const [filteredRows, setFilteredRows] = useState([]);
   const [selectStartDate,setSelectStartDate] = useState(null);
   const [selectEndDate,setSelectEndDate] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(""); // State for search input
+
+  // Filter rows based on searchQuery
+  const handleSearchChange = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    const filteredData = tableRows?.filter((row) => {
+      const studentName = row?.studentName?.toLowerCase() || "";
+      const phoneNumber = row?.mobile?.toString() || "";
+      const className = row?.class[0]?.name?.toLowerCase() || "";
+      const interactedWith = row?.interactedWith?.toLowerCase() || "";
+      const createdBy = row?.createdBy?.toLowerCase() || "";
+
+      return (
+        studentName.includes(query) ||
+        phoneNumber.includes(query) ||
+        className.includes(query) ||
+        interactedWith.includes(query) ||
+        createdBy.includes(query)
+      );
+    });
+
+    setFilteredRows(filteredData || tableRows);
+  };
 
   const endpoint = `api/lead-app/lead/read/get-all?pageNum=${currentPage}&pageSize=${rowsPerPage}`;
   const { data, loading, error } = useFetchData(endpoint);
@@ -265,7 +290,7 @@ function LeadsTable() {
       <div className="filters">
         <div className="input-box">
           <IoIosSearch size={20} />
-          <input type="text" placeholder="Search" />
+          <input type="text" placeholder="Search" onChange={handleSearchChange} />
         </div>
         <div>
           <DateFilter options={timeRanges} onSelectionChange={handleTimeRangeChange} setSelectStartDate={setSelectStartDate} setSelectEndDate={setSelectEndDate} />

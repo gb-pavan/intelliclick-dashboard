@@ -7,16 +7,18 @@ const CombinedIcon = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "11.46px",
        
       }}
     >
-      <div className="relative mb-[5.2px] mr-1" style={{ width: "26px", height: "22px" }}>
+      <div
+        className="relative mt-[12.8px] "
+        style={{ width: "26px", height: "22px" }}
+      >
         {/* Outer SVG */}
         <svg
-          width="33px"
-          height="29px"
-          viewBox="0 0 26 22"
+          width="50.76px"
+          height="41.12px"
+          viewBox="0 0 25 22"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -28,9 +30,9 @@ const CombinedIcon = () => {
 
         {/* Inner SVG */}
         <svg
-          style={{ position: "absolute", top: "10.4px", left: "40%" }}
-          width="6.62px"
-          height="6.65px"
+          style={{ position: "absolute", top: "15.5px", left: "70%" }}
+          width="8.46px"
+          height="8.18px"
           viewBox="0 0 4 5"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -41,11 +43,11 @@ const CombinedIcon = () => {
           />
         </svg>
       </div>
-      <div className="ml-[5.14px]">
+      <div className="ml-[22.52px] mt-7">
         <svg
-          width="51"
-          height="19"
-          viewBox="0 0 41 9"
+          width="83.62"
+          height="16.86"
+          viewBox="-1 0 41 9"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -55,11 +57,11 @@ const CombinedIcon = () => {
           />
         </svg>
       </div>
-      <div className="ml-[0.05rem] mt-[0.06rem]">
+      <div className=" mt-[30px]">
         <svg
-          width="48"
-          height="20"
-          viewBox="0 0 38 10"
+          width="75.94"
+          height="17.44"
+          viewBox="3 0 38 10"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
