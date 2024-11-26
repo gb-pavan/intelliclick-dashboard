@@ -21,7 +21,7 @@ const StatusFilter = ({ statuses, onSelectionChange }) => {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="dropdown-btn"
-        style={{color: "#64748B"}}
+        style={{color: "#64748B",padding:"0px 10px"}}
       >
         {selectedStatuses.length > 0
           ? `Selected (${selectedStatuses.length})`

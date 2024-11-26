@@ -31,6 +31,10 @@
     font-weight: 400;
 }
 
+.profile-img{
+    cursor: pointer;
+}
+
 .menu-icon-container svg:first-of-type{
     display: none;
 }

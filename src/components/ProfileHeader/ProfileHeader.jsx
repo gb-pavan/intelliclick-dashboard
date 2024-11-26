@@ -4,7 +4,8 @@ import { FaToggleOff } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
 import './ProfileHeader.css'
 
-function ProfileHeader({ isOpen, toggleSidebar }){
+function ProfileHeader({ isOpen, toggleSidebar,setProfileOpen }){
+
     return (
         <div className='profile-header-container'>
             <div className="c-logo-container">
@@ -17,7 +18,7 @@ function ProfileHeader({ isOpen, toggleSidebar }){
                     <FaToggleOff color='blue' size={25}/>
                 </div>
                 <div>
-                    <img src='./Ellipse.svg' alt="profile-image" className="profile-img" />
+                    <img src='./Ellipse.svg' alt="profile-image" className="profile-img" onClick={() => setProfileOpen((prev) => !prev)}  />
                 </div>
             </div>
         </div>

@@ -58,6 +58,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage/LoginPage';
 import Dashboard from './pages/Dashboard/Dashboard';
+import './index.css';
+
 
 const App = () => {
   return (
