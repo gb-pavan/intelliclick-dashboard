@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./LeadStats.css"
+import useFetchData from "../../hooks/useFetchData";
+
 
 const LeadStats = ({totalLeads,tableRows}) => {
 
-  const qualified = tableRows?.filter(row => row.status.toLowerCase()==="qualified").length;
-  const followUp = tableRows?.filter(row => row.status.toLowerCase().replace(" ","-")==="follow-up").length;
-  const enrolled = tableRows?.filter(row => row.status.toLowerCase()==="enrolled").length;
-  const notQualified = tableRows?.filter(row => row.status.toLowerCase().replace(" ","-")==="not-qualified").length;
+  const endpoint = "api/lead-app/lead/read/get-lead-kpis";
+  const { data, loading, error } = useFetchData(endpoint);
+
+
+  const qualified = data.find(item => item._id === "Qualified")?.count;
+  const prospect = data.find(item => item._id === "prospect")?.count;
+  const followUp = data.find(item => item._id === "Follow-up")?.count;
+  const enrolled = data.find(item => item._id === "Enrolled")?.count;
+  const notQualified = data?.filter(row => row._id.toLowerCase().replace(" ","-")==="not-qualified").length;
+
+  console.log("qualified,followUp,enroll,notqua",qualified,followUp,enrolled,notQualified);
 
   const stats = [
     { title: "Total Leads", value: totalLeads, color: "#F2F7FD", textColor: "#212529" },
@@ -15,6 +24,12 @@ const LeadStats = ({totalLeads,tableRows}) => {
     { title: "Enrolled", value: enrolled, color: "#FEF4FF", textColor: "#AB1CAF" },
     { title: "Not Qualified", value: notQualified, color: "#FEF2F2", textColor: "#B91C1C" },
   ];
+
+  
+
+  useEffect(()=>{
+    console.log("i am working");    
+  },[])
 
   return (
     <div className="lead-stats-container">
