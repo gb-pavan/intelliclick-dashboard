@@ -13,17 +13,19 @@ const LeadStats = ({totalLeads,tableRows}) => {
   const prospect = data?.find(item => item._id === "prospect")?.count;
   const followUp = data?.find(item => item._id === "Follow-up")?.count;
   const enrolled = data?.find(item => item._id === "Enrolled")?.count;
-  // const notQualified = data?.filter(row => row._id.toLowerCase().replace(" ","-")==="not-qualified").length;
+  const trialBooked = data?.find(item => item._id === "Trial Booked")?.count;
   const notQualified = 1;
 
-  console.log("qualified,followUp,enroll,notqua",qualified,followUp,enrolled,notQualified);
+  console.log("qualified,followUp,enrol",data);
 
   const stats = [
     { title: "Total Leads", value: totalLeads, color: "#F2F7FD", textColor: "#212529" },
     { title: "Qualified", value: qualified, color: "#F0FDF4", textColor: "#15803D" },
     { title: "Follow up", value: followUp, color: "#FFFBEB", textColor: "#92400E" },
+    { title: "Trial Booked", value: trialBooked, color: "#FEF2F2", textColor: "#B91C1C" },
     { title: "Enrolled", value: enrolled, color: "#FEF4FF", textColor: "#AB1CAF" },
     { title: "Not Qualified", value: notQualified, color: "#FEF2F2", textColor: "#B91C1C" },
+    
   ];
 
   
