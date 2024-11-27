@@ -9,7 +9,7 @@ const EmployePage = ({ userData, frontRef, downloadHandler, backRef }) => {
   };
   return (
     <div
-      className=" relative m-4 h-[856px]  gap-0 rounded-[10px]  bg-[#FFFFFF] border border-[#FCFCFCCC]"
+      className=" relative m-4 h-[750px] pb-5  gap-0 rounded-[10px]  bg-[#FFFFFF] border border-[#FCFCFCCC]"
       style={{
         boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15)", // Bottom shadow
       }}
@@ -42,7 +42,7 @@ const EmployePage = ({ userData, frontRef, downloadHandler, backRef }) => {
       </div>
 
       {/* //form */}
-      <div className="flex  mt-[82px] ml-[29px] space-x-[38px] ">
+      <div className="flex  mt-[82px] ml-[29px] space-x-[308px] ">
         <div className=" flex flex-col space-y-[40px]">
           <div>
             <p className="font-roboto text-[16px] font-[400px] text-[ #000000] opacity-80">
@@ -122,7 +122,7 @@ const EmployePage = ({ userData, frontRef, downloadHandler, backRef }) => {
           </div>
         </div>
       </div>
-      <div className=" absolute  sm:top-[84px] sm:right-[17px]">
+      <div className=" absolute  sm:top-[34px] sm:right-[17px]">
         <ProfilePage userData={userData} pageRef={frontRef} />
         <DropdownButton onSelect={(format) => downloadHandler(format)} />
       </div>

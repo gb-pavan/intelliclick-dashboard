@@ -19,7 +19,7 @@ function Dashboard() {
   };
 
   return (
-    <div>
+    <div className="dashboard-container">
       <ProfileHeader isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} setProfileOpen={setProfileOpen} />
       <div className="app">
         <div className="side-bar-component">

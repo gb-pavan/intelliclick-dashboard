@@ -29,8 +29,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
       {isOpen &&   <div className="open-close-c-logo">        
         <img src="./logo.svg" alt="logo" />
         <IoClose size={30} onClick={toggleSidebar} className="close-icon" />               
-      </div>}
-    
+      </div>}  
       
       <ul>
         <li>
