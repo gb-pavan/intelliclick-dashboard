@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-
 import CombinedLayerSvg from "../../assets/PinkLayer.jsx";
+import Heading from "../../assets/backcard/Heading.jsx";
 import CombinedIcon from "../../assets/CombinedIcon.jsx";
 const ProfilePage = ({ userData, pageRef }) => {
   return (
@@ -35,20 +35,20 @@ const ProfilePage = ({ userData, pageRef }) => {
         <div className="relative mt-[43.97px]   flex items-center justify-center   ">                     
           <CombinedLayerSvg />
           <div className="rounded-full ">
-            {userData?.photo && (
+            
               <img
-                src={`http://localhost:5000/${userData?.photo}`}
+                src="./Group.png"
                 alt="User Profile Photo"
                 className=" mt-3 absolute left-1/2 top-[45%] rounded-full transform -translate-x-1/2 -translate-y-1/2 w-[191.36px] h-[181.93px] object-cover z-10"
               />
-            )}
+        
           </div>
         </div>
 
         {/* User Name */}
 
         <p className="text-center text-3xl mt-[25.28px] font-roboto  font-bold uppercase text-[#D029D8]">
-          {userData?.name} 
+          {userData?.name || "sumit kumar"} 
         </p>
 
         {/* Alpha Icon */}
@@ -69,7 +69,7 @@ const ProfilePage = ({ userData, pageRef }) => {
             
           }}
         >
-          <div className="mt-4 pt-1">{userData?.designation} </div>
+          <div className="mt-4 pt-1">{userData?.designation || "manager"} </div>
         </div>
 
         {/* User Details */}
@@ -79,31 +79,31 @@ const ProfilePage = ({ userData, pageRef }) => {
             style={{ fontSize: "15px" }}
           >
             <div className="  text-[#000000] text-nowrap">ID No:</div>
-            <div className=" text-[#000000] mt-[0.01rem]">{userData?.idNumber}</div>
+            <div className=" text-[#000000] mt-[0.01rem]">{userData?.idNumber || "IPLT123456789"}</div>
           </div>
           <div className=" flex space-x-[11px] " style={{ fontSize: "15px" }}>
             <div className=" text-nowrap text-[#000000]">E-mail:</div>
             <div className=" text-wrap text-[#000000]    mt-[0.01rem] ">
-              {userData?.email}
+              {userData?.email || "O2e7w@example.com"}
             </div>
           </div>
           <div className="flex  space-x-[10px] mt-1 " style={{ fontSize: "15px" }}>
             <div className=" text-[#000000]">Phone</div>
-            <div className=" text-[#000000] mt-[0.02rem]">{userData?.phone}</div>
+            <div className=" text-[#000000] mt-[0.02rem]">{userData?.phone || "8234567890"}</div>
           </div>
           <div className="flex  space-x-3.5 mt-2 "  style={{ fontSize: "15px" }}>
             <div className=" text-[#000000]">Blood:</div>
             <div className=" text-[#000000] mt-[0.02rem] ">
-              {userData?.bloodGroup}
+              {userData?.bloodGroup  || "O+"}
             </div>
           </div>
         </div>
         {/* QR Code */}
-        <div className=" flex justify-center  ">
+        <div className=" flex justify-center rounded-none border-0 ">
           <img
-            src={userData?.qrCode}
+            src={userData?.qrCode || "./qrcode.svg"}
             alt="User QR Code"
-            className="w-[74.05px] h-[71.92px]"
+            className="w-[74.05px] h-[71.92px] rounded-none border-0" 
           />
         </div>
 
