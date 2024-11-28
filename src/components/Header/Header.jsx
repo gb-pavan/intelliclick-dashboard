@@ -11,7 +11,7 @@ function Header() {
           tempor incididunt ut labore et dolore magna aliqua."
         </p>
       </div>
-      <div className="header-actions">
+      {/* <div className="header-actions">
         <p>Home</p>
         <div className="headers-info">
           <div>
@@ -28,7 +28,7 @@ function Header() {
           </div>
         </div>
         
-      </div>
+      </div> */}
     </div>
   );
 }
