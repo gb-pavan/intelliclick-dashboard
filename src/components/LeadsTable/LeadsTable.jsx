@@ -337,23 +337,25 @@ function LeadsTable() {
       {renderButtons()}
       {renderHeader()}
       <div className="leads-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Student Name</th>
-              <th>Class</th>
-              <th>Phone Number</th>
-              <th>Status</th>
-              <th>Interacted With</th>
-              <th>Created By</th>
-              <th>Details</th>
-              <th>Created At</th>
-            </tr>
-          </thead>
-          <tbody>
-            {renderTableRows()}
-          </tbody>
-        </table>
+        <div className="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Student Name</th>
+                <th>Class</th>
+                <th>Phone Number</th>
+                <th>Status</th>
+                <th>Interacted With</th>
+                <th>Created By</th>
+                <th>Details</th>
+                <th>Created At</th>
+              </tr>
+            </thead>
+            <tbody>
+              {renderTableRows()}
+            </tbody>
+          </table>
+        </div>
         <Pagination 
           currentPage={currentPage}
           totalPages={totalPages} 

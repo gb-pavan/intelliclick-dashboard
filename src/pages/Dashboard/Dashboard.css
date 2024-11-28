@@ -68,6 +68,7 @@
     border-left: 1px solid #ddd;
     /* height:1200px; */
     width: 948px;
+    padding-top: 15px;
   }
   
   /* Media query for mobile view */
