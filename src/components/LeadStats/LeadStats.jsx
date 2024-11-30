@@ -28,12 +28,6 @@ const LeadStats = ({totalLeads,tableRows}) => {
     
   ];
 
-  
-
-  useEffect(()=>{
-    console.log("i am working");    
-  },[])
-
   return (
     <div className="lead-stats-container">
       {stats.map((stat, index) => (

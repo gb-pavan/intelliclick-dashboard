@@ -1,8 +1,11 @@
 .lead-stats-container{
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: space-around;
+    gap: 40px;
     margin: 20px;
+    flex-wrap: wrap;
+    /* min-width: 100%; */
+    /* width: 100%; */
     
 }
 
@@ -23,4 +26,34 @@
 .lead-stats p{
     padding: 0px;
     margin: 0px;
+}
+
+/* Add responsive design for very small devices */
+@media (max-width: 480px) { /* Target devices with a width of 480px or smaller */
+    /* .lead-stats-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px;
+    } */
+
+    .lead-stats-container > * {
+        flex: 1 1 calc(50% - 20px); /* 2 columns on small screens */
+        max-width: calc(50% - 120px); /* Prevents overflow */
+    }
+
+    .lead-stats {
+        /* width: 100%;
+        height: auto;  */
+        width: 208px;
+        height: 137px;
+        font-size: 40px; /* Reduce font size for smaller screens */
+    }
+
+    .lead-stats h3 {
+        font-size: 18px; /* Smaller title font size for small devices */
+    }
+
+    .lead-stats p {
+        font-size: 16px; /* Smaller paragraph font size for small devices */
+    }
 }
