@@ -54,22 +54,22 @@
   .page-controls{
     cursor: pointer;
     color: #64748B;
-     width: 10px; /* Adjust width as needed */
-  height: auto; /* Maintain aspect ratio */
-  font-size: 24px;
+    width: auto; 
+    height: auto; 
+    font-size: 24px;
   }
 
   .page-controls.disabled {
-    color: #ccc; /* Color when disabled (arrows at the boundaries) */
-    pointer-events: none; /* Disables click events on the arrow */
+    color: #ccc; 
+    pointer-events: none; 
   }
 
 
   .icon-with-borders {
-    border-left: 1px solid #CBD5E1; /* Left border */
-    border-right: 1px solid #CBD5E1; /* Right border */
-    padding-left: 10px;  /* Optional: to add spacing between the icon and the left border */
-    padding-right: 10px; /* Optional: to add spacing between the icon and the right border */
+    border-left: 1px solid #CBD5E1; 
+    border-right: 1px solid #CBD5E1; 
+    padding-left: 10px;  
+    padding-right: 10px; 
     padding-top: 10px;
     padding-bottom: 10px;
     cursor: pointer;
