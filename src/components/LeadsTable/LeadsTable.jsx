@@ -91,13 +91,15 @@ function LeadsTable() {
         setIsLoading(false);
       },3000);
       setTableData(data);
-      setFilteredRows(data?.data);
+      // setFilteredRows(data?.data);
     }
   }, [data, error,currentPage,rowsPerPage]); 
 
   const tableRows = tableData?.data;
   const totalLeads = tableData?.totalCount;
   const totalPages = Math.ceil(totalLeads / rowsPerPage);
+
+  console.log("filtered-rows",filteredRows);
 
   const handleCreateLead = () => {
     setModalOpen(true);
@@ -236,6 +238,20 @@ function LeadsTable() {
       );
     }
 
+    if (filteredRows?.length === 0){
+      return (
+    <tr>
+      <td colSpan="8" style={{ textAlign: 'center' }}>
+        <div className="no-leads-found-container">
+          <img src="/not-found2.png" />
+          <p>No Leads Found</p>
+          <button>Create Lead</button>
+        </div>
+      </td>
+    </tr>
+  );
+    }
+
     
     return filteredRows?.map((lead, index) => (
       <tr key={index}>
@@ -356,13 +372,13 @@ function LeadsTable() {
             </tbody>
           </table>
         </div>
-        <Pagination 
+        {filteredRows?.length === "0" && <Pagination 
           currentPage={currentPage}
           totalPages={totalPages} 
           onPageChange={handlePageChange} 
           rowsPerPage={rowsPerPage} 
           onRowsPerPageChange={handleRowsPerPageChange} 
-        />
+        />}
       </div>
     </>
   );
