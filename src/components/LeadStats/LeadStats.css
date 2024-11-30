@@ -1,6 +1,6 @@
 .lead-stats-container{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 40px;
     margin: 20px;
     flex-wrap: wrap;

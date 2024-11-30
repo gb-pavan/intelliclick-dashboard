@@ -9,6 +9,8 @@ import { TbClipboardText } from "react-icons/tb";
 import { BiPieChartAlt2 } from "react-icons/bi";
 import { FaChevronDown } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
+import { AiOutlineUser } from "react-icons/ai"; // Profile Icon
+import { FiLogOut } from "react-icons/fi";     // Sign Out Icon
 
 
 function Sidebar({ isOpen, toggleSidebar }) {
@@ -73,6 +75,21 @@ function Sidebar({ isOpen, toggleSidebar }) {
             <RxShuffle size={30} className="icon-spacing" />
             {(isHovered || isOpen) && <span>Workflows</span>}
             <FaChevronDown className="icon-left-spacing" />
+          </div>
+        </li>
+      </ul>
+
+      <ul>
+        <li>
+          <div className="list-item list-item-color">
+            <AiOutlineUser size={30} className="icon-spacing" />
+            {(isHovered || isOpen) && <span>Home</span>}
+          </div>
+        </li>
+        <li>
+          <div className="list-item">
+            <FiLogOut size={30} className="icon-spacing" />
+            {(isHovered || isOpen) && <span>Leads Management</span>}
           </div>
         </li>
       </ul>
