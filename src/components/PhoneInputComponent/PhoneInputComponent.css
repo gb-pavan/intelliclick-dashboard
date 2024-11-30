@@ -41,10 +41,10 @@
     padding: 0 15px;
     cursor: pointer;
     font-size: 14px;
-    z-index: 1000;
+    /* z-index: 1000; */
   }
   
   .send-otp-button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(to right,#AB1CAF, #519CDF);
   }
   

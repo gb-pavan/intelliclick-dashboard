@@ -9,12 +9,12 @@ const LeadStats = ({totalLeads,tableRows}) => {
   const { data, loading, error } = useFetchData(endpoint);
 
 
-  const qualified = data?.data?.find(item => item._id === "Qualified")?.count;
-  const prospect = data?.data?.find(item => item._id === "prospect")?.count;
-  const followUp = data?.data?.find(item => item._id === "Follow-up")?.count;
-  const enrolled = data?.data?.find(item => item._id === "Enrolled")?.count;
-  const trialBooked = data?.data?.find(item => item._id === "Trial Booked")?.count;
-  const notQualified = 1;
+  const qualified = data?.data?.find(item => item._id === "Qualified")?.count || 0;
+  const prospect = data?.data?.find(item => item._id === "prospect")?.count || 0;
+  const followUp = data?.data?.find(item => item._id === "Follow-up")?.count || 0;
+  const enrolled = data?.data?.find(item => item._id === "Enrolled")?.count || 0;
+  const trialBooked = data?.data?.find(item => item._id === "Trial Booked")?.count || 0;
+  const notQualified = 0;
 
   console.log("qualified,followUp,enrol",data);
 

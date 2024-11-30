@@ -106,7 +106,7 @@
 }
 
 .otp-button {
-  background: #6200ea;
+  background: linear-gradient(to right,#BB1CAB, #619CDF);
   color: white;
   border: none;
   padding: 10px 15px;

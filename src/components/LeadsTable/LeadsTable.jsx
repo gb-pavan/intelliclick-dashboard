@@ -91,7 +91,7 @@ function LeadsTable() {
         setIsLoading(false);
       },3000);
       setTableData(data);
-      // setFilteredRows(data?.data);
+      setFilteredRows(data?.data);
     }
   }, [data, error,currentPage,rowsPerPage]); 
 
@@ -372,7 +372,7 @@ function LeadsTable() {
             </tbody>
           </table>
         </div>
-        {filteredRows?.length === "0" && <Pagination 
+        {filteredRows?.length !== "0" && <Pagination 
           currentPage={currentPage}
           totalPages={totalPages} 
           onPageChange={handlePageChange} 
