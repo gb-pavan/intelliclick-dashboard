@@ -154,10 +154,18 @@ function LeadsTable() {
   };
 
   const handleStatusChange = (selected) => {
-      const filtered = tableRows?.filter((row) => selected.some((status) => status.toLowerCase() === row.status.toLowerCase()));
 
-      if (filtered.length === 0){
+      console.log("selected in status filtering",selected);
+      const filtered = tableRows?.filter((row) => selected.some((status) => status.toLowerCase() === row.status.toLowerCase()));
+      console.log("filtered",filtered);
+
+      if (selected.length === 0){
+        console.log("selectd 0");
         setFilteredRows(tableRows)
+      }
+
+      else if (filtered.length === 0){
+        setFilteredRows([])
       }
       else{
         setFilteredRows(filtered);
@@ -363,8 +371,8 @@ function LeadsTable() {
   const renderButtons = () => {
     return (
       <div className="btn-group">
-        <button className="leads-btn today-leads">Today Leads <span>13</span></button>
-        <button className="leads-btn yes-leads">Yesterday Leads <span>15</span></button>
+        <button className="leads-btn today-leads">Today Leads <span>0</span></button>
+        <button className="leads-btn yes-leads">Yesterday Leads <span>0</span></button>
       </div>
     );
   };
