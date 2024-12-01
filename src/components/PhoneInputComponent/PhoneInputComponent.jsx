@@ -2,6 +2,7 @@ import React, { useState,useEffect } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import "./PhoneInputComponent.css";
+import { fetchData } from "../../api/fetchData";
 
 const PhoneInputComponent = ({ onPhoneChange,setOtpSent,setCountry }) => {
   const [phone, setPhone] = useState("");
@@ -22,15 +23,22 @@ const PhoneInputComponent = ({ onPhoneChange,setOtpSent,setCountry }) => {
   }, [timer]);
 
   const handlePhoneChange = (value,countryData) => {
+    console.log("country data",countryData);
     setCountry(countryData.name);
     setPhone(value); // Update local state
     onPhoneChange(value); // Pass the value to the parent
   };
 
-  const handleSendOtp = () => {
-    if(true) setResendOtp(true);
-    setTimer(60);
+  const handleSendOtp = async () => {
+    // if(true) setResendOtp(true);
+    const endpoint = "api/authentication/otp";
+
+    const payload = JSON.stringify({phone:"+"+phone})
+    const otpResponse = await fetchData(endpoint,payload);
+    console.log("otpResponse", otpResponse);
+    if (otpResponse.message === "OTP saved successfully!") setResendOtp(true);
     setOtpSent(true);
+    setTimer(60);    
   };
 
   return (
@@ -65,12 +73,13 @@ const PhoneInputComponent = ({ onPhoneChange,setOtpSent,setCountry }) => {
             color:"black"
           }}
         />
-        {resendOtp ?<button className="send-otp-button" style={{
+        {resendOtp ?<button className="send-otp-button" type="button" style={{
           position: "absolute",
           right: "10px", // Position the button at the right end of the container
           zIndex: 1000,  // Ensure it's in front
         }}>Resend in {timer}s</button>:
         <button
+          type="button"
           onClick={handleSendOtp}
           className="send-otp-button" // Custom class for Send OTP button
           style={{

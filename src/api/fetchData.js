@@ -26,6 +26,8 @@ export const fetchData = async (endpoint, body = null) => {
           url: endpoint,
         };
 
+    console.log("config",config);
+
     const response = await axiosInstance(config);
     return response.data;
   } catch (error) {

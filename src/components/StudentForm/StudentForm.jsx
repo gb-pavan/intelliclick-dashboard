@@ -9,8 +9,10 @@ import useFetchData from "../../hooks/useFetchData";
 
 const StudentForm = ({onSubmit}) => {
   const [isOtpSent, setOtpSent] = useState(false);
+  const [verifyOtp, setVerifyOtp] = useState("");
   const [country, setCountry] = useState("India");
   const [location, setLocation] = useState({ selectedState: "", selectedDistrict: "" });
+  const [otpVerifyMessage,setOtpVerifyMessage]= useState("");
   
   const [formData, setFormData] = useState({
     studentName: "",
@@ -76,6 +78,20 @@ useEffect(() => {
   const handlePhoneChange = (phone) => {
     setFormData((prevData) => ({ ...prevData, phone }));
   };
+
+  const handleVerifyOtp = async () => {
+    const endpoint = "api/authentication/verify";
+    const payload = JSON.stringify({phone:formData.phone ,code:verifyOtp})
+    const otpVerifyResponse = await fetchData(endpoint,payload);
+    console.log("otpVerifyResponse", otpVerifyResponse); 
+    if(otpVerifyResponse.message){
+      setVerifyOtp("");
+      setOtpSent(false);
+    }
+    if(otpVerifyResponse.message==="OTP verified successfully!"){
+      setOtpVerifyMessage(otpVerifyResponse.message);
+    }   
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -179,16 +195,21 @@ useEffect(() => {
         <div className="name-container">
           <PhoneInputComponent onPhoneChange={handlePhoneChange} setOtpSent={setOtpSent} setCountry={setCountry} />
           {isOtpSent && (
-            <input
-              type="text"
-              name="otp"
-              placeholder="Enter OTP"
-              className="form-input"
-              value={formData.otp}
-              onChange={handleInputChange}
-              required
-            />
+            <div className="verify-otp-container">
+              <input
+                type="text"
+                name="otp"
+                placeholder="Enter OTP"
+                className="form-input"
+                // value={formData.otp}
+                value={verifyOtp}
+                onChange={(e)=>setVerifyOtp(e.target.value)}
+                required
+              />
+              <button style={{backgroundColor:"green",color:"white"}} type="button" onClick={handleVerifyOtp}>Verify</button>
+            </div>
           )}
+          {otpVerifyMessage && <p className="otp-verify-message" style={{color:"green"}}>{otpVerifyMessage}</p>}
           {errors.phone && <p className="name-error" style={{ color: "red" }}>*{errors.phone}</p>}
         </div>
 

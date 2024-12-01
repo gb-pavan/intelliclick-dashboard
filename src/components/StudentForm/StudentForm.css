@@ -55,6 +55,10 @@
   /* width: 80%; */
 }
 
+.otp-verify-message{
+  color: green;
+}
+
 .phone-number-container{
   display: flex;
   justify-content: flex-start;
@@ -117,6 +121,29 @@
 
 .otp-button:hover {
   background: linear-gradient(to right,#BB1CAB, #619CDF);
+}
+
+.verify-otp-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.verify-otp-container input{
+  cursor:auto;
+  border: none;
+}
+
+.verify-otp-container button{
+  background: linear-gradient(to right,#BB1CAB, #619CDF);  
+  padding: 0px 20px;
+  border-radius: 10px;
+  margin-right: 10px;
+  height: 30px;
 }
 
 .group-fields{
