@@ -81,7 +81,7 @@ function LeadsTable() {
   };
 
   const endpoint = `api/lead-app/lead/read/get-all?pageNum=${currentPage}&pageSize=${rowsPerPage}`;
-  const { data, loading, error } = useFetchData(endpoint);
+  const { data, loading, error,refetch } = useFetchData(endpoint);
 
   useEffect(() => {
     if (error) {
@@ -95,11 +95,34 @@ function LeadsTable() {
     }
   }, [data, error,currentPage,rowsPerPage]); 
 
+  // useEffect(()=>{
+  //   console.log("i am working after modal close");
+  // },[isModalOpen]);
+
+  useEffect(() => {
+    if (!isModalOpen) {
+      // Run only when the modal closes
+      const fetchUpdatedLeads = async () => {
+        try {
+          setIsLoading(true);
+
+          // Trigger refetch
+          await refetch();
+
+        } catch (error) {
+          console.error("Error fetching updated leads:", error);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+
+      fetchUpdatedLeads();
+    }
+  }, [isModalOpen, refetch]);
+
   const tableRows = tableData?.data;
   const totalLeads = tableData?.totalCount;
   const totalPages = Math.ceil(totalLeads / rowsPerPage);
-
-  console.log("filtered-rows",filteredRows);
 
   const handleCreateLead = () => {
     setModalOpen(true);
@@ -278,7 +301,7 @@ function LeadsTable() {
           {isModalOpen && (
             <Modal isOpen={isModalOpen} closeModal={closeModal}>
               {isCreateLead ? (
-                <StudentForm />
+                <StudentForm onSubmit={closeModal} />
               ) : (
                 <>
                   <h1>Lead Details</h1>

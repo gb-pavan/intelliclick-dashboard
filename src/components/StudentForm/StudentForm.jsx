@@ -7,7 +7,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import useFetchData from "../../hooks/useFetchData";
 
 
-const StudentForm = () => {
+const StudentForm = ({onSubmit}) => {
   const [isOtpSent, setOtpSent] = useState(false);
   const [country, setCountry] = useState("India");
   const [location, setLocation] = useState({ selectedState: "", selectedDistrict: "" });
@@ -37,7 +37,6 @@ const StudentForm = () => {
   const [isClassLoading, setClassLoading] = useState(true);
   const endpoint = "api/standard/read/get-all";
 const { data, loading, error } = useFetchData(endpoint);
-console.log("error in get class",error);
 
 useEffect(() => {
     if (error) {
@@ -47,7 +46,6 @@ useEffect(() => {
     }
   }, [data, error]); 
 
-  console.log("class-details-new",classDetails);
 
   const classList = classDetails?.map(eachClass => eachClass.name);
   // Fetch class options from API
@@ -147,6 +145,7 @@ useEffect(() => {
       const endpoint = "api/lead-app/lead/write/create-or-update";
       const data = await fetchData(endpoint, payload);
       console.log("Form submitted successfully:", data);
+      onSubmit();
     } catch (error) {
       console.error("Error submitting form:", error);
     }

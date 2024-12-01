@@ -16,7 +16,6 @@ const LeadStats = ({totalLeads,tableRows}) => {
   const trialBooked = data?.data?.find(item => item._id === "Trial Booked")?.count || 0;
   const notQualified = 0;
 
-  console.log("qualified,followUp,enrol",data);
 
   const stats = [
     { title: "Total Leads", value: (totalLeads || 0), color: "#F2F7FD", textColor: "#212529" },
