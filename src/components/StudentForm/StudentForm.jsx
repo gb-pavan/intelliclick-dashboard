@@ -83,7 +83,6 @@ useEffect(() => {
     const endpoint = "api/authentication/verify";
     const payload = JSON.stringify({phone:formData.phone ,code:verifyOtp})
     const otpVerifyResponse = await fetchData(endpoint,payload);
-    console.log("otpVerifyResponse", otpVerifyResponse); 
     if(otpVerifyResponse.message){
       setVerifyOtp("");
       setOtpSent(false);
@@ -96,7 +95,6 @@ useEffect(() => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("form-data",formData);
 
     let formIsValid = true;
     let newErrors = {
@@ -141,7 +139,6 @@ useEffect(() => {
     setErrors(newErrors);
 
     const selectedId = classDetails?.filter(eachClass => eachClass.name === formData.selectedClass)[0]._id;
-    console.log("see selectedId",selectedId);
 
     if (!formIsValid) return;
 
@@ -160,7 +157,6 @@ useEffect(() => {
     try {
       const endpoint = "api/lead-app/lead/write/create-or-update";
       const data = await fetchData(endpoint, payload);
-      console.log("Form submitted successfully:", data);
       onSubmit();
     } catch (error) {
       console.error("Error submitting form:", error);

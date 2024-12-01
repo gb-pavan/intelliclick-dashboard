@@ -23,7 +23,6 @@ const PhoneInputComponent = ({ onPhoneChange,setOtpSent,setCountry }) => {
   }, [timer]);
 
   const handlePhoneChange = (value,countryData) => {
-    console.log("country data",countryData);
     setCountry(countryData.name);
     setPhone(value); // Update local state
     onPhoneChange(value); // Pass the value to the parent
@@ -35,7 +34,6 @@ const PhoneInputComponent = ({ onPhoneChange,setOtpSent,setCountry }) => {
 
     const payload = JSON.stringify({phone:"+"+phone})
     const otpResponse = await fetchData(endpoint,payload);
-    console.log("otpResponse", otpResponse);
     if (otpResponse.message === "OTP saved successfully!") setResendOtp(true);
     setOtpSent(true);
     setTimer(60);    

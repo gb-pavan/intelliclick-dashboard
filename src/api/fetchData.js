@@ -13,7 +13,6 @@
 import axiosInstance from './axiosInstance';
 
 export const fetchData = async (endpoint, body = null) => {
-  console.log("body sent payload",body);
   try {
     const config = body
       ? {
@@ -26,7 +25,6 @@ export const fetchData = async (endpoint, body = null) => {
           url: endpoint,
         };
 
-    console.log("config",config);
 
     const response = await axiosInstance(config);
     return response.data;

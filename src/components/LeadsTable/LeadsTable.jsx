@@ -166,7 +166,6 @@ function LeadsTable() {
   };
 
   const handleTimeRangeChange = (selectedOption,customStartDate=null,customEndDate=null) => {
-    console.log("customStartDate",customStartDate);
     const today = new Date();
     let filteredData = [];
 
