@@ -161,12 +161,13 @@ useEffect(() => {
             type="text"
             name="studentName"
             placeholder="Student Name*"
-            className="form-input name-style"
+            className="form-input"
             value={formData.studentName}
             onChange={handleInputChange}
           />
           {errors.studentName && <p className="name-error" style={{ color: "red" }}>*{errors.studentName}</p>}
         </div>
+        <div className="name-container">
         <input
           type="email"
           name="email"
@@ -174,7 +175,7 @@ useEffect(() => {
           className="form-input"
           value={formData.email}
           onChange={handleInputChange}
-        />
+        /></div>
         <div className="name-container">
           <PhoneInputComponent onPhoneChange={handlePhoneChange} setOtpSent={setOtpSent} setCountry={setCountry} />
           {isOtpSent && (
@@ -191,31 +192,13 @@ useEffect(() => {
           {errors.phone && <p className="name-error" style={{ color: "red" }}>*{errors.phone}</p>}
         </div>
 
-        <div className="name-container">
-          {loading ? (
-            <ClipLoader color="#36d7b7" loading={true} size={30} />
-          ) : (
-            <select
-              name="selectedClass"
-              className="form-input"
-              style={{ width: "312px" }}
-              value={formData.selectedClass}
-              onChange={handleInputChange}
-            >
-              <option value="" disabled>Select Class</option>
-              {classList?.map((cls,index) => (
-                <option key={index} value={cls}>{cls}</option>
-              ))}
-            </select>
-          )}
-          {errors.selectedClass && <p className="name-error" style={{ color: "red" }}>*{errors.selectedClass}</p>}
-        </div>
+        
 
         <div className="name-container">
           <select
             name="selectedBoard"
             className="form-input custom-dropdown"
-            style={{ width: "312px" }}
+            // style={{ width: "312px" }}
             value={formData.selectedBoard}
             onChange={handleInputChange}
           >
@@ -227,22 +210,46 @@ useEffect(() => {
           {errors.selectedBoard && <p className="name-error" style={{ color: "red" }}>*{errors.selectedBoard}</p>}
         </div>
 
-        <div className="name-container">
-          <select
-            name="interactedWith"
-            className="form-input"
-            style={{ width: "312px" }}
-            value={formData.interactedWith}
-            onChange={handleInputChange}
-          >
-            <option value="" disabled>Interacted With</option>
-            <option value="Father">Father</option>
-            <option value="Mother">Mother</option>
-            <option value="Student">Student</option>
-            <option value="Guardian">Guardian</option>
-          </select>
-          {errors.interactedWith && <p className="name-error" style={{ color: "red" }}>*{errors.interactedWith}</p>}
+        <div className="group-fields">
+          <div style={{width:"45%", marginLeft:"0px"}}>
+              {loading ? (
+                <ClipLoader color="#36d7b7" loading={true} size={30} />
+                ) : (
+              <select
+                name="selectedClass"
+                className="form-input"
+                style={{ width: "100%" }}
+                value={formData.selectedClass}
+                onChange={handleInputChange}
+                >
+                <option value="" disabled>Select Class</option>
+                {classList?.map((cls,index) => (
+                <option key={index} value={cls}>{cls}</option>
+                ))}
+              </select>
+            )}
+            {errors.selectedClass && <p className="name-error" style={{ color: "red" }}>*{errors.selectedClass}</p>}
+          </div>
+
+          <div style={{width:"45%"}}>
+            <select
+              name="interactedWith"
+              className="form-input"
+              style={{ width: "100%" }}
+              value={formData.interactedWith}
+              onChange={handleInputChange}
+            >
+              <option value="" disabled>Interacted With</option>
+              <option value="Father">Father</option>
+              <option value="Mother">Mother</option>
+              <option value="Student">Student</option>
+              <option value="Guardian">Guardian</option>
+            </select>
+            {errors.interactedWith && <p className="name-error" style={{ color: "red" }}>*{errors.interactedWith}</p>}
+          </div>
         </div>
+
+        
 
         {/* {country === "India" && <GetLocation setLocation={setLocation} errors={errors} />} */}
         <div className="submit-btn-container">

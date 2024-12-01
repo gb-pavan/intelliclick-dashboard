@@ -34,8 +34,7 @@ const PhoneInputComponent = ({ onPhoneChange,setOtpSent,setCountry }) => {
   };
 
   return (
-    <div>
-      <div style={{ display: "flex",alignItems: "center", position: "relative", width: "360px" }}>
+    <div style={{ display: "flex",alignItems: "center", position: "relative", width:"100%"}}>
         <PhoneInput
           country={"in"}
           value={phone}
@@ -51,7 +50,7 @@ const PhoneInputComponent = ({ onPhoneChange,setOtpSent,setCountry }) => {
             color: "black",
           }}
           containerStyle={{
-            width: "360px",
+            width: "100%"
             // margin:"0px 22px"
           }}
           inputStyle={{
@@ -68,7 +67,7 @@ const PhoneInputComponent = ({ onPhoneChange,setOtpSent,setCountry }) => {
         />
         {resendOtp ?<button className="send-otp-button" style={{
           position: "absolute",
-          right: "25px", // Position the button at the right end of the container
+          right: "10px", // Position the button at the right end of the container
           zIndex: 1000,  // Ensure it's in front
         }}>Resend in {timer}s</button>:
         <button
@@ -76,14 +75,14 @@ const PhoneInputComponent = ({ onPhoneChange,setOtpSent,setCountry }) => {
           className="send-otp-button" // Custom class for Send OTP button
           style={{
           position: "absolute",
-          right: "25px", // Position the button at the right end of the container
+          right: "10px", // Position the button at the right end of the container
           zIndex: 1000,  // Ensure it's in front
         }}
         >
           Send OTP
         </button>}
-      </div>
     </div>
+    
   );
 };
 
