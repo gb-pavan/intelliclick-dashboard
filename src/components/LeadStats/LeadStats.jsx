@@ -19,7 +19,7 @@ const LeadStats = ({totalLeads,tableRows}) => {
   console.log("qualified,followUp,enrol",data);
 
   const stats = [
-    { title: "Total Leads", value: totalLeads, color: "#F2F7FD", textColor: "#212529" },
+    { title: "Total Leads", value: (totalLeads || 0), color: "#F2F7FD", textColor: "#212529" },
     { title: "Qualified", value: qualified, color: "#F0FDF4", textColor: "#15803D" },
     { title: "Follow up", value: followUp, color: "#FFFBEB", textColor: "#92400E" },
     { title: "Trial Booked", value: trialBooked, color: "#FEF2F2", textColor: "#B91C1C" },

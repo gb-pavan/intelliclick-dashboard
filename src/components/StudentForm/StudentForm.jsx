@@ -156,7 +156,7 @@ useEffect(() => {
     <div className="form-container">
       <h2>Book a Live Class Today, for <span className="highlight">FREE</span></h2>
       <p>Start Learning Today</p>
-      <form className="live-class-form" onSubmit={handleSubmit}>
+      <form className="live-class-form" onSubmit={handleSubmit} >
         <div className="name-container">
           <input
             type="text"
