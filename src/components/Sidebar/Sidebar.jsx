@@ -13,7 +13,7 @@ import { AiOutlineUser } from "react-icons/ai"; // Profile Icon
 import { FiLogOut } from "react-icons/fi";     // Sign Out Icon
 
 
-function Sidebar({ isOpen, toggleSidebar }) {
+function Sidebar({ isOpen, toggleSidebar,setProfileOpen }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => setIsHovered(true);
@@ -81,15 +81,15 @@ function Sidebar({ isOpen, toggleSidebar }) {
 
       <ul>
         <li>
-          <div className="list-item list-item-color">
+          <div className="list-item list-item-color" onClick={() => setProfileOpen((prev) => !prev)}>
             <AiOutlineUser size={30} className="icon-spacing" />
-            {(isHovered || isOpen) && <span>Home</span>}
+            {(isHovered || isOpen) && <span>Profile</span>}
           </div>
         </li>
         <li>
           <div className="list-item">
             <FiLogOut size={30} className="icon-spacing" />
-            {(isHovered || isOpen) && <span>Leads Management</span>}
+            {(isHovered || isOpen) && <span>Sign Out</span>}
           </div>
         </li>
       </ul>
