@@ -28,32 +28,58 @@
     margin: 0px;
 }
 
-/* Add responsive design for very small devices */
-@media (max-width: 480px) { /* Target devices with a width of 480px or smaller */
-    /* .lead-stats-container {
+@media (max-width: 1331px) { /* Target devices with a width of 1331px or smaller */
+    .lead-stats-container {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 10px;
-    } */
-
-    .lead-stats-container > * {
-        flex: 1 1 calc(50% - 20px); /* 2 columns on small screens */
-        max-width: calc(50% - 120px); /* Prevents overflow */
+        grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
+        gap: 40px; /* Adjust gap between items */
     }
 
-    .lead-stats {
-        /* width: 100%;
-        height: auto;  */
+    .lead-stats-container > * {
+        flex: 1 1 calc(33.33% - 20px); /* Ensure 3 columns layout */
+        min-width: calc(63.33% - 20px); /* Prevent overflow */
+    }
+
+    .lead-stats {        
         width: 208px;
         height: 137px;
-        font-size: 40px; /* Reduce font size for smaller screens */
+        font-size: 48px; /* Adjust font size for this screen size */
     }
 
     .lead-stats h3 {
-        font-size: 18px; /* Smaller title font size for small devices */
+        font-size: 22px; /* Adjust title font size for medium screens */
     }
 
     .lead-stats p {
-        font-size: 16px; /* Smaller paragraph font size for small devices */
+        font-size: 50px; /* Adjust paragraph font size */
+    }
+}
+
+
+
+@media (max-width: 480px) { /* Target devices with a width of 480px or smaller */
+    .lead-stats-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns per row */
+        gap: 10px; /* Adjust gap between grid items */
+    }
+
+    .lead-stats-container > * {
+        flex: 1 1 calc(50% - 20px); /* Ensure 2 columns layout */
+        min-width: calc(50% - 20px); /* Prevent overflow */
+    }
+
+    .lead-stats {
+        width: 100%; /* Full width of the grid cell */
+        height: auto; /* Adjust height dynamically */
+        font-size: 40px; /* Adjust font size for small screens */
+    }
+
+    .lead-stats h3 {
+        font-size: 18px; /* Smaller title font size */
+    }
+
+    .lead-stats p {
+        font-size: 16px; /* Smaller paragraph font size */
     }
 }

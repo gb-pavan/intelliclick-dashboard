@@ -52,7 +52,7 @@
   display: flex;
   justify-content: space-between;
   margin: 20px;
-    padding: 10px;
+  padding: 10px;
 }
 
 .table-header button {
@@ -148,13 +148,8 @@
     border: 1px solid #ddd;
     border-radius: 5px;padding-left: 0px;
     padding-right: 0px;
+    overflow-x: auto;
   }
-
-.table-container {
-  overflow-x: auto; /* Horizontal scrolling for small screens */
-  overflow-y: auto; /* Vertical scrolling if needed */
-  max-height: 300px; /* Set maximum height for vertical scroll */
-}
 
 .no-leads-found-container{
   display: flex;
@@ -317,6 +312,21 @@
   tbody tr:hover {
     background-color: #f1f1f1;
   }
+
+  .tableContainer {   
+    width: 100%; /* Full device width */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+    /* border: 1px solid #ccc; */
+  }
+  
+  .responsiveTable {
+    width: 100%; /* Occupy available width */
+    border-collapse: collapse; /* Remove spacing between cells */
+  }
+
+
+  
 
 
 

@@ -383,8 +383,8 @@ function LeadsTable() {
       {renderButtons()}
       {renderHeader()}
       <div className="leads-table">
-        <div className="table-container">
-          <table>
+        <div className="tableContainer">
+          <table className="responsiveTable">
             <thead>
               <tr>
                 <th>Student Name</th>
