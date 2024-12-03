@@ -15,6 +15,7 @@ import StudentForm from "../StudentForm/StudentForm"
 import StatusFilter from "../StatusFilter/StatusFilter";
 import DateFilter from "../DateFilter/DateFilter";
 import LeadStats from "../LeadStats/LeadStats";
+import { fetchData } from "../../api/fetchData";
 
 
 function LeadsTable() {
@@ -94,6 +95,22 @@ function LeadsTable() {
       setFilteredRows(data?.data);
     }
   }, [data, error,currentPage,rowsPerPage]); 
+
+  useEffect(() => {
+    const fetchLeaderData = async () => {
+      try {
+        const userId = "673107df43ea13e9d3759f61";
+        const endpoint = `api/leader/read/get-leader-data?userId=${userId}`;
+        const leaderData = await fetchData(endpoint);
+        console.log("leaderData", leaderData);
+      } catch (error) {
+        console.error("Error fetching leader data:", error);
+      }
+    };
+
+    fetchLeaderData(); // Call the async function
+  }, []);
+
 
   // useEffect(()=>{
   //   console.log("i am working after modal close");
@@ -293,6 +310,7 @@ function LeadsTable() {
         </td>
         <td>{lead.interactedWith || ''}</td>
         <td>{lead.createdBy || ''}</td>
+        <td>offline</td>
         <td>
           {/* <button className="eye-button" onClick={() => openModal(lead)}>
             <IoEyeOutline size={25} />
@@ -393,6 +411,7 @@ function LeadsTable() {
                 <th>Status</th>
                 <th>Interacted With</th>
                 <th>Created By</th>
+                <th>Created</th>
                 <th>Details</th>
                 <th>Created At</th>
               </tr>

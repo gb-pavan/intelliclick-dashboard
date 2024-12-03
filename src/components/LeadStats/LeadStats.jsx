@@ -14,7 +14,7 @@ const LeadStats = ({totalLeads,tableRows}) => {
   const followUp = data?.data?.find(item => item._id === "Follow-up")?.count || 0;
   const enrolled = data?.data?.find(item => item._id === "Enrolled")?.count || 0;
   const trialBooked = data?.data?.find(item => item._id === "Trial Booked")?.count || 0;
-  const notQualified = 0;
+  const disqualified = 0;
 
 
   const stats = [
@@ -23,7 +23,7 @@ const LeadStats = ({totalLeads,tableRows}) => {
     { title: "Follow up", value: followUp, color: "#FFFBEB", textColor: "#92400E" },
     { title: "Trial Booked", value: trialBooked, color: "#FEF2F2", textColor: "#B91C1C" },
     { title: "Enrolled", value: enrolled, color: "#FEF4FF", textColor: "#AB1CAF" },
-    { title: "Not Qualified", value: notQualified, color: "#FEF2F2", textColor: "#B91C1C" },
+    { title: "Disqualified", value: disqualified, color: "#FEF2F2", textColor: "#B91C1C" },
     
   ];
 
