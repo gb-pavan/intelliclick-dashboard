@@ -397,9 +397,9 @@ function LeadsTable() {
 
   return (
     <>
-      <LeadStats totalLeads={totalLeads} tableRows={tableRows}/>
+      {/* <LeadStats totalLeads={totalLeads} tableRows={tableRows}/>
       {renderButtons()}
-      {renderHeader()}
+      {renderHeader()} */}
       <div className="leads-table">
         <div className="tableContainer">
           <table className="responsiveTable">

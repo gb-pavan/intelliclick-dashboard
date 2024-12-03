@@ -14,7 +14,7 @@ const LeadStats = ({totalLeads,tableRows}) => {
   const followUp = data?.data?.find(item => item._id === "Follow-up")?.count || 0;
   const enrolled = data?.data?.find(item => item._id === "Enrolled")?.count || 0;
   const trialBooked = data?.data?.find(item => item._id === "Trial Booked")?.count || 0;
-  const disqualified = 0;
+  const disqualified = data?.data?.find(item => item._id === "Disqualified")?.count || 0;
 
 
   const stats = [
