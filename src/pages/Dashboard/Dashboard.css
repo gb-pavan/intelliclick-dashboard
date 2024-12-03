@@ -57,7 +57,7 @@
     font-family: Arial, sans-serif;
     /* background-color: #f8f9fc; */
     /* height: 100vh; */
-    border-top: 1px solid #ddd; /* Left border */
+    border-top: 1px solid #ddd;
   }
   
   .main-content {
@@ -67,7 +67,7 @@
     background-color: #ffffff;
     border-left: 1px solid #ddd;
     /* height:1200px; */
-    width: 300px;
+    width: 480px;
     padding-top: 15px;
   }
   

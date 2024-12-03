@@ -53,6 +53,7 @@
   justify-content: space-between;
   margin: 20px;
   padding: 10px;
+  background-color: #92400E;
 }
 
 .table-header button {
@@ -325,6 +326,23 @@
   .responsiveTable {
     width: max-content;
     border-collapse: collapse; /* Remove spacing between cells */
+  }
+
+  @media screen and (max-width: 376px) {
+    .input-box input{
+      display: none;
+    }
+    .filters{
+      gap: 5px;
+    }
+    .table-header{
+      display: flex;
+      justify-content: space-between;
+      margin: 20px;
+      padding: 10px 0px;
+      background-color: #92400E;
+    }
+    
   }
 
 

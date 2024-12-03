@@ -1,5 +1,6 @@
 .profile-header-container{
     display: flex;
+    background-color: orange;
 }
 
 .c-logo-container{
@@ -12,9 +13,10 @@
 
 .profile-logo-container{
     width: max-content;
+    width: 100%;
     flex-grow: 1;
     flex-shrink: 0;
-    /* min-width: 940px; */
+    min-width: 480px;
     display: flex;
     justify-content: space-between;
     align-items: center;
